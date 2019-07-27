@@ -1,0 +1,43 @@
+<div class="registration1-animation">
+  <div id="iAmA">I am a</div>
+
+  <div fxLayout="column" fxLayoutGap = "20px">
+    <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+      <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+        <img src="assets/images/home/registration/Volunteer.png" alt="Volunteer"><br>
+        <div>Volunteer</div>
+      </button>
+      <button class="role-select-button" id="driver" (click)="set_role('Driver')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+        <img src="assets/images/home/registration/Driver.png" alt="Driver"><br>
+        <div>Driver</div>
+      </button>
+    </div>
+    <div id="row2" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+      <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+        <img src="assets/images/home/registration/Doctor.png" alt="Doctor"><br>
+        <div>Doctor</div>
+      </button>
+      <button class="role-select-button" id="options" (click)="toggle_displayOthers()">
+        <img src="{{ imageSrc }}" alt="Other"><br>
+        <div>Other</div>
+      </button>
+    </div>
+    <div id="row3" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+      <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+        <img src="assets/images/home/registration/Receptionist.png" alt="Receptionist"><br>
+        <div>Call</div><div>Attender</div>
+      </button>
+      <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+        <img src="assets/images/home/registration/Fosterer.png" alt="Fosterer"><br>
+        <div>Fosterer</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div fxLayoutAlign="end">
+  <button id="home-btn">
+    <img src="assets/images/home/registration/Home.png" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem'}">
+  </button>
+</div>
+

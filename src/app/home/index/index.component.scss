@@ -1,0 +1,84 @@
+#info-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logoImage {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  max-width: 25vw;
+  height: auto;
+}
+
+#cta-btns {
+  margin-top: 5rem;
+}
+
+#info-btn a img {
+  margin: 1rem 1rem 0rem 0rem;
+  width: 2.5rem;
+}
+
+#createAccount, #signIn {
+  background-color: #222;
+  color: floralwhite;
+  font-size: 1.25rem;
+  padding: 1rem 1.5rem;
+}
+
+#signIn { background-color: #444 }
+
+#aboutus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #37404769;
+}
+
+#aboutus-info {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  max-width: 50%;
+  background-color: #374047;
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+#backbutton {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  background-color: rgb(230, 230, 230);
+}
+
+@media only screen and (max-width: 768px) {
+    #logoImage {
+        margin-top: 10vh;
+        max-width: 60vw;
+    }
+    #aboutus-info {
+      max-width: 70%;
+      font-size: 1rem;
+    }
+    #info-btn a img {
+      width: 2rem;
+    }
+    #backbutton {
+      padding: 0.5rem 1rem;
+    }
+    #createAccount, #signIn {
+      padding: 0.75rem 1rem;
+    }
+}
+

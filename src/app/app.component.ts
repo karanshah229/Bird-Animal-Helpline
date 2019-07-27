@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Bird-Animal-Helpline';
+  title = 'Bird Animal Helpline';
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 }

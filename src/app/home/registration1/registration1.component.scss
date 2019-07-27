@@ -1,0 +1,99 @@
+.registration1-animation {
+  animation: registration1_animation 0.7s forwards 0s ease-out;
+}
+
+@keyframes registration1_animation {
+  0% {
+    transform: translateX(100px);
+  }
+  75% {
+      transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+#iAmA {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.role-select-button {
+  box-shadow: 0px 0px 10px #BBB;
+  padding: 1rem;
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+}
+
+.role-select-button img {
+  width: 4.5rem;
+  max-width: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.role-select-button div {
+  font-size: 1rem;
+}
+
+#home-btn img{
+  margin-right: 1rem;
+  max-width: 2rem;
+}
+
+
+/*----------FOSTERER--AND--RECEPTIONIST--ANIMATIONS---------*/
+@keyframes Fosterer {
+    0% {
+        transform: scale(0) translateX(1000px);
+    }
+    100% {
+        transform: scale(1) translateX(0vw);
+    }
+}
+
+.fosterer {
+    animation: Fosterer 0.8s forwards 0s ease-in-out;
+}
+
+@keyframes Receptionist {
+    0% {
+        transform: scale(0) translateX(-1000px);
+    }
+    100% {
+        transform: scale(1) translateX(0vw);
+    }
+}
+
+.receptionist {
+    animation: Receptionist 0.8s forwards 0s ease-in-out;
+}
+
+@keyframes Fosterer-end {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+    100% {
+        transform: rotate(720deg) scale(0);
+    }
+}
+
+.fosterer-end {
+    animation: Fosterer-end 0.7s forwards 0s ease-in-out;
+}
+
+@keyframes Receptionist-end {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+    100% {
+        transform: rotate(720deg) scale(0);
+    }
+}
+
+.receptionist-end {
+    animation: Receptionist-end 0.7s forwards 0s ease-in-out;
+}

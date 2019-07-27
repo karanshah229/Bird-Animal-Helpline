@@ -1,0 +1,15 @@
+<div id="heading" [ngStyle.gt-sm]="{'padding': '1.3rem', 'font-size': '1.6rem'}">Join Us</div>
+
+<div [ngStyle.gt-sm]="{'box-shadow': '0px 0px 20px #CCC','margin-top': '1.2rem', 'padding-top': '2rem', 'max-width':'50vw', 'transform': 'translateX(50%)'}">
+
+  <div id="progress-bar" [ngStyle.gt-sm]="{'margin-top': '0rem'}" class="progressBar-animation">
+    <div id="progress-bar-1" [ngClass]="progress_bar[0]">1</div>
+    <div id="progress-bar-2" [ngClass]="progress_bar[1]"></div>
+    <div id="progress-bar-3" [ngClass]="progress_bar[2]">2</div>
+    <div id="progress-bar-4" [ngClass]="progress_bar[3]"></div>
+    <div id="progress-bar-5" [ngClass]="progress_bar[4]">3</div>
+  </div>
+
+  <router-outlet (OutputURLEvent)="setURL(url)"></router-outlet>
+
+</div>
