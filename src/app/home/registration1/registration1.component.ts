@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationAccessService } from 'src/services/registration-access.service';
-
+import { flyInOut } from 'src/animations/anim_registration';
+import { RegFormService } from 'src/services/reg-form.service';
 @Component({
   selector: 'app-registration1',
   templateUrl: './registration1.component.html',
-  styleUrls: ['./registration1.component.scss']
+  styleUrls: ['./registration1.component.scss'],
+  animations: [ flyInOut() ]
 })
 export class Registration1Component implements OnInit {
 
@@ -12,8 +14,9 @@ export class Registration1Component implements OnInit {
   imagePath: String = 'assets/images/home/registration/';
   imageSrc: String = this.imagePath + 'Options.png';
   role:String = '';
+  flyInOut: boolean = true;
 
-  constructor(private regAccess: RegistrationAccessService) {
+  constructor(private regAccess: RegistrationAccessService, private regForm: RegFormService) {
     this.role = "";
   }
 
@@ -29,6 +32,7 @@ export class Registration1Component implements OnInit {
 
   set_role(role):void {
     this.role= role;
+    this.regForm.setStep1 = this.role;
     this.regAccess.setAccessStatus(true);
   }
 

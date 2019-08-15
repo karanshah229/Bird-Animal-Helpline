@@ -1,15 +1,168 @@
-<div id="heading" [ngStyle.gt-sm]="{'padding': '1.3rem', 'font-size': '1.6rem'}">Join Us</div>
+<div id="heading" class="mat-display-1" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
 
-<div [ngStyle.gt-sm]="{'box-shadow': '0px 0px 20px #CCC','margin-top': '1.2rem', 'padding-top': '2rem', 'max-width':'50vw', 'transform': 'translateX(50%)'}">
+<div [ngStyle.gt-sm]="{'box-shadow': '0px 0px 20px #CCC', 'padding-top': '2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'margin-bottom': '3rem'}">
 
-  <div id="progress-bar" [ngStyle.gt-sm]="{'margin-top': '0rem'}" class="progressBar-animation">
-    <div id="progress-bar-1" [ngClass]="progress_bar[0]">1</div>
-    <div id="progress-bar-2" [ngClass]="progress_bar[1]"></div>
-    <div id="progress-bar-3" [ngClass]="progress_bar[2]">2</div>
-    <div id="progress-bar-4" [ngClass]="progress_bar[3]"></div>
-    <div id="progress-bar-5" [ngClass]="progress_bar[4]">3</div>
+  <!--<div id="progress-bar" [ngStyle]="{'margin-top': '0rem'}" class="progressBar-animation" [@flyInOut] = "flyInOut">
+    <div id="progress-bar-1" [ngClass]="progress_bar_background">1</div>
+    <div id="progress-bar-2" [ngClass]="progress_bar_background[1]"></div>
+    <div id="progress-bar-3" [ngClass]="progress_bar_background[2]">2</div>
+    <div id="progress-bar-4" [ngClass]="progress_bar_background[3]"></div>
+    <div id="progress-bar-5" [ngClass]="progress_bar_background[4]">3</div>-->
+
+    <mat-horizontal-stepper labelPosition="bottom" linear>
+      <mat-step>
+        <ng-template matStepLabel>Select Role</ng-template>
+        <div class="registration1-animation" [@flyInOut] = "flyInOut">
+          <div id="iAmA">I am a</div>
+          <div fxLayout="column" fxLayoutGap = "20px">
+            <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+              <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+                <img src="assets/images/home/registration/Volunteer.png" alt="Volunteer"><br>
+                <div>Volunteer</div>
+              </button>
+              <button class="role-select-button" id="driver" (click)="set_role('Driver')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+                <img src="assets/images/home/registration/Driver.png" alt="Driver"><br>
+                <div>Driver</div>
+              </button>
+            </div>
+            <div id="row2" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+              <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+                <img src="assets/images/home/registration/Doctor.png" alt="Doctor"><br>
+                <div>Doctor</div>
+              </button>
+              <button class="role-select-button" id="options" (click)="toggle_displayOthers()">
+                <img src="{{ imageSrc }}" alt="Other"><br>
+                <div>Other</div>
+              </button>
+            </div>
+            <div id="row3" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
+              <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+                <img src="assets/images/home/registration/Receptionist.png" alt="Receptionist"><br>
+                <div>Call</div><div>Attender</div>
+              </button>
+              <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+                <img src="assets/images/home/registration/Fosterer.png" alt="Fosterer"><br>
+                <div>Fosterer</div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+      <!-- STEP 2 -->
+
+      <mat-step [stepControl]="step2">
+        <form [formGroup]="step2">
+          <div>
+            <ng-template matStepLabel>Fill basic details</ng-template>
+            <hr>
+          </div>
+          <div fxLayoutGap="3%">
+            <mat-form-field appearance="outline" fxFlex="48.5%">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="" formControlName="firstName" required>
+              <mat-error *ngIf="formErrors.firstName">{{formErrors.firstName}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="48.5%">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="" formControlName="lastName" required>
+              <mat-error *ngIf="formErrors.lastName">{{formErrors.lastName}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field fxFlex="100%">
+              <input matInput [matDatepicker]="picker" placeholder="Choose Date of Birth" formControlName="dob" [max] = "maxyear" [min] = "minyear"  disabled>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="multi-year" disabled="false" touchUi = "true"></mat-datepicker>
+              <mat-error *ngIf="formErrors.dob">{{formErrors.dob}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="3%">
+            <mat-form-field appearance="outline" fxFlex="20%" fxFlex.gt-sm="10%">
+              <input matInput placeholder="" formControlName="countryCode" style="color: black" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="">
+              <mat-label>Phone Number</mat-label>
+              <input matInput placeholder="" formControlName="mobileNumber" pattern="[6789][0-9]{9}" required>
+              <mat-error *ngIf="formErrors.mobileNumber">{{formErrors.mobileNumber}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" style="margin-bottom: 1rem">
+            <span style="margin-right: 0.75rem" [ngStyle.gt-sm]="{'margin-right': '2rem'}">Gender: </span>
+            <mat-radio-group aria-label="Select Gender" formControlName="gender" required>
+              <mat-radio-button value="M">Male</mat-radio-button>
+              <mat-radio-button value="F">Female</mat-radio-button>
+              <mat-radio-button value="O">Others</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="formErrors.gender">{{formErrors.gender}}</mat-error>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" fxFlex="100%">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="emailID" placeholder="abc@abc.com" required>
+              <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+          </mat-form-field>
+          </div>
+
+          <div>
+            <h3>Security Question</h3>
+            <hr>
+            <p>We will be using this question in case you forget your password, so choose wisely.</p>
+          </div>
+          <div style="padding-top: 0.7rem">
+            <mat-form-field fxFlex="100%">
+              <mat-label>Select Question</mat-label>
+              <mat-select [value]="selectedQues" formControlName="securityQuestion" required>
+              <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="i+1">
+                  {{ ques }}
+              </mat-option>
+              </mat-select>
+              </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFlex="100%" color="accent">
+              <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide ? 'password' : 'text'" required>
+              <mat-error *ngIf="formErrors.securityResponse">{{formErrors.securityResponse}}</mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+          </div>
+
+          <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'2rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
+            <button type="button" class="material-icons md-36" [routerLink]="['/registration/page1']" routerLinkActive="router-link-active"  fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -1rem">
+              navigate_next
+            </button>
+            <button type="submit" class="material-icons md-36" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -1rem">
+              <span (click)="submitStep2()">navigate_next</span>
+            </button>
+          </div>
+
+        </form>
+
+      </mat-step>
+
+      <!-- STEP 3 -->
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 
-  <router-outlet (OutputURLEvent)="setURL(url)"></router-outlet>
-
-</div>
+  <!--<router-outlet></router-outlet>-->

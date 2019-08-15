@@ -18,15 +18,15 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'page1' },
       { path: 'page1', component: Registration1Component },
-      { path: 'page2', component: Registration2Component, canActivate: [RegistrationGuard] },
-      { path: 'page3', component: Registration3Component, canActivate: [RegistrationGuard] },
+      { path: 'page2', component: Registration2Component, canActivate: [] },
+      { path: 'page3', component: Registration3Component, canActivate: [] },
       { path: '**', pathMatch: 'full', redirectTo: 'page1'  },
     ]
    },
   { path: 'home', component: IndexComponent },
   { path: 'signIn', component: SignInComponent },
-  { path: '**', component: PageNotFoundComponent  },
-  { path: '', pathMatch: 'full', redirectTo: 'home' }
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '**', component: PageNotFoundComponent  }
 ];
 
 @NgModule({

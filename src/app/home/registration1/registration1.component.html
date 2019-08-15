@@ -1,4 +1,4 @@
-<div class="registration1-animation">
+<div class="registration1-animation" [@flyInOut] = "flyInOut">
   <div id="iAmA">I am a</div>
 
   <div fxLayout="column" fxLayoutGap = "20px">
@@ -37,7 +37,7 @@
 
 <div fxLayoutAlign="end">
   <button id="home-btn">
-    <img src="assets/images/home/registration/Home.png" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem'}">
+    <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'padding-right': '1rem'}">home</i>
   </button>
 </div>
 
