@@ -1,32 +1,30 @@
-<div id="heading" class="mat-display-1" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
+<div id="heading" class="mat-display-" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
 
-<div [ngStyle.gt-sm]="{'box-shadow': '0px 0px 20px #CCC', 'padding-top': '2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'margin-bottom': '3rem'}">
+<div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
 
-  <!--<div id="progress-bar" [ngStyle]="{'margin-top': '0rem'}" class="progressBar-animation" [@flyInOut] = "flyInOut">
-    <div id="progress-bar-1" [ngClass]="progress_bar_background">1</div>
-    <div id="progress-bar-2" [ngClass]="progress_bar_background[1]"></div>
-    <div id="progress-bar-3" [ngClass]="progress_bar_background[2]">2</div>
-    <div id="progress-bar-4" [ngClass]="progress_bar_background[3]"></div>
-    <div id="progress-bar-5" [ngClass]="progress_bar_background[4]">3</div>-->
+<div [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}">
 
-    <mat-horizontal-stepper labelPosition="bottom" linear>
-      <mat-step>
+    <mat-horizontal-stepper labelPosition="bottom" linear #stepper @flyInOut>
+
+      <!---------------------- STEP 1 ---------------------->
+
+      <mat-step [completed]="completed">
         <ng-template matStepLabel>Select Role</ng-template>
         <div class="registration1-animation" [@flyInOut] = "flyInOut">
-          <div id="iAmA">I am a</div>
+          <div id="iAmA">I am a <span style="font-size: 2rem"><i><u>{{role}}</u></i></span> </div>
           <div fxLayout="column" fxLayoutGap = "20px">
             <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+              <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" matStepperNext>
                 <img src="assets/images/home/registration/Volunteer.png" alt="Volunteer"><br>
                 <div>Volunteer</div>
               </button>
-              <button class="role-select-button" id="driver" (click)="set_role('Driver')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+              <button class="role-select-button" id="driver" (click)="set_role('Driver')" matStepperNext>
                 <img src="assets/images/home/registration/Driver.png" alt="Driver"><br>
                 <div>Driver</div>
               </button>
             </div>
             <div id="row2" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+              <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" matStepperNext>
                 <img src="assets/images/home/registration/Doctor.png" alt="Doctor"><br>
                 <div>Doctor</div>
               </button>
@@ -36,41 +34,43 @@
               </button>
             </div>
             <div id="row3" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+              <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" matStepperNext>
                 <img src="assets/images/home/registration/Receptionist.png" alt="Receptionist"><br>
                 <div>Call</div><div>Attender</div>
               </button>
-              <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
+              <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" matStepperNext>
                 <img src="assets/images/home/registration/Fosterer.png" alt="Fosterer"><br>
                 <div>Fosterer</div>
               </button>
             </div>
           </div>
         </div>
-        <div>
-          <button mat-button matStepperNext>Next</button>
+        <div fxLayoutAlign="end">
+          <button id="home-btn">
+            <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'padding-right': '1rem'}">home</i>
+          </button>
         </div>
       </mat-step>
 
-      <!-- STEP 2 -->
+      <!---------------------- STEP 2 ---------------------->
 
       <mat-step [stepControl]="step2">
         <form [formGroup]="step2">
+
           <div>
-            <ng-template matStepLabel>Fill basic details</ng-template>
-            <hr>
+            <ng-template matStepLabel>Basic Details</ng-template>
           </div>
           <div fxLayoutGap="3%">
             <mat-form-field appearance="outline" fxFlex="48.5%">
               <mat-label>First Name</mat-label>
               <input matInput placeholder="" formControlName="firstName" required>
-              <mat-error *ngIf="formErrors.firstName">{{formErrors.firstName}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.firstName">{{step2_formErrors.firstName}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" fxFlex="48.5%">
               <mat-label>Last Name</mat-label>
               <input matInput placeholder="" formControlName="lastName" required>
-              <mat-error *ngIf="formErrors.lastName">{{formErrors.lastName}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.lastName">{{step2_formErrors.lastName}}</mat-error>
             </mat-form-field>
           </div>
 
@@ -79,7 +79,7 @@
               <input matInput [matDatepicker]="picker" placeholder="Choose Date of Birth" formControlName="dob" [max] = "maxyear" [min] = "minyear"  disabled>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker startView="multi-year" disabled="false" touchUi = "true"></mat-datepicker>
-              <mat-error *ngIf="formErrors.dob">{{formErrors.dob}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.dob">{{step2_formErrors.dob}}</mat-error>
             </mat-form-field>
           </div>
 
@@ -91,7 +91,7 @@
             <mat-form-field appearance="outline" fxFlex="">
               <mat-label>Phone Number</mat-label>
               <input matInput placeholder="" formControlName="mobileNumber" pattern="[6789][0-9]{9}" required>
-              <mat-error *ngIf="formErrors.mobileNumber">{{formErrors.mobileNumber}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.mobileNumber">{{step2_formErrors.mobileNumber}}</mat-error>
             </mat-form-field>
           </div>
 
@@ -102,14 +102,14 @@
               <mat-radio-button value="F">Female</mat-radio-button>
               <mat-radio-button value="O">Others</mat-radio-button>
             </mat-radio-group>
-            <mat-error *ngIf="formErrors.gender">{{formErrors.gender}}</mat-error>
+            <mat-error *ngIf="step2_formErrors.gender">{{step2_formErrors.gender}}</mat-error>
           </div>
 
           <div>
             <mat-form-field appearance="outline" fxFlex="100%">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="emailID" placeholder="abc@abc.com" required>
-              <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.email">{{step2_formErrors.email}}</mat-error>
           </mat-form-field>
           </div>
 
@@ -131,38 +131,87 @@
           <div>
             <mat-form-field fxFlex="100%" color="accent">
               <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide ? 'password' : 'text'" required>
-              <mat-error *ngIf="formErrors.securityResponse">{{formErrors.securityResponse}}</mat-error>
+              <mat-error *ngIf="step2_formErrors.securityResponse">{{step2_formErrors.securityResponse}}</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
-
           </div>
 
-          <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'2rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
-            <button type="button" class="material-icons md-36" [routerLink]="['/registration/page1']" routerLinkActive="router-link-active"  fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -1rem">
-              navigate_next
-            </button>
-            <button type="submit" class="material-icons md-36" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -1rem">
-              <span (click)="submitStep2()">navigate_next</span>
-            </button>
+          <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'1rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
+            <button type="button" class="material-icons" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -1rem" matStepperPrevious>navigate_next</button>
+            <button type="button" class="material-icons" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -1rem" (click)="submitStep2()">navigate_next</button>
           </div>
 
         </form>
-
       </mat-step>
 
-      <!-- STEP 3 -->
+      <!---------------------- STEP 3 ------------------(change)="onDP_Change($event)"---->
 
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <ng-template matStepLabel>Account Details</ng-template>
+
+        <form [formGroup]="step3" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+          <div fxLayout="column">
+            <input type="file" name="Upload Display Picture" id="dp" hidden multiple="false" accept="image/x-png,image/jpeg,image/jpg">
+            <label for="dp" fxFlexAlign="center"><img [src]="(imagePreview) ? 'sanitizer.bypassSecurityTrustUrl(imagePreview)' : 'assets/images/home/registration/upload_dp.png' " alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}"></label>
+            <label for="dp" [ngStyle.gt-sm]="{'cursor':'pointer'}">Upload Profile Photo</label>
+
+            <div [ngStyle="{'box-sizing':'border-box','background-color':'#AFF1AF', 'padding':'1.5rem'}"]>Please make sure that the picture you choose to upload doesn't contain any quotes or any picture other than yourself, as this picture will be used for further identifiction and verification.</div>
+          </div>
+
+          <div fxFlex="grow" fxLayout="column" fxLayoutGap="-10px" [ngStyle]="{'width': '50%'}" [ngStyle.lt-md]="{'width':'60%'}">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" required>
+              <mat-error *ngIf="step3_formErrors.username">{{step3_formErrors.username}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="pin" required>
+              <mat-error *ngIf="step3_formErrors.pin">{{step3_formErrors.pin}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" [ngStyle]="{'width':'100%'}">
+            <div fxFlex="50%">
+              <button type="button" class="material-icons prev_page" matStepperPrevious [ngStyle]="{'transform': 'rotate(180deg)', 'border-radius':'100%', 'padding':'10px'}">navigate_next</button>
+            </div>
+            <div fxFlex="50%" fxLayoutAlign="end" fxLayoutGap="10px">
+              <button type="button" mat-raised-button (click)="submitStep3()" [ngStyle]="{'background-color':'#f4f4f4'}">Preview</button>
+            </div>
+          </div>
+
+        </form>
       </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Preview</ng-template>
+      <div *ngIf="!previewData else preview"></div>
+      <ng-template #preview>
+        <div class="step1">
+          <div style="font-size: 2rem"><i><u>{{ role }}</u></i></div>
+        </div>
+        <div class="step2">
+          <div>Name: </div> <span>{{ step2_data.firstName }}</span>
+          <div>Date of Birth: </div> <span>{{ step2_data.dob }}</span>
+          <div>Mobile Number: </div> <span>{{ step2_data.mobileNumber }}</span>
+          <div>Gender: </div> <span>{{ step2_data.gender }}</span>
+          <div>Email: </div> <span>{{ step2_data.emailID }}</span>
+          <div>Security Question: </div> <span>{{ step2_data.securityQuestion }}</span>
+          <div>Security Question Response: </div> <span>{{ step2_data.securityResponse }}</span>
+        </div>
+        <div class="step32">
+          <img [src]="previewImgSrc" alt="Display Picture">
+          <div>Username: </div> <span>{{ step3_data.username }}</span>
+          <div>Password: </div> <span>{{ step3_data.username }}</span>
+        </div>
+
+      </ng-template>
+
+    </mat-step>
+
     </mat-horizontal-stepper>
   </div>
 
-  <!--<router-outlet></router-outlet>-->
+<div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)', 'margin-bottom':'2rem'}"></div>
