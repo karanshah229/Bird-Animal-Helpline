@@ -1,43 +1,100 @@
-<div class="registration1-animation" [@flyInOut] = "flyInOut">
-  <div id="iAmA">I am a</div>
+<div id="heading" class="mat-display-" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
 
-  <div fxLayout="column" fxLayoutGap = "20px">
-    <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-      <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
-        <img src="assets/images/home/registration/Volunteer.png" alt="Volunteer"><br>
-        <div>Volunteer</div>
-      </button>
-      <button class="role-select-button" id="driver" (click)="set_role('Driver')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
-        <img src="assets/images/home/registration/Driver.png" alt="Driver"><br>
-        <div>Driver</div>
-      </button>
-    </div>
-    <div id="row2" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-      <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
-        <img src="assets/images/home/registration/Doctor.png" alt="Doctor"><br>
-        <div>Doctor</div>
-      </button>
-      <button class="role-select-button" id="options" (click)="toggle_displayOthers()">
-        <img src="{{ imageSrc }}" alt="Other"><br>
-        <div>Other</div>
-      </button>
-    </div>
-    <div id="row3" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-      <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
-        <img src="assets/images/home/registration/Receptionist.png" alt="Receptionist"><br>
-        <div>Call</div><div>Attender</div>
-      </button>
-      <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" [routerLink]="['/registration/page2']" routerLinkActive="router-link-active">
-        <img src="assets/images/home/registration/Fosterer.png" alt="Fosterer"><br>
-        <div>Fosterer</div>
-      </button>
-    </div>
+<div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
+
+<div [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" class="mat-body">
+
+    <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+
+      <mat-step completed="true">
+        <ng-template matStepLabel>Preview</ng-template>
+        <div #preview class="preview">
+
+          <div class="preview_step3" fxLayout="column">
+            <div class="preview_step_title_bar" fxLayout [ngStyle.sm]="{'font-size':'1.3rem', 'margin-bottom':'1.5rem'}" class="mat-h1">
+              <span fxFlex="80%" fxLayoutAlign="start" class="preview_step3_title">Account Details</span>
+              <span fxFlex="20%" fxLayoutAlign="end" class="material-icons" (click)="this.stepper.selectedIndex = 3">edit</span>
+            </div>
+            <div class="preview_step_content mat-subheading" [ngStyle.lt-sm]="{'font-size':'1rem'}">
+              <button type="button" fxFlexAlign="space-around center" [ngStyle]="{'margin-bottom':'1rem'}">
+                <img [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" src="assets/images/home/registration/upload_dp.png">
+              </button>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Username: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#Username</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">PIN: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">
+                  <input [type]="pass_pin_hide ? 'password' : 'text'" value="1234" class="toggle_visibility"  [ngStyle.lt-sm]="{'max-width':'80px'}" disabled>
+                  <button mat-icon-button matSuffix (click)="pass_pin_hide = !pass_pin_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="pass_pin_hide">
+                    <mat-icon>{{pass_pin_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!--<div class="preview_step1 mat-h1">
+            <div class="preview_step_title_bar" fxLayout [ngStyle.sm]="{'font-size':'1.3rem', 'margin-bottom':'1.5rem'}" class="mat-h1">
+              <span fxFlex="80%" fxLayoutAlign="start" class="preview_step3_title">Role Selected</span>
+              <span fxFlex="20%" fxLayoutAlign="end" class="material-icons" (click)="this.stepper.selectedIndex = 3">edit</span>
+            </div>
+            <div class="preview_step_content mat-subheading">
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">I am a: </span>
+                <span fxFlex="40%" fxLayoutAlign="start"><i>#Role</i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview_step2">
+            <div class="preview_step_title_bar" fxLayout [ngStyle.sm]="{'font-size':'1.3rem', 'margin-bottom':'1.5rem'}" class="mat-h1">
+              <span fxFlex="80%" fxLayoutAlign="start" class="preview_step3_title">Basic Details</span>
+              <span fxFlex="20%" fxLayoutAlign="end" class="material-icons" (click)="this.stepper.selectedIndex = 3">edit</span>
+            </div>
+            <div class="preview_step_content mat-subheading" [ngStyle.lt-sm]="{'font-size':'1rem'}">
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Name: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#FirstName_LastName</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Date of Birth: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#UTC_String</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Mobile Number: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">+91 - #MObileNumber</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Gender: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#Gender</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Email: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#EmailID</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Security Question: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">#SEQ_QUES</span>
+              </div>
+              <div fxLayout fxLayoutAlign="center center" fxLayoutGap.lt-md="10%" fxLayoutGap="5%">
+                <span fxFlex="40%" fxLayoutAlign="end">Response: </span>
+                <span fxFlex="40%" fxLayoutAlign="start">
+                  <input [type]="sec_response_hide ? 'password' : 'text'" value="#RESPONSE" class="toggle_visibility" [ngStyle.lt-sm]="{'max-width':'80px'}" disabled>
+                  <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
+                    <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>-->
+
+        </div>
+
+      </mat-step>
+
+    </mat-horizontal-stepper>
   </div>
-</div>
 
-<div fxLayoutAlign="end">
-  <button id="home-btn">
-    <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'padding-right': '1rem'}">home</i>
-  </button>
-</div>
-
+<div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)', 'margin-bottom':'2rem'}"></div>

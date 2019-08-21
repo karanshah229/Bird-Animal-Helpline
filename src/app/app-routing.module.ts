@@ -7,8 +7,10 @@ import { SignInComponent } from './home/sign-in/sign-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { RegistrationGuard } from 'src/guards/registration.guard';
+import { Registration1Component } from './home/registration1/registration1.component';
 
 const routes: Routes = [
+  { path: 'registration/preview', component: Registration1Component },
   { path: 'registration', component: RegistrationComponent },
   { path: 'home', component: IndexComponent },
   { path: 'signIn', component: SignInComponent },

@@ -9,9 +9,9 @@
       <!---------------------- STEP 1 ---------------------->
 
       <mat-step [completed]="completed">
-        <ng-template matStepLabel>Select Role</ng-template>
+        <ng-template matStepLabel>Select<br>Role</ng-template>
         <div class="registration1-animation" [@flyInOut] = "flyInOut">
-          <div id="iAmA">I am a <span style="font-size: 2rem"><i><u>{{role}}</u></i></span> </div>
+          <div id="iAmA">I am a <span style="font-size: 2rem"><i>{{role}}</i></span> </div>
           <div fxLayout="column" fxLayoutGap = "20px">
             <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
               <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" matStepperNext>
@@ -55,11 +55,8 @@
       <!---------------------- STEP 2 ---------------------->
 
       <mat-step [stepControl]="step2">
+        <ng-template matStepLabel>Basic<br>Details</ng-template>
         <form [formGroup]="step2">
-
-          <div>
-            <ng-template matStepLabel>Basic Details</ng-template>
-          </div>
           <div fxLayoutGap="3%">
             <mat-form-field appearance="outline" fxFlex="48.5%">
               <mat-label>First Name</mat-label>
@@ -107,10 +104,10 @@
 
           <div>
             <mat-form-field appearance="outline" fxFlex="100%">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="emailID" placeholder="abc@abc.com" required>
-              <mat-error *ngIf="step2_formErrors.email">{{step2_formErrors.email}}</mat-error>
-          </mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type = "email" formControlName="emailID" placeholder="abc@abc.com" required>
+                <mat-error *ngIf="step2_formErrors.email">{{step2_formErrors.email}}</mat-error>
+            </mat-form-field>
           </div>
 
           <div>
@@ -130,34 +127,47 @@
           </div>
           <div>
             <mat-form-field fxFlex="100%" color="accent">
-              <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide ? 'password' : 'text'" required>
+              <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide_secQues ? 'password' : 'text'" required>
               <mat-error *ngIf="step2_formErrors.securityResponse">{{step2_formErrors.securityResponse}}</mat-error>
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <button mat-icon-button matSuffix (click)="hide_secQues = !hide_secQues" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_secQues">
+                <mat-icon>{{hide_secQues ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
           </div>
 
           <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'1rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
-            <button type="button" class="material-icons" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -1rem" matStepperPrevious>navigate_next</button>
-            <button type="button" class="material-icons" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -1rem" (click)="submitStep2()">navigate_next</button>
+            <button type="button" class="material-icons" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -0.5rem" matStepperPrevious>navigate_next</button>
+            <button type="button" class="material-icons" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -0.5rem" matStepperNext (click)="submitStep2()">navigate_next</button>
           </div>
 
         </form>
       </mat-step>
 
-      <!---------------------- STEP 3 ------------------(change)="onDP_Change($event)"---->
+      <!---------------------- STEP 3 ---------------------->
 
-      <mat-step>
-        <ng-template matStepLabel>Account Details</ng-template>
+      <mat-step [stepControl]="step3">
+        <ng-template matStepLabel>Account<br>Details</ng-template>
 
         <form [formGroup]="step3" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
-          <div fxLayout="column">
-            <input type="file" name="Upload Display Picture" id="dp" hidden multiple="false" accept="image/x-png,image/jpeg,image/jpg">
-            <label for="dp" fxFlexAlign="center"><img [src]="(imagePreview) ? 'sanitizer.bypassSecurityTrustUrl(imagePreview)' : 'assets/images/home/registration/upload_dp.png' " alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}"></label>
-            <label for="dp" [ngStyle.gt-sm]="{'cursor':'pointer'}">Upload Profile Photo</label>
+          <div fxLayout="column" fxLayoutAlign="center">
 
-            <div [ngStyle="{'box-sizing':'border-box','background-color':'#AFF1AF', 'padding':'1.5rem'}"]>Please make sure that the picture you choose to upload doesn't contain any quotes or any picture other than yourself, as this picture will be used for further identifiction and verification.</div>
+            <input type="file" name="Upload Display Picture" (change)="onDP_Change($event)" hidden id="dp" multiple="false" accept="image/x-png,image/jpeg,image/jpg">
+
+            <div fxLayout = "column" fxLayoutAlign = "space-around center" style = "width: 100%">
+              <mat-spinner [fxShow]="show_loading_gif" style="margin-bottom: 1rem;"></mat-spinner>
+
+              <label [fxShow]="!loading_gif" for="dp"><img [src]="label_url" alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" [ngClass]="dp_counter ? 'dp_counter_style' : '' " [fxHide]="hide_dp_placeholder_img"></label>
+
+              <button type="button" [fxHide]="hide_compressed_img" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
+                <img [ngStyle]="{'max-width':'40vw'}" [ngStyle.gt-sm]="{'max-width': '12vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+              </button>
+            </div>
+
+            <label for="dp" [ngStyle]="{'cursor':'pointer', 'text-align':'center', 'margin-bottom':'1.5rem'}">{{ upload_dp_label_text }}</label>
+
+            <mat-error *ngIf="compressionError" fxLayoutAlign = "space-around center" style = "width: 100%">{{ compressionError }}</mat-error><br>
+
+            <div [ngStyle.gt-sm]="{'max-width':'80%', 'margin':'auto', 'font-size':'0.9rem'}" style="box-sizing: border-box; background-color: #AFF1AF; padding: 1.5rem; text-align: center">Please make sure that the picture you choose to upload doesn't contain any quotes or any picture other than yourself, as this picture will be used for further identifiction and verification.</div>
           </div>
 
           <div fxFlex="grow" fxLayout="column" fxLayoutGap="-10px" [ngStyle]="{'width': '50%'}" [ngStyle.lt-md]="{'width':'60%'}">
@@ -168,8 +178,11 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput formControlName="pin" required>
+              <input matInput placeholder="4 Digit PIN" formControlName="pin" pattern="[0-9]{4}" [type]="hide_pass ? 'password' : 'text'" required>
               <mat-error *ngIf="step3_formErrors.pin">{{step3_formErrors.pin}}</mat-error>
+              <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
+                <mat-icon>{{hide_pass ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
             </mat-form-field>
           </div>
 
@@ -178,38 +191,68 @@
               <button type="button" class="material-icons prev_page" matStepperPrevious [ngStyle]="{'transform': 'rotate(180deg)', 'border-radius':'100%', 'padding':'10px'}">navigate_next</button>
             </div>
             <div fxFlex="50%" fxLayoutAlign="end" fxLayoutGap="10px">
-              <button type="button" mat-raised-button (click)="submitStep3()" [ngStyle]="{'background-color':'#f4f4f4'}">Preview</button>
+              <button type="button" matStepperNext mat-raised-button (click)="submitStep3()" [ngStyle]="{'background-color':'#f4f4f4'}">Preview</button>
             </div>
           </div>
 
         </form>
       </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel>Preview</ng-template>
-      <div *ngIf="!previewData else preview"></div>
-      <ng-template #preview>
-        <div class="step1">
-          <div style="font-size: 2rem"><i><u>{{ role }}</u></i></div>
-        </div>
-        <div class="step2">
-          <div>Name: </div> <span>{{ step2_data.firstName }}</span>
-          <div>Date of Birth: </div> <span>{{ step2_data.dob }}</span>
-          <div>Mobile Number: </div> <span>{{ step2_data.mobileNumber }}</span>
-          <div>Gender: </div> <span>{{ step2_data.gender }}</span>
-          <div>Email: </div> <span>{{ step2_data.emailID }}</span>
-          <div>Security Question: </div> <span>{{ step2_data.securityQuestion }}</span>
-          <div>Security Question Response: </div> <span>{{ step2_data.securityResponse }}</span>
-        </div>
-        <div class="step32">
-          <img [src]="previewImgSrc" alt="Display Picture">
-          <div>Username: </div> <span>{{ step3_data.username }}</span>
-          <div>Password: </div> <span>{{ step3_data.username }}</span>
-        </div>
+      <!---------------------- PREVIEW ---------------------->
 
-      </ng-template>
+      <mat-step>
+        <ng-template matStepLabel>Preview</ng-template>
+        <div *ngIf="!previewData else preview"></div>
 
-    </mat-step>
+        <ng-template #preview class="preview">
+
+          <div class="preview_step3" fxLayout="column">
+            <div class="preview_step3_title_bar" fxLayout>
+              <span fxFlex="50%" class="preview_step3_title">Account Details</span>
+              <span fxFlex="50%" fxLayoutAlign="end" class="material-icons md-36">edit</span>
+            </div>
+            <div class="preview_step3_content">
+              <button type="button" fxFlexAlign="space-around center" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
+                <img [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+              </button>
+              <div>
+                <span>Username: </span> <span>{{ step3_data.username }}</span>
+              </div>
+              <div>
+                <span>Password: </span>
+                <span>
+                  <input [type]="pass_pin_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility">
+                  <button mat-icon-button matSuffix (click)="pass_pin_hide = !pass_pin_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="pass_pin_hide">
+                    <mat-icon>{{pass_pin_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview_step1">
+            I am a: <span style="font-size: 1.5rem"><i>{{ role }}</i></span>
+          </div>
+
+          <div class="preview_step2">
+            <span>Name: </span> <span>{{ step2_data.firstName + " " + step2_data.lastName }}</span><br>
+            <span>Date of Birth: </span> <span>{{ step2_data.dob }}</span><br>
+            <span>Mobile Number: </span> <span>+91 - {{ step2_data.mobileNumber }}</span><br>
+            <span>Gender: </span> <span>{{ step2_data.gender }}</span><br>
+            <span>Email: </span> <span>{{ step2_data.emailID }}</span><br>
+            <span>Security Question: </span> <span>{{ securityQuestions[step2_data.securityQuestion] }}</span><br>
+            <span>Security Question Response: </span>
+            <span>
+              <input [type]="sec_response_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility">
+              <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
+                <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </span><br>
+          </div>
+
+        </ng-template>
+
+      </mat-step>
 
     </mat-horizontal-stepper>
   </div>

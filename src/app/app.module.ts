@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './home/index/index.component';
@@ -16,6 +17,7 @@ import { ProfileCompletion2Component } from './home/profile-completion2/profile-
 import { ProfileCompletion3Component } from './home/profile-completion3/profile-completion3.component';
 import { Registration1Component } from './home/registration1/registration1.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DpDialogComponent } from './home/registration/dp-dialog/dp-dialog.component';
 
 import { RegistrationAccessService } from 'src/services/registration-access.service';
 import { RegistrationGuard } from 'src/guards/registration.guard';
@@ -29,6 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     ProfileCompletion2Component,
     ProfileCompletion3Component,
     Registration1Component,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DpDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,13 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSelectModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatStepperModule
+    MatStepperModule,
+    Ng2ImgMaxModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DpDialogComponent
   ],
   providers: [
     RegistrationAccessService,
