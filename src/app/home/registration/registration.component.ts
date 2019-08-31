@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegistrationAccessService } from 'src/services/registration-access.service';
 import { flyInOut } from 'src/animations/anim_registration';
-import { RegFormService } from 'src/services/reg-form.service';
+import { RegFormService } from 'src/services/registration/reg-form.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegForm_step2 } from 'src/data/registration/regForm_step2';
 import { RegForm_step3 } from 'src/data/registration/regForm_step3';
 import { MatStepper } from '@angular/material/stepper';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DpDialogComponent } from './dp-dialog/dp-dialog.component';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration',
@@ -26,16 +26,13 @@ import { DpDialogComponent } from './dp-dialog/dp-dialog.component';
 export class RegistrationComponent implements OnInit {
 
   //Registration-Page
-  progress_bar_background: String[] = ["", "", "", "", ""];
-  url: string;
-  length: number = 0;
   flyInOut: boolean = true;
 
   //Step-1
   displayOthers: boolean = false;
-  imagePath: String = 'assets/images/home/registration/';
-  imageSrc: String = this.imagePath + 'Options.png';
-  role:String;
+  imagePath: string = 'assets/images/home/registration/';
+  imageSrc: string = this.imagePath + 'Options.png';
+  role:string;
   completed:Boolean = false;
   @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
@@ -46,6 +43,7 @@ export class RegistrationComponent implements OnInit {
   maxyear: string;
   minyear: string;
   securityQuestions = ["What is your favourite sport?", "Which floor do you live on?", "What is your place of birth?"];
+  dateOfBirth: String;
 
   //Step-3
   step3: FormGroup;
@@ -67,27 +65,20 @@ export class RegistrationComponent implements OnInit {
   pass_pin_hide: boolean = true;
   image: any;
   show_loading_gif: boolean = false;
+  submit_status: boolean = false;
+  submit_failure: boolean = false;
+  Form_Submission_Error_Msg: string;
+  registration_success: boolean = false;
 
   constructor(private router: Router,
-              private regAccess: RegistrationAccessService,
               private regForm: RegFormService,
               private fb: FormBuilder,
               private ng2ImgMax: Ng2ImgMaxService,
               public sanitizer: DomSanitizer,
-              public dialog: MatDialog) {
-    this.router.events.subscribe((event) => {
-      if(this.router.url) {
-        this.length = this.router.url.split("/").length - 1;
-        this.url = this.router.url.split("/")[this.length];
-      }
-      if(this.url === "page1") this.progress_bar_background = ["progress-bar-status", "", "", "", ""];
-      else if (this.url === "page2") this.progress_bar_background = ["progress-bar-status", "progress-bar-status", "", "", ""];
-      else if (this.url === "page3") this.progress_bar_background = ["progress-bar-status", "progress-bar-status", "progress-bar-status", "progress-bar-status", ""];
-    });
-
+              public dialog: MatDialog,
+              private http: HttpClient) {
     this.create_step2_form();
     this.create_step3_form();
-
   }
 
   //----------------STEP-1----------------------
@@ -100,7 +91,6 @@ export class RegistrationComponent implements OnInit {
   set_role(role: string):void {
     this.role= role;
     this.regForm.setStep1 = this.role;
-    this.regAccess.setAccessStatus(true);
     this.stepper.selected.completed = true;
     this.stepper.next();
   }
@@ -109,9 +99,9 @@ export class RegistrationComponent implements OnInit {
 
   //----------------STEP-2----------------------
   ngOnInit() {
-      var d = new Date();
-      this.maxyear = (d.getFullYear() - 10).toString() + '-12-31';
-      this.minyear = (d.getFullYear() - 100).toString() + '-01-01';
+    var d = new Date();
+    this.maxyear = (d.getFullYear() - 10).toString() + '-12-31';
+    this.minyear = (d.getFullYear() - 100).toString() + '-01-01';
   }
 
   selectedQues = this.securityQuestions[0];
@@ -164,7 +154,7 @@ export class RegistrationComponent implements OnInit {
     this.step2 = this.fb.group({
       firstName: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      dob: [null, [Validators.required]],
+      dob: [[Validators.required]],
       countryCode: [{value: '+91', disabled:true}],
       mobileNumber: [null, [Validators.required, Validators.pattern]],
       gender: [null, [Validators.required]],
@@ -178,8 +168,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   onValueChanged_step2(data?: any) {
-    /*if(this.step2.valid) console.log("Form is valid");
-    else console.log("Form is invalid");*/
     if (!this.step2) { return; }
     const form = this.step2;
     for (const field in this.step2_formErrors) {
@@ -191,8 +179,6 @@ export class RegistrationComponent implements OnInit {
                 const messages = this.step2_validationMessages[field];
                 for (const key in control.errors) {
                     if (control.errors.hasOwnProperty(key)) {
-                      console.log(key);
-                      console.log(messages);
                       this.step2_formErrors[field] += messages[key] + ' ';
                     }
                 }
@@ -202,11 +188,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   submitStep2(){
-    //console.log(this.step2.value);
-    this.step2_data = this.step2.value;
     if(this.step2.valid) {
-      //this.stepper.next();
+      this.step2_data = this.step2.value;
       this.regForm.setStep2 = this.step2_data;
+      this.dateOfBirth = this.step2_data.dob.getDate().toString() + '/' + (this.step2_data.dob.getMonth() + 1).toString() + '/' + this.step2_data.dob.getFullYear();
     }
   }
 
@@ -331,10 +316,40 @@ export class RegistrationComponent implements OnInit {
     if(this.step3.valid && this.step3_completed_status && this.image != undefined) {
       this.previewData = true;
       this.regForm.setStep3 = this.step3_data;
-    } else {
+    } else if(this.image == undefined){
       this.dp_counter = true;
       this.compressionError = "Please Upload a Display Picture";
     }
+  }
+
+  //----------------PREVIEW----------------------
+  submitPreview(){
+    this.submit_status = true;
+    this.submit_failure = false;
+    const fd = new FormData();
+    fd.append("Role", this.role);
+    fd.append("Basic Details", JSON.stringify(this.step2_data));
+    fd.append("Account Details", JSON.stringify(this.step2_data));
+    this.http.post('http://birdhelpline.com/registration', fd, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe( (event) => {
+        if(event.type === 0){
+          this.submit_status = false;
+          this.submit_failure = true;
+          this.Form_Submission_Error_Msg = "Error submitting form. Please try again!";
+        }
+        if(event.type === HttpEventType.Response){
+          this.registration_success = true;
+          console.log(event);
+          console.log("Registration Successfull");
+        }
+      });
+  }
+
+  reg_complete(){
+    this.router.navigateByUrl('/home');
   }
 
 }

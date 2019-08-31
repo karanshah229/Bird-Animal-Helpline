@@ -13,8 +13,8 @@
   </div>
 </main>
 
-<div id = "aboutus" [fxShow]="aboutUs" class="animated fadeIn forwards">
-  <p id = "aboutus-info">Helpling Birds and Animals in distress is our Business.<br>We cover most of Mumbai with the help of various other Ngo's.<br><br>Call on - 8655370005 for HELP !!<br>
+<div id = "aboutus" [fxShow]="aboutUs">
+  <p id = "aboutus-info" [ngStyle.gt-sm]="{'max-width': '50vw'}" [ngStyle.lt-md]="{'max-width': '70vw'}">Helpling Birds and Animals in distress is our Business.<br>We cover most of Mumbai with the help of various other Ngo's.<br><br>Call on - 8655370005 for HELP !!<br>
   </p>
   <div>
   <button type = "button" id = "backbutton" (click)="toggleAboutUs()">Back</button>

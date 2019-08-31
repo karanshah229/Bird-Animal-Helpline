@@ -15,7 +15,17 @@ export function fadeIn(){
     state('*', style({ opacity: 1 })),
     transition(':enter', [
         style({ opacity: 0 }),
-        animate('0.7s ease-in')
+        animate('0.5s ease-in')
+    ])
+  ]);
+}
+
+export function fadeOut(){
+  return trigger('fadeOut', [
+    state('*', style({ opacity: 0 })),
+    transition(':enter', [
+        style({ opacity: 1 }),
+        animate('0.5s ease-in')
     ])
   ]);
 }

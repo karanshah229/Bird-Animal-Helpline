@@ -1,8 +1,8 @@
-<div id="heading" class="mat-display-" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
+<div id="heading" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
 
-<div [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}">
+  <div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-md = "mat-body">
 
     <mat-horizontal-stepper labelPosition="bottom" linear #stepper @flyInOut>
 
@@ -72,8 +72,9 @@
           </div>
 
           <div>
-            <mat-form-field fxFlex="100%">
-              <input matInput [matDatepicker]="picker" placeholder="Choose Date of Birth" formControlName="dob" [max] = "maxyear" [min] = "minyear"  disabled>
+            <mat-form-field fxFlex="100%" appearance="outline">
+              <mat-label class="disabled-dob">Choose Date of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="dob" [max] = "maxyear" [min] = "minyear" class="date_of_birth" readonly>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker startView="multi-year" disabled="false" touchUi = "true"></mat-datepicker>
               <mat-error *ngIf="step2_formErrors.dob">{{step2_formErrors.dob}}</mat-error>
@@ -95,9 +96,9 @@
           <div fxLayout="row" style="margin-bottom: 1rem">
             <span style="margin-right: 0.75rem" [ngStyle.gt-sm]="{'margin-right': '2rem'}">Gender: </span>
             <mat-radio-group aria-label="Select Gender" formControlName="gender" required>
-              <mat-radio-button value="M">Male</mat-radio-button>
-              <mat-radio-button value="F">Female</mat-radio-button>
-              <mat-radio-button value="O">Others</mat-radio-button>
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+              <mat-radio-button value="Other">Others</mat-radio-button>
             </mat-radio-group>
             <mat-error *ngIf="step2_formErrors.gender">{{step2_formErrors.gender}}</mat-error>
           </div>
@@ -116,7 +117,7 @@
             <p>We will be using this question in case you forget your password, so choose wisely.</p>
           </div>
           <div style="padding-top: 0.7rem">
-            <mat-form-field fxFlex="100%">
+            <mat-form-field fxFlex="100%" appearance="outline">
               <mat-label>Select Question</mat-label>
               <mat-select [value]="selectedQues" formControlName="securityQuestion" required>
               <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="i+1">
@@ -126,7 +127,7 @@
               </mat-form-field>
           </div>
           <div>
-            <mat-form-field fxFlex="100%" color="accent">
+            <mat-form-field fxFlex="100%" color="accent" appearance="outline">
               <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide_secQues ? 'password' : 'text'" required>
               <mat-error *ngIf="step2_formErrors.securityResponse">{{step2_formErrors.securityResponse}}</mat-error>
               <button mat-icon-button matSuffix (click)="hide_secQues = !hide_secQues" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_secQues">
@@ -206,22 +207,23 @@
 
         <ng-template #preview class="preview">
 
-          <div class="preview_step3" fxLayout="column">
-            <div class="preview_step3_title_bar" fxLayout>
-              <span fxFlex="50%" class="preview_step3_title">Account Details</span>
-              <span fxFlex="50%" fxLayoutAlign="end" class="material-icons md-36">edit</span>
+          <div class="preview_step3">
+            <div class="preview_step_title_bar mat-h1" fxLayout>
+              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Account Details</span>
+              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 2">edit</span>
             </div>
-            <div class="preview_step3_content">
-              <button type="button" fxFlexAlign="space-around center" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
+            <div class="preview_step_content">
+              <button type="button" fxFlexAlign="space-around center" [ngStyle]="{'margin-bottom':'1rem'}">
                 <img [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
               </button>
-              <div>
-                <span>Username: </span> <span>{{ step3_data.username }}</span>
+              <div fxLayoutGap="10px">
+                <span>Username: </span>
+                <span>{{ step3_data.username }}</span>
               </div>
-              <div>
-                <span>Password: </span>
+              <div fxLayoutGap="10px">
+                <span>PIN: </span>
                 <span>
-                  <input [type]="pass_pin_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility">
+                  <input [type]="pass_pin_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility" disabled [ngStyle]="{'max-width': '3rem'}">
                   <button mat-icon-button matSuffix (click)="pass_pin_hide = !pass_pin_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="pass_pin_hide">
                     <mat-icon>{{pass_pin_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
@@ -231,30 +233,106 @@
           </div>
 
           <div class="preview_step1">
-            I am a: <span style="font-size: 1.5rem"><i>{{ role }}</i></span>
+            <div class="preview_step_title_bar mat-h1" fxLayout>
+              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Role Selected</span>
+              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 0">edit</span>
+            </div>
+            <div class="preview_step_content">
+              <span fxLayoutGap="10px">I am a: </span>
+              <span><i>{{ role }}</i></span>
+            </div>
           </div>
 
           <div class="preview_step2">
-            <span>Name: </span> <span>{{ step2_data.firstName + " " + step2_data.lastName }}</span><br>
-            <span>Date of Birth: </span> <span>{{ step2_data.dob }}</span><br>
-            <span>Mobile Number: </span> <span>+91 - {{ step2_data.mobileNumber }}</span><br>
-            <span>Gender: </span> <span>{{ step2_data.gender }}</span><br>
-            <span>Email: </span> <span>{{ step2_data.emailID }}</span><br>
-            <span>Security Question: </span> <span>{{ securityQuestions[step2_data.securityQuestion] }}</span><br>
-            <span>Security Question Response: </span>
-            <span>
-              <input [type]="sec_response_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility">
-              <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
-                <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </span><br>
+            <div class="preview_step_title_bar mat-h1" fxLayout>
+              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Basic Details</span>
+              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 1">edit</span>
+            </div>
+            <div class="preview_step_content">
+              <div>
+                <span fxLayoutGap="10px">Name: </span>
+                <span>{{ step2_data.firstName + " " + step2_data.lastName }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Date of Birth: </span>
+                <span>{{ dateOfBirth }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Mobile Number: </span>
+                <span>+91 - {{ step2_data.mobileNumber }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Gender: </span>
+                <span>{{ step2_data.gender }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Email: </span>
+                <span>{{ step2_data.emailID }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Security Question: </span><br>
+                <span [ngStyle]="{'margin-left':'1rem'}">{{ securityQuestions[step2_data.securityQuestion] }}</span>
+              </div>
+              <div>
+                <span fxLayoutGap="10px">Security Question Response: </span><br>
+                <span [ngStyle.lt-sm]="{'margin-left':'0.5rem'}" [ngStyle]="{'margin-left':'0.5rem'}">
+                  <input [type]="sec_response_hide ? 'password' : 'text'" [value]="step2_data.securityResponse" class="toggle_visibility" disabled [ngStyle]="{'max-width': '6rem'}">
+                  <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
+                    <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
           </div>
 
         </ng-template>
 
+        <div fxLayoutAlign="end">
+          <button type="button" mat-raised-button (click)="submitPreview()" color="accent" [ngStyle]="{'margin-top': '1rem'}">Submit</button>
+        </div>
+
       </mat-step>
 
     </mat-horizontal-stepper>
+
+  </div>
+
+  <div *ngIf="submit_status" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem 2rem 2rem 2rem', 'max-width':'50vw', 'min-height':'50vh', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem 2rem 2rem 2rem', 'transform': 'translateY(30%)'}" fxLayout="column" fxLayoutAlign="space-around center" ngClass.lt-md = "mat-body">
+    <mat-spinner></mat-spinner>
+    <h5 class="mat-h1" ngClass.gt-sm="mat-h2" ngClass.lt-sm="mat-subheading-1" style="margin-top: 2rem; text-align: center">Submitting Form.<br> Please do not close the application</h5>
+  </div>
+
+  <div *ngIf="submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body" [fxHide]=submit_status>
+
+    <div fxLayoutAlign="center">
+      <button mat-button style="padding: 1rem; border-radius: 50%" (click)="submitPreview()">
+        <span class="material-icons md-24">cached</span>
+      </button>
+    </div>
+    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">{{ Form_Submission_Error_Msg }}</div>
+
+    <div fxFlex="grow" fxLayoutAlign="end">
+      <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
+        <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
+      </button>
+    </div>
+
+  </div>
+
+  <div *ngIf="registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
+
+    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">
+      <img src="assets/images/home/registration/form-submitted.png" alt="Form_Submitted" [ngStyle]="{'max-width': '5rem'}">
+    </div>
+    <div fxFlex="grow" class="mat-h2" fxLayoutAlign="center">
+      Thank you.<br>
+      Your form has been submitted.
+    </div>
+
+    <div fxLayoutAlign="end">
+      <button mat-raised-button color="primary" (click)="reg_complete();" [ngStyle]="{'color': 'floralwhite'}">Done</button>
+    </div>
+
   </div>
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)', 'margin-bottom':'2rem'}"></div>
