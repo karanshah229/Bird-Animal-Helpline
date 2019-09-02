@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { flyInOut } from 'src/animations/anim_registration';
-import { home_addr } from 'src/data/profile_completion/profile_cmpl';
-import { work_addr } from 'src/data/profile_completion/profile_cmpl2';
-import { pick_up_locations } from 'src/data/profile_completion/profile_cmpl3';
 import { ProfileCompletionDataService } from 'src/services/Profile_Completion/profile-completion-data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { PincodesService } from 'src/services/Profile_Completion/pincodes.service';
+import { Observable } from 'rxjs';
+import { LayoutDirective } from '@angular/flex-layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-profile-completion',
   templateUrl: './profile-completion.component.html',
@@ -18,20 +20,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileCompletionComponent implements OnInit {
 
-  home_addr: home_addr;
   home_address: FormGroup;
-  work_addr: work_addr;
   work_address: FormGroup;
-  pick_up_loc: pick_up_locations;
   pick_up_locations: FormGroup;
 
   //HOME_ADDRESS
-  pincode_regex: string = "[0-9]{6}";
-  mobileNo_regex: string = "([6-9]{1}[0-9]{9}";
+  pincode_regex: string = "[4]{1}[0]{2}[0-9]{3}";
+  mobileNo_regex: string = "[6-9]{1}[0-9]{9}";
 
-  constructor(private prfl_cmpl: ProfileCompletionDataService, private fb: FormBuilder) {
+  //WORK_ADDRESS
+  nature_of_business_options = ["Businessman / Professional", "Employee", "Housewife", "Other"];
+
+  //PICK_UP_LOCATIONS
+  pincodes: any;
+  pincode_area_t: [string] = [];
+  specify_timings: [boolean] = [false];
+  selected_pincodes: [string] = [];
+  display_preview: boolean = false;
+  snackBar_count: boolean = false;
+
+  constructor(private prfl_cmpl: ProfileCompletionDataService,
+              private fb: FormBuilder,
+              private pin: PincodesService,
+              private _snackBar: MatSnackBar) {
     this.create_homeAddr_form();
     this.create_workAddr_form();
+    this.create_pic_up_loc_form();
    }
 
   ngOnInit() {
@@ -52,11 +66,11 @@ export class ProfileCompletionComponent implements OnInit {
     },
     addr_line1: {
       minlength: 'Min length - 2',
-      maxlength: 'Max length - 25'
+      maxlength: 'Max length - 50'
     },
     addr_line2: {
       minlength: 'Min length - 2',
-      maxlength: 'Max length - 25'
+      maxlength: 'Max length - 50'
     },
     pincode: {
       required: 'Pincode required',
@@ -70,8 +84,8 @@ export class ProfileCompletionComponent implements OnInit {
   create_homeAddr_form(){
     this.home_address = this.fb.group({
       fullName: ['',[Validators.minLength(2), Validators.maxLength(25)]],
-      addr_line1: ['', [Validators.minLength(2), Validators.maxLength(25)]],
-      addr_line2: ['', [Validators.minLength(2), Validators.maxLength(25)]],
+      addr_line1: ['', [Validators.minLength(2), Validators.maxLength(50)]],
+      addr_line2: ['', [Validators.minLength(2), Validators.maxLength(50)]],
       pincode: [null, [Validators.required, Validators.pattern(this.pincode_regex)]],
       alt_number: [null, [Validators.pattern(this.mobileNo_regex)]]
     });
@@ -81,6 +95,7 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   onValueChanged_homeAddr(data?: any) {
+    console.log(this.home_address);
     if (!this.home_address) { return; }
     const form = this.home_address;
     for (const field in this.home_address_formErrors) {
@@ -100,8 +115,150 @@ export class ProfileCompletionComponent implements OnInit {
     }
   }
 
-  create_workAddr_form(){
+  submitStep1(){
+    this.prfl_cmpl.home_addr = this.home_address.value;
+  }
 
+  work_address_formErrors = {
+    office_name: '',
+    addr_line1: '',
+    addr_line2: '',
+    pincode: '',
+    nature_of_business: '',
+    additional_work_info: ''
+  };
+
+  work_address_validationMessages = {
+    office_name: {
+      minlength: 'Min length - 2',
+      maxlength: 'Max Length - 25'
+    },
+    addr_line1: {
+      minlength: 'Min length - 2',
+      maxlength: 'Max length - 50'
+    },
+    addr_line2: {
+      minlength: 'Min length - 2',
+      maxlength: 'Max length - 50'
+    },
+    pincode: {
+      required: 'Pincode required',
+      pattern:  'Enter valid pincode'
+    },
+    nature_of_business: {
+      required: 'Select one option'
+    },
+    additional_work_info: {
+      minlength: 'Min length - 2',
+      maxlength: 'Max length - 25'
+    }
+  };
+
+  create_workAddr_form(){
+    this.work_address = this.fb.group({
+      office_name: ['',[Validators.minLength(2), Validators.maxLength(25)]],
+      addr_line1: ['', [Validators.minLength(2), Validators.maxLength(50)]],
+      addr_line2: ['', [Validators.minLength(2), Validators.maxLength(50)]],
+      pincode: [null, [Validators.required, Validators.pattern(this.pincode_regex)]],
+      nature_of_business: ['', [Validators.required]],
+      additional_work_info: ['', [Validators.minLength(2), Validators.maxLength(25)]]
+    });
+
+    this.work_address.valueChanges
+      .subscribe(data => this.onValueChanged_workAddr(data));
+  }
+
+  onValueChanged_workAddr(data?: any) {
+    if (!this.work_address) { return; }
+    const form = this.work_address;
+    for (const field in this.work_address_formErrors) {
+        if (this.work_address_formErrors.hasOwnProperty(field)) {
+            // clear previous error messages if any
+            this.work_address_formErrors[field] = '';
+            const control = form.get(field);
+            if (control && control.dirty && !control.valid) {
+                const messages = this.work_address_validationMessages[field];
+                for (const key in control.errors) {
+                    if (control.errors.hasOwnProperty(key)) {
+                      this.work_address_formErrors[field] += messages[key] + ' ';
+                    }
+                }
+            }
+        }
+    }
+  }
+
+  submitStep2(){
+    this.prfl_cmpl.work_addr = this.work_address.value;
+  }
+
+  create_pic_up_loc_form(){
+    this.pick_up_locations = this.fb.group({
+      autoComplete_input: [],
+      locations: this.fb.array([])
+    });
+
+    this.pick_up_locations.controls['autoComplete_input'].valueChanges.subscribe(value => {
+      this.pincodes = this.pin.getPincodes(value);
+    });
+  }
+
+  get pick_up_locs(){
+    return this.pick_up_locations.get('locations') as FormArray
+  }
+
+  addLocation(pincode: any){
+    const loc = this.fb.group({
+      pincode_area: [{value: '', disabled: true}],
+      start_time: [],
+      end_time: []
+    });
+
+    this.pick_up_locs.push(loc);
+
+    this.pincode_area_t.push((pincode.Pincode + " - " + pincode.Area).toString());
+    this.selected_pincodes.push(pincode);
+    this.snackBar_count = true;
+    console.log(this.selected_pincodes);
+  }
+
+  updatePincodesList(pincode){
+    this.pin.updatePincodesList(pincode);
+  }
+
+  addPincodeBack(i){
+    this.pin.addPincodeBack(this.selected_pincodes[i]);
+  }
+
+  deleteLocation(i){
+    this.pick_up_locs.removeAt(i);
+    this.selected_pincodes.splice(i,1);
+    this.pincode_area_t.splice(i,1);
+  }
+
+  specifyTimings(i) {
+    this.specify_timings[i] = !this.specify_timings[i];
+  }
+
+  preview_t(){
+    if(!this.snackBar_count == true) {
+      this.openSnackBar();
+      this.snackBar_count = true;
+    }else {
+      this.prfl_cmpl.pick_up_loc = this.pick_up_locations.value;
+      this.display_preview = true;
+    }
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(PreviewSnackbarComponent, {duration: 2000});
   }
 
 }
+
+@Component({
+  selector: 'preview_snackbar',
+  template: `<span style="letter-spacing: 1px">You have not selected any pincodes.</span><br><span>Do you wish to continue?</span>`
+})
+
+export class PreviewSnackbarComponent {}

@@ -1,339 +1,227 @@
-<div id="heading" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Profile Completion</div>
+<div id="heading" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}" ngClass="mat-headline">Profile Completion</div>
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
 
-  <div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-md = "mat-body">
+<div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-md]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-xl = "mat-body">
 
-    <mat-horizontal-stepper labelPosition="bottom" linear #stepper @flyInOut>
+  <mat-horizontal-stepper labelPosition="bottom" [ngStyle.lt-md]="{'min-height': '89vh'}" #stepper @flyInOut>
 
-      <!---------------------- STEP 1 ---------------------->
+    <!---------------------- STEP 1 ---------------------->
 
-      <mat-step [completed]="completed">
-        <ng-template matStepLabel>Select<br>Role</ng-template>
-        <div class="registration1-animation" [@flyInOut] = "flyInOut">
-          <div id="iAmA">I am a <span style="font-size: 2rem"><i>{{role}}</i></span> </div>
-          <div fxLayout="column" fxLayoutGap = "20px">
-            <div id="row1" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="volunteer" (click)="set_role('Volunteer')" matStepperNext>
-                <img src="assets/images/home/registration/Volunteer.png" alt="Volunteer"><br>
-                <div>Volunteer</div>
-              </button>
-              <button class="role-select-button" id="driver" (click)="set_role('Driver')" matStepperNext>
-                <img src="assets/images/home/registration/Driver.png" alt="Driver"><br>
-                <div>Driver</div>
-              </button>
-            </div>
-            <div id="row2" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="doctor" (click)="set_role('Doctor')" matStepperNext>
-                <img src="assets/images/home/registration/Doctor.png" alt="Doctor"><br>
-                <div>Doctor</div>
-              </button>
-              <button class="role-select-button" id="options" (click)="toggle_displayOthers()">
-                <img src="{{ imageSrc }}" alt="Other"><br>
-                <div>Other</div>
-              </button>
-            </div>
-            <div id="row3" fxLayout fxLayoutAlign="center" fxLayoutGap="3rem" fxLayoutGap.lt-sm="2rem">
-              <button class="role-select-button" id="receptionist" [ngClass]="displayOthers ? 'receptionist': 'receptionist-end' " (click)="set_role('Receptionist')" matStepperNext>
-                <img src="assets/images/home/registration/Receptionist.png" alt="Receptionist"><br>
-                <div>Call</div><div>Attender</div>
-              </button>
-              <button class="role-select-button" id="Fosterer" [ngClass]="displayOthers ? 'fosterer': 'fosterer-end'" (click)="set_role('Fosterer')" matStepperNext>
-                <img src="assets/images/home/registration/Fosterer.png" alt="Fosterer"><br>
-                <div>Fosterer</div>
-              </button>
-            </div>
+    <mat-step [stepControl]="home_address">
+      <ng-template matStepLabel>Home<br>Address</ng-template>
+      <div @flyInOut style="margin-top: 2rem">
+
+        <form [formGroup]="home_address" fxLayout="column" fxLayoutAlign="center" style="max-width: 80%" [ngStyle.lt-md]="{'max-width': '100%'}">
+          <div class="mat-subheading-2">Full Name</div>
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <input matInput placeholder="Name" formControlName="fullName">
+            <mat-error *ngIf="home_address_formErrors.fullName">{{home_address_formErrors.fullName}}</mat-error>
+          </mat-form-field>
+          <div class="mat-subheading-2">Address</div>
+          <div>
+            <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+              <input matInput placeholder="Address line 1" formControlName="addr_line1">
+              <mat-error *ngIf="home_address_formErrors.addr_line1">{{home_address_formErrors.addr_line1}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+              <input matInput placeholder="Address line 2" formControlName="addr_line2">
+              <mat-error *ngIf="home_address_formErrors.addr_line2">{{home_address_formErrors.addr_line2}}</mat-error>
+            </mat-form-field>
           </div>
-        </div>
-        <div fxLayoutAlign="end">
-          <button id="home-btn">
-            <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'padding-right': '1rem'}">home</i>
+          <div class="mat-subheading-2">Pincode</div>
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <input matInput placeholder="Eg: 400004" formControlName="pincode" required>
+            <mat-error *ngIf="home_address_formErrors.pincode">{{home_address_formErrors.pincode}}</mat-error>
+          </mat-form-field>
+          <div class="mat-subheading-2">Alternative Number</div>
+          <div style="width: 60%" fxLayoutGap="10px" [ngStyle.lt-md]="{'width': '90%'}">
+            <mat-form-field appearance="outline" fxFlex="20" fxFlex.gt-sm="15">
+              <input matInput value="+91" style="color: black" disabled>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="80" fxFlex.gt-sm="85">
+              <input matInput placeholder="10 Digit Moible Number w/o Prefix" formControlName="alt_number">
+              <mat-error *ngIf="home_address_formErrors.alt_number">{{home_address_formErrors.alt_number}}</mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+
+      </div>
+      <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
+        <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" style="padding-left: 2rem">
+          <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active">home</i>
+        </button>
+        <button fxLayoutAlign="end" matStepperNext (click)="submitStep1()">
+          <i class="material-icons next-btn">navigate_next</i>
+        </button>
+      </div>
+    </mat-step>
+
+    <!---------------------- STEP 2 ---------------------->
+
+    <mat-step [stepControl]="work_address">
+      <ng-template matStepLabel>Work<br>Address</ng-template>
+      <div @flyInOut style="margin-top: 2rem">
+        <form [formGroup]="work_address" fxLayout="column" fxLayoutAlign="center" style="max-width: 80%" [ngStyle.lt-md]="{'max-width': '100%'}">
+
+          <div class="mat-subheading-2">Office Name</div>
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <input matInput placeholder="Name" formControlName="office_name">
+            <mat-error *ngIf="work_address_formErrors.office_name">{{work_address_formErrors.office_name}}</mat-error>
+          </mat-form-field>
+
+          <div class="mat-subheading-2">Address</div>
+          <div>
+            <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+              <input matInput placeholder="Address line 1" formControlName="addr_line1">
+              <mat-error *ngIf="home_address_formErrors.addr_line1">{{home_address_formErrors.addr_line1}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+              <input matInput placeholder="Address line 2" formControlName="addr_line2">
+              <mat-error *ngIf="work_address_formErrors">{{work_address_formErrors}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="mat-subheading-2">Pincode</div>
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <input matInput placeholder="Eg: 400004" formControlName="pincode" required>
+            <mat-error *ngIf="work_address_formErrors.pincode">{{work_address_formErrors.pincode}}</mat-error>
+          </mat-form-field>
+
+          <div>Nature of Business</div>
+          <mat-form-field fxFlex="100%" appearance="outline" style="margin-top: 1rem; width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <mat-label>Choose an Option</mat-label>
+            <mat-select [value]="nature_of_business_options" formControlName="nature_of_business" required>
+            <mat-option *ngFor="let nob of nature_of_business_options; let i = index" [value]="i+1">
+                {{ nob }}
+            </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
+            <input matInput placeholder="Eg: Textiles" formControlName="additional_work_info">
+            <mat-error *ngIf="work_address_formErrors.additional_work_info">{{work_address_formErrors.additional_work_info}}</mat-error>
+          </mat-form-field>
+
+        </form>
+
+        <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
+          <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" matStepperPrevious>
+            <i class="material-icons next-btn" style="transform: rotate(180deg)">navigate_next</i>
+          </button>
+          <button fxLayoutAlign="end" matStepperNext (click)="submitStep2()">
+            <i class="material-icons next-btn">navigate_next</i>
           </button>
         </div>
-      </mat-step>
+      </div>
+    </mat-step>
 
-      <!---------------------- STEP 2 ---------------------->
+    <!---------------------- STEP 3 ---------------------->
 
-      <mat-step [stepControl]="step2">
-        <ng-template matStepLabel>Basic<br>Details</ng-template>
-        <form [formGroup]="step2">
-          <div fxLayoutGap="3%">
-            <mat-form-field appearance="outline" fxFlex="48.5%">
-              <mat-label>First Name</mat-label>
-              <input matInput placeholder="" formControlName="firstName" required>
-              <mat-error *ngIf="step2_formErrors.firstName">{{step2_formErrors.firstName}}</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="48.5%">
-              <mat-label>Last Name</mat-label>
-              <input matInput placeholder="" formControlName="lastName" required>
-              <mat-error *ngIf="step2_formErrors.lastName">{{step2_formErrors.lastName}}</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div>
-            <mat-form-field fxFlex="100%" appearance="outline">
-              <mat-label class="disabled-dob">Choose Date of Birth</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="dob" [max] = "maxyear" [min] = "minyear" class="date_of_birth" readonly>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker startView="multi-year" disabled="false" touchUi = "true"></mat-datepicker>
-              <mat-error *ngIf="step2_formErrors.dob">{{step2_formErrors.dob}}</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" fxLayoutGap="3%">
-            <mat-form-field appearance="outline" fxFlex="20%" fxFlex.gt-sm="10%">
-              <input matInput placeholder="" formControlName="countryCode" style="color: black" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="">
-              <mat-label>Phone Number</mat-label>
-              <input matInput placeholder="" formControlName="mobileNumber" pattern="[6789][0-9]{9}" required>
-              <mat-error *ngIf="step2_formErrors.mobileNumber">{{step2_formErrors.mobileNumber}}</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" style="margin-bottom: 1rem">
-            <span style="margin-right: 0.75rem" [ngStyle.gt-sm]="{'margin-right': '2rem'}">Gender: </span>
-            <mat-radio-group aria-label="Select Gender" formControlName="gender" required>
-              <mat-radio-button value="Male">Male</mat-radio-button>
-              <mat-radio-button value="Female">Female</mat-radio-button>
-              <mat-radio-button value="Other">Others</mat-radio-button>
-            </mat-radio-group>
-            <mat-error *ngIf="step2_formErrors.gender">{{step2_formErrors.gender}}</mat-error>
-          </div>
-
-          <div>
-            <mat-form-field appearance="outline" fxFlex="100%">
-              <mat-label>Email</mat-label>
-              <input matInput type = "email" formControlName="emailID" placeholder="abc@abc.com" required>
-                <mat-error *ngIf="step2_formErrors.email">{{step2_formErrors.email}}</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div>
-            <h3>Security Question</h3>
-            <hr>
-            <p>We will be using this question in case you forget your password, so choose wisely.</p>
-          </div>
-          <div style="padding-top: 0.7rem">
-            <mat-form-field fxFlex="100%" appearance="outline">
-              <mat-label>Select Question</mat-label>
-              <mat-select [value]="selectedQues" formControlName="securityQuestion" required>
-              <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="i+1">
-                  {{ ques }}
+    <mat-step [completed]="preview">
+      <ng-template matStepLabel>Pick-Up<br>Locations</ng-template>
+      <div @flyInOut style="margin-top: 2rem">
+        <div class="mat-h2">Select the pincodes at which you would like to serve</div>
+        <form [formGroup]="pick_up_locations">
+          <mat-form-field appearance="outline" style="width: 60%">
+            <mat-label>Search Pincode or Area</mat-label>
+            <input type="text" matInput formControlName="autoComplete_input" style="width: 60%"[matAutocomplete]="pincode_area">
+            <mat-autocomplete #pincode_area="matAutocomplete">
+              <mat-option *ngFor="let pincode of pincodes" [value]="pincode.pincode" (click)="addLocation(pincode); updatePincodesList(pincode)">
+                {{ pincode.Pincode }} - {{ pincode.Area }}
               </mat-option>
-              </mat-select>
-              </mat-form-field>
+            </mat-autocomplete>
+          </mat-form-field>
+          <div formArrayName="locations">
+            <div *ngFor="let loc of pick_up_locs.controls; let i = index" [formGroupName]="i" [ngStyle]="{'margin': '1.5rem 0 1.5rem 0'}">
+              <div fxLayout>
+                <input matInput type="text" fxFlex="80" formControlName="pincode_area" [value]="pincode_area_t[i]" style="color: black; font-size: 1rem">
+                <button fxFlex="20" (click)="addPincodeBack(i); deleteLocation(i)" style="display: inline">
+                  <i class="material-icons">delete</i>
+                </button>
+              </div>
+              <div fxLayout style="margin-top: 1rem">
+                <mat-checkbox fxFlex="30" fxFlex.lt-md="50" color="secondary" (click)="specifyTimings(i)" style="margin-right: 1rem">Specify Timings</mat-checkbox>
+                <div fxFlex="70" fxFlex-lt.md="50" fxLayout [fxShow]="specify_timings[i]">
+                  <mat-form-field fxFlex="30">
+                    <mat-label>Start Time</mat-label>
+                    <input matInput type="time" placeholder="Time" step="1800" formControlName="start_time" [required]="specify_timings[i]">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="30">
+                    <mat-label>End Time</mat-label>
+                    <input matInput type="time" placeholder="Time" step="1800" formControlName="end_time" [required]="specify_timings[i]">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <mat-form-field fxFlex="100%" color="accent" appearance="outline">
-              <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide_secQues ? 'password' : 'text'" required>
-              <mat-error *ngIf="step2_formErrors.securityResponse">{{step2_formErrors.securityResponse}}</mat-error>
-              <button mat-icon-button matSuffix (click)="hide_secQues = !hide_secQues" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_secQues">
-                <mat-icon>{{hide_secQues ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'1rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
-            <button type="button" class="material-icons" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -0.5rem" matStepperPrevious>navigate_next</button>
-            <button type="button" class="material-icons" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -0.5rem" matStepperNext (click)="submitStep2()">navigate_next</button>
-          </div>
-
         </form>
-      </mat-step>
-
-      <!---------------------- STEP 3 ---------------------->
-
-      <mat-step [stepControl]="step3">
-        <ng-template matStepLabel>Account<br>Details</ng-template>
-
-        <form [formGroup]="step3" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
-          <div fxLayout="column" fxLayoutAlign="center">
-
-            <input type="file" name="Upload Display Picture" (change)="onDP_Change($event)" hidden id="dp" multiple="false" accept="image/x-png,image/jpeg,image/jpg">
-
-            <div fxLayout = "column" fxLayoutAlign = "space-around center" style = "width: 100%">
-              <mat-spinner [fxShow]="show_loading_gif" style="margin-bottom: 1rem;"></mat-spinner>
-
-              <label [fxShow]="!loading_gif" for="dp"><img [src]="label_url" alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" [ngClass]="dp_counter ? 'dp_counter_style' : '' " [fxHide]="hide_dp_placeholder_img"></label>
-
-              <button type="button" [fxHide]="hide_compressed_img" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
-                <img [ngStyle]="{'max-width':'40vw'}" [ngStyle.gt-sm]="{'max-width': '12vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
-              </button>
-            </div>
-
-            <label for="dp" [ngStyle]="{'cursor':'pointer', 'text-align':'center', 'margin-bottom':'1.5rem'}">{{ upload_dp_label_text }}</label>
-
-            <mat-error *ngIf="compressionError" fxLayoutAlign = "space-around center" style = "width: 100%">{{ compressionError }}</mat-error><br>
-
-            <div [ngStyle.gt-sm]="{'max-width':'80%', 'margin':'auto', 'font-size':'0.9rem'}" style="box-sizing: border-box; background-color: #AFF1AF; padding: 1.5rem; text-align: center">Please make sure that the picture you choose to upload doesn't contain any quotes or any picture other than yourself, as this picture will be used for further identifiction and verification.</div>
-          </div>
-
-          <div fxFlex="grow" fxLayout="column" fxLayoutGap="-10px" [ngStyle]="{'width': '50%'}" [ngStyle.lt-md]="{'width':'60%'}">
-            <mat-form-field appearance="outline">
-              <mat-label>Username</mat-label>
-              <input matInput formControlName="username" required>
-              <mat-error *ngIf="step3_formErrors.username">{{step3_formErrors.username}}</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput placeholder="4 Digit PIN" formControlName="pin" pattern="[0-9]{4}" [type]="hide_pass ? 'password' : 'text'" required>
-              <mat-error *ngIf="step3_formErrors.pin">{{step3_formErrors.pin}}</mat-error>
-              <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
-                <mat-icon>{{hide_pass ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" [ngStyle]="{'width':'100%'}">
-            <div fxFlex="50%">
-              <button type="button" class="material-icons prev_page" matStepperPrevious [ngStyle]="{'transform': 'rotate(180deg)', 'border-radius':'100%', 'padding':'10px'}">navigate_next</button>
-            </div>
-            <div fxFlex="50%" fxLayoutAlign="end" fxLayoutGap="10px">
-              <button type="button" matStepperNext mat-raised-button (click)="submitStep3()" [ngStyle]="{'background-color':'#f4f4f4'}">Preview</button>
-            </div>
-          </div>
-
-        </form>
-      </mat-step>
-
-      <!---------------------- PREVIEW ---------------------->
-
-      <mat-step>
-        <ng-template matStepLabel>Preview</ng-template>
-        <div *ngIf="!previewData else preview"></div>
-
-        <ng-template #preview class="preview">
-
-          <div class="preview_step3">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Account Details</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 2">edit</span>
-            </div>
-            <div class="preview_step_content">
-              <button type="button" fxFlexAlign="space-around center" [ngStyle]="{'margin-bottom':'1rem'}">
-                <img [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
-              </button>
-              <div fxLayoutGap="10px">
-                <span>Username: </span>
-                <span>{{ step3_data.username }}</span>
-              </div>
-              <div fxLayoutGap="10px">
-                <span>PIN: </span>
-                <span>
-                  <input [type]="pass_pin_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility" disabled [ngStyle]="{'max-width': '3rem'}">
-                  <button mat-icon-button matSuffix (click)="pass_pin_hide = !pass_pin_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="pass_pin_hide">
-                    <mat-icon>{{pass_pin_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="preview_step1">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Role Selected</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 0">edit</span>
-            </div>
-            <div class="preview_step_content">
-              <span fxLayoutGap="10px">I am a: </span>
-              <span><i>{{ role }}</i></span>
-            </div>
-          </div>
-
-          <div class="preview_step2">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Basic Details</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 1">edit</span>
-            </div>
-            <div class="preview_step_content">
-              <div>
-                <span fxLayoutGap="10px">Name: </span>
-                <span>{{ step2_data.firstName + " " + step2_data.lastName }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Date of Birth: </span>
-                <span>{{ dateOfBirth }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Mobile Number: </span>
-                <span>+91 - {{ step2_data.mobileNumber }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Gender: </span>
-                <span>{{ step2_data.gender }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Email: </span>
-                <span>{{ step2_data.emailID }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Security Question: </span><br>
-                <span [ngStyle]="{'margin-left':'1rem'}">{{ securityQuestions[step2_data.securityQuestion] }}</span>
-              </div>
-              <div>
-                <span fxLayoutGap="10px">Security Question Response: </span><br>
-                <span [ngStyle.lt-sm]="{'margin-left':'0.5rem'}" [ngStyle]="{'margin-left':'0.5rem'}">
-                  <input [type]="sec_response_hide ? 'password' : 'text'" [value]="step2_data.securityResponse" class="toggle_visibility" disabled [ngStyle]="{'max-width': '6rem'}">
-                  <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
-                    <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-        </ng-template>
-
-        <div fxLayoutAlign="end">
-          <button type="button" mat-raised-button (click)="submitPreview()" color="accent" [ngStyle]="{'margin-top': '1rem'}">Submit</button>
+        <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
+          <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" matStepperPrevious>
+            <i class="material-icons next-btn" style="transform: rotate(180deg)">navigate_next</i>
+          </button>
+          <button mat-raised-button (click)="preview_t()" color="primary" style="color: white; padding-right: 1.5rem">Preview</button>
         </div>
+      </div>
+    </mat-step>
 
-      </mat-step>
+    <!---------------------- PREVIEW ---------------------->
 
-    </mat-horizontal-stepper>
+    <mat-step>
+      <ng-template matStepLabel>Preview</ng-template>
+      <div *ngIf="!previewData else preview"></div>
 
+      <ng-template #preview class="preview">
+        
+      </ng-template>
+
+      <div fxLayoutAlign="end">
+        <button type="button" mat-raised-button (click)="submitPreview()" color="accent" [ngStyle]="{'margin-top': '1rem'}">Submit</button>
+      </div>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</div>
+
+<div *ngIf="submit_status" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem 2rem 2rem 2rem', 'max-width':'50vw', 'min-height':'50vh', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem 2rem 2rem 2rem', 'transform': 'translateY(30%)'}" fxLayout="column" fxLayoutAlign="space-around center" ngClass.lt-md = "mat-body">
+  <mat-spinner></mat-spinner>
+  <h5 class="mat-h1" ngClass.gt-sm="mat-h2" ngClass.lt-sm="mat-subheading-1" style="margin-top: 2rem; text-align: center">Submitting Form.<br> Please do not close the application</h5>
+</div>
+
+<div *ngIf="submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body" [fxHide]=submit_status>
+
+  <div fxLayoutAlign="center">
+    <button mat-button style="padding: 1rem; border-radius: 50%" (click)="submitPreview()">
+      <span class="material-icons md-24">cached</span>
+    </button>
+  </div>
+  <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">{{ Form_Submission_Error_Msg }}</div>
+
+  <div fxFlex="grow" fxLayoutAlign="end">
+    <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
+      <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
+    </button>
   </div>
 
-  <div *ngIf="submit_status" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem 2rem 2rem 2rem', 'max-width':'50vw', 'min-height':'50vh', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem 2rem 2rem 2rem', 'transform': 'translateY(30%)'}" fxLayout="column" fxLayoutAlign="space-around center" ngClass.lt-md = "mat-body">
-    <mat-spinner></mat-spinner>
-    <h5 class="mat-h1" ngClass.gt-sm="mat-h2" ngClass.lt-sm="mat-subheading-1" style="margin-top: 2rem; text-align: center">Submitting Form.<br> Please do not close the application</h5>
+</div>
+
+<div *ngIf="registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
+
+  <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">
+    <img src="assets/images/home/registration/form-submitted.png" alt="Form_Submitted" [ngStyle]="{'max-width': '5rem'}">
+  </div>
+  <div fxFlex="grow" class="mat-h2" fxLayoutAlign="center">
+    Thank you.<br>
+    Your form has been submitted.
   </div>
 
-  <div *ngIf="submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body" [fxHide]=submit_status>
-
-    <div fxLayoutAlign="center">
-      <button mat-button style="padding: 1rem; border-radius: 50%" (click)="submitPreview()">
-        <span class="material-icons md-24">cached</span>
-      </button>
-    </div>
-    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">{{ Form_Submission_Error_Msg }}</div>
-
-    <div fxFlex="grow" fxLayoutAlign="end">
-      <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
-        <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
-      </button>
-    </div>
-
+  <div fxLayoutAlign="end">
+    <button mat-raised-button color="primary" (click)="reg_complete();" [ngStyle]="{'color': 'floralwhite'}">Done</button>
   </div>
 
-  <div *ngIf="registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
-
-    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">
-      <img src="assets/images/home/registration/form-submitted.png" alt="Form_Submitted" [ngStyle]="{'max-width': '5rem'}">
-    </div>
-    <div fxFlex="grow" class="mat-h2" fxLayoutAlign="center">
-      Thank you.<br>
-      Your form has been submitted.
-    </div>
-
-    <div fxLayoutAlign="end">
-      <button mat-raised-button color="primary" (click)="reg_complete();" [ngStyle]="{'color': 'floralwhite'}">Done</button>
-    </div>
-
-  </div>
+</div>
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)', 'margin-bottom':'2rem'}"></div>
 

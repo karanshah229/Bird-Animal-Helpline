@@ -1,0 +1,14 @@
+#heading {
+  box-sizing: border-box;
+  background-color: #374047;
+  color: white;
+  letter-spacing: 1px;
+  height: 11vh;
+  line-height: 11vh;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.material-icons { cursor: pointer; font-weight: 700;}
+.next-btn { font-size: 36px; padding: 10px; }
+.next-btn:hover { background-color: #EEE; border-radius: 50% }

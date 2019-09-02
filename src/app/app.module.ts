@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
@@ -10,7 +10,7 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './home/index/index.component';
 import { RegistrationComponent } from './home/registration/registration.component';
-import { ProfileCompletionComponent } from './home/profile-completion/profile-completion.component';
+import { ProfileCompletionComponent, PreviewSnackbarComponent } from './home/profile-completion/profile-completion.component';
 import { SignInComponent } from './home/sign-in/sign-in.component';
 import { ProfileCompletion2Component } from './home/profile-completion2/profile-completion2.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -29,6 +29,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
     SignInComponent,
     ProfileCompletion2Component,
     PageNotFoundComponent,
-    DpDialogComponent
+    DpDialogComponent,
+    PreviewSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,7 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
   	FlexLayoutModule,
   	BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
@@ -62,10 +67,14 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
     MatProgressSpinnerModule,
     MatDialogModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatSnackBarModule
   ],
   entryComponents: [
-    DpDialogComponent
+    DpDialogComponent,
+    PreviewSnackbarComponent
   ],
   providers: [
     MatDatepickerModule,

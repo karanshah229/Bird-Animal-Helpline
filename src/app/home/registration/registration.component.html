@@ -1,8 +1,8 @@
-<div id="heading" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}">Join Us</div>
+<div id="heading" [ngStyle.gt-sm]="{'margin-bottom': '3rem'}" ngClass="mat-headline">Join Us</div>
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
 
-  <div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-md = "mat-body">
+  <div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-xl = "mat-body">
 
     <mat-horizontal-stepper labelPosition="bottom" linear #stepper @flyInOut>
 
