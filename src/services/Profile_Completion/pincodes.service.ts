@@ -37,7 +37,9 @@ export class PincodesService {
   }
 
   addPincodeBack(pincode: any){
-    this.pincodes.unshift(pincode);
+    let temp_pin = this.pincodes.filter(d => d["Pincode"].toString().toLowerCase() == pincode.Area);
+    if(temp_pin.length == 0)
+      this.pincodes.unshift(pincode);
   }
 
 }

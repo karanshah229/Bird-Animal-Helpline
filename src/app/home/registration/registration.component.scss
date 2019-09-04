@@ -35,12 +35,6 @@
   font-size: 1rem;
 }
 
-#home-btn img{
-  margin-right: 1rem;
-  max-width: 2rem;
-}
-
-
 /*----------FOSTERER--AND--RECEPTIONIST--ANIMATIONS---------*/
 @keyframes Fosterer {
     0% {
@@ -113,19 +107,15 @@ mat-form-field {
 
 .material-icons { cursor: pointer; font-weight: 700;}
 
+.home-btn { padding: 10px !important; color: #374047 }
+.next-btn { font-size: 36px; padding: 10px !important }
+.next-btn:hover, .home-btn:hover { background-color: #EEE; border-radius: 50%; transition: background-color 0.35s ease-in-out; }
+
 .disabled-dob, .date_of_birth {
   color: black !important;
 }
 
 /*------------------- STEP 3 ---------------------*/
-.prev_page:hover {
-  border-radius: 50%;
-  transition: background-color 0.35s ease-in-out;
-  background-color: #CCC;
-}
-
-.material-icons { cursor: pointer; margin: -8px; padding: 8px; padding-bottom: 0; }
-.material-icons.hover:hover { border-radius: 50%; background-color: #EEE; padding: 8px; color: #374047; }
 .material-icons.md-24 { font-weight: 100; font-size: 6rem }
 .material-icons.md-36 { font-weight: 100; font-size: 10rem }
 
@@ -134,20 +124,9 @@ mat-form-field {
 }
 
 /*------------------- PREVIEW ---------------------*/
-
-.preview {
-  font-size: 1.2rem;
-}
-
-.preview span {
-  padding: 1rem 0 1rem 0;
-}
-
 .preview_step1, .preview_step2, .preview_step3 {
+  padding: 1rem;
   border: 1px solid #374047;
-  padding: 0 0 1.5rem 0;
-  font-size: 1.1rem;
-  margin-bottom: 0;
 }
 
 .preview_step3, .preview_step1 {
@@ -158,23 +137,30 @@ mat-form-field {
   text-align: center;
 }
 
-.preview_step_title_bar {
-  box-sizing: border-box;
-  margin-bottom: 1rem;
-  padding: 1.5rem;
-  background-color: #374047;
-  color: floralwhite;
+.preview-header {
+  padding: 1rem;
+  padding-bottom: 0;
 }
 
-.preview_step_content {
-  line-height: 3rem;
-  margin: 0 2rem 0 2rem;
+.preview-step-content {
+  padding: 1rem;
 }
 
 
-.preview_step_content input {
+.preview-step-content input {
   border: none;
-  font-size: 1.1rem;
+}
+
+.edit {
+  margin: -10px;
+  padding: 10px;
+  vertical-align: top;
+}
+.edit:hover { background-color: #EEE; border-radius: 50% }
+
+.content-field-header {
+  margin-right: 10px;
+  font-weight: 500;
 }
 
 .toggle_visibility {

@@ -12,7 +12,6 @@ import { IndexComponent } from './home/index/index.component';
 import { RegistrationComponent } from './home/registration/registration.component';
 import { ProfileCompletionComponent, PreviewSnackbarComponent } from './home/profile-completion/profile-completion.component';
 import { SignInComponent } from './home/sign-in/sign-in.component';
-import { ProfileCompletion2Component } from './home/profile-completion2/profile-completion2.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DpDialogComponent } from './home/registration/dp-dialog/dp-dialog.component';
 
@@ -41,7 +40,6 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
     RegistrationComponent,
     ProfileCompletionComponent,
     SignInComponent,
-    ProfileCompletion2Component,
     PageNotFoundComponent,
     DpDialogComponent,
     PreviewSnackbarComponent

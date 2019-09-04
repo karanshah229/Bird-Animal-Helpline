@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { flyInOut } from 'src/animations/anim_registration';
 import { ProfileCompletionDataService } from 'src/services/Profile_Completion/profile-completion-data.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { PincodesService } from 'src/services/Profile_Completion/pincodes.service';
-import { Observable } from 'rxjs';
-import { LayoutDirective } from '@angular/flex-layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepper } from '@angular/material/stepper';
+import { home_addr } from 'src/data/profile_completion/profile_cmpl';
+import { work_addr } from 'src/data/profile_completion/profile_cmpl2';
+import { pick_up_locations } from 'src/data/profile_completion/profile_cmpl3';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-completion',
@@ -20,29 +24,41 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProfileCompletionComponent implements OnInit {
 
-  home_address: FormGroup;
-  work_address: FormGroup;
-  pick_up_locations: FormGroup;
+  @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
   //HOME_ADDRESS
+  home_address: FormGroup;
+  home_addr: home_addr;
   pincode_regex: string = "[4]{1}[0]{2}[0-9]{3}";
   mobileNo_regex: string = "[6-9]{1}[0-9]{9}";
 
   //WORK_ADDRESS
+  work_address: FormGroup;
+  work_addr: work_addr;
   nature_of_business_options = ["Businessman / Professional", "Employee", "Housewife", "Other"];
 
   //PICK_UP_LOCATIONS
+  pick_up_locations: FormGroup;
+  pick_up_loc: pick_up_locations;
   pincodes: any;
-  pincode_area_t: [string] = [];
+  pincode_area_t: string[] = [];
   specify_timings: [boolean] = [false];
-  selected_pincodes: [string] = [];
-  display_preview: boolean = false;
+  selected_pincodes: string[] = [];
   snackBar_count: boolean = false;
+
+  //PREVIEW
+  display_preview: boolean = false;
+  submit_status: boolean = false;
+  submit_failure: boolean = false;
+  Form_Submission_Error_Msg: string;
+  prfl_cmpl_success: boolean = false;
 
   constructor(private prfl_cmpl: ProfileCompletionDataService,
               private fb: FormBuilder,
               private pin: PincodesService,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private http: HttpClient,
+              private router: Router) {
     this.create_homeAddr_form();
     this.create_workAddr_form();
     this.create_pic_up_loc_form();
@@ -95,7 +111,6 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   onValueChanged_homeAddr(data?: any) {
-    console.log(this.home_address);
     if (!this.home_address) { return; }
     const form = this.home_address;
     for (const field in this.home_address_formErrors) {
@@ -116,6 +131,7 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   submitStep1(){
+    this.home_addr = this.home_address.value;
     this.prfl_cmpl.home_addr = this.home_address.value;
   }
 
@@ -189,6 +205,7 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   submitStep2(){
+    this.work_addr = this.work_address.value;
     this.prfl_cmpl.work_addr = this.work_address.value;
   }
 
@@ -208,8 +225,9 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   addLocation(pincode: any){
+    const pincode_area_value = (pincode.Pincode + " - " + pincode.Area).toString();
     const loc = this.fb.group({
-      pincode_area: [{value: '', disabled: true}],
+      pincode_area: [{value: pincode_area_value, readOnly: true}],
       start_time: [],
       end_time: []
     });
@@ -219,7 +237,7 @@ export class ProfileCompletionComponent implements OnInit {
     this.pincode_area_t.push((pincode.Pincode + " - " + pincode.Area).toString());
     this.selected_pincodes.push(pincode);
     this.snackBar_count = true;
-    console.log(this.selected_pincodes);
+    this.updatePincodesList(pincode);
   }
 
   updatePincodesList(pincode){
@@ -240,25 +258,57 @@ export class ProfileCompletionComponent implements OnInit {
     this.specify_timings[i] = !this.specify_timings[i];
   }
 
+  openSnackBar() {
+    this._snackBar.openFromComponent(PreviewSnackbarComponent, {duration: 2000});
+  }
+
   preview_t(){
     if(!this.snackBar_count == true) {
       this.openSnackBar();
       this.snackBar_count = true;
     }else {
+      this.pick_up_loc = this.pick_up_locations.value;
       this.prfl_cmpl.pick_up_loc = this.pick_up_locations.value;
       this.display_preview = true;
+      this.stepper.next();
     }
   }
 
-  openSnackBar() {
-    this._snackBar.openFromComponent(PreviewSnackbarComponent, {duration: 2000});
+  submitPreview(){
+    this.submit_status = true;
+    this.submit_failure = false;
+    const fd = new FormData();
+    fd.append("Home Address", JSON.stringify(this.home_addr));
+    fd.append("Work Address", JSON.stringify(this.work_addr));
+    fd.append("Pick Up Locations", JSON.stringify(this.pick_up_loc));
+    //TODO: URL for Profile Completion
+    this.http.post('http://birdhelpline.com/registration', fd, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe( (event) => {
+        if(event.type === 0){
+          this.submit_status = false;
+          this.submit_failure = true;
+          this.Form_Submission_Error_Msg = "Error saving details. Please try again!";
+        }
+        if(event.type === HttpEventType.Response){
+          this.prfl_cmpl_success = true;
+          console.log(event);
+          console.log("Registration Successfull");
+        }
+      });
+  }
+
+  reg_complete(){
+    this.router.navigateByUrl('/home');
   }
 
 }
 
 @Component({
   selector: 'preview_snackbar',
-  template: `<span style="letter-spacing: 1px">You have not selected any pincodes.</span><br><span>Do you wish to continue?</span>`
+  template: `<span style="letter-spacing: 1px">You have not selected any pincodes.</span><br><span>Do you wish to continue?</span> <button mat-raised-button>OK<button>`
 })
 
 export class PreviewSnackbarComponent {}

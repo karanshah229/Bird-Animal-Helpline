@@ -2,9 +2,9 @@
 
 <div [ngStyle.gt-sm]="{'min-height':'5vh', 'background-color':'#DDD', 'max-width':'50vw', 'transform': 'translateX(50%)'}"></div>
 
-<div *ngIf="!submit_status && !registration_success && !submit_failure" [ngStyle.gt-md]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-xl = "mat-body">
+<div *ngIf="!submit_status && !prfl_cmpl_success && !submit_failure" [ngStyle.gt-md]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-xl = "mat-body">
 
-  <mat-horizontal-stepper labelPosition="bottom" [ngStyle.lt-md]="{'min-height': '89vh'}" #stepper @flyInOut>
+  <mat-horizontal-stepper linear labelPosition="bottom" [ngStyle.lt-md]="{'min-height': '89vh'}" #stepper @flyInOut>
 
     <!---------------------- STEP 1 ---------------------->
 
@@ -47,11 +47,11 @@
         </form>
 
       </div>
-      <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
-        <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" style="padding-left: 2rem">
-          <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active">home</i>
+      <div fxLayout style="margin-top: 2rem;">
+        <button fxLayoutAlign="start">
+          <i class="material-icons home-btn" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active">home</i>
         </button>
-        <button fxLayoutAlign="end" matStepperNext (click)="submitStep1()">
+        <button fxFlex="grow" fxLayoutAlign="end" matStepperNext (click)="submitStep1()">
           <i class="material-icons next-btn">navigate_next</i>
         </button>
       </div>
@@ -92,7 +92,7 @@
           <mat-form-field fxFlex="100%" appearance="outline" style="margin-top: 1rem; width: 60%" [ngStyle.lt-md]="{'width': '90%'}">
             <mat-label>Choose an Option</mat-label>
             <mat-select [value]="nature_of_business_options" formControlName="nature_of_business" required>
-            <mat-option *ngFor="let nob of nature_of_business_options; let i = index" [value]="i+1">
+            <mat-option *ngFor="let nob of nature_of_business_options; let i = index" [value]="nob">
                 {{ nob }}
             </mat-option>
             </mat-select>
@@ -106,10 +106,10 @@
         </form>
 
         <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
-          <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" matStepperPrevious>
+          <button id="home-btn" fxLayoutAlign="start" matStepperPrevious>
             <i class="material-icons next-btn" style="transform: rotate(180deg)">navigate_next</i>
           </button>
-          <button fxLayoutAlign="end" matStepperNext (click)="submitStep2()">
+          <button fxFlex="grow" fxLayoutAlign="end" matStepperNext (click)="submitStep2()">
             <i class="material-icons next-btn">navigate_next</i>
           </button>
         </div>
@@ -118,14 +118,14 @@
 
     <!---------------------- STEP 3 ---------------------->
 
-    <mat-step [completed]="preview">
+    <mat-step [completed]="display_preview">
       <ng-template matStepLabel>Pick-Up<br>Locations</ng-template>
       <div @flyInOut style="margin-top: 2rem">
         <div class="mat-h2">Select the pincodes at which you would like to serve</div>
         <form [formGroup]="pick_up_locations">
-          <mat-form-field appearance="outline" style="width: 60%">
+          <mat-form-field appearance="outline" style="width: 60%" [ngStyle.lt-md]="{'width': '75%'}">
             <mat-label>Search Pincode or Area</mat-label>
-            <input type="text" matInput formControlName="autoComplete_input" style="width: 60%"[matAutocomplete]="pincode_area">
+            <input type="text" matInput formControlName="autoComplete_input" style="width: 60%" [ngStyle.lt-md]="{'width': '75%'}"[matAutocomplete]="pincode_area">
             <mat-autocomplete #pincode_area="matAutocomplete">
               <mat-option *ngFor="let pincode of pincodes" [value]="pincode.pincode" (click)="addLocation(pincode); updatePincodesList(pincode)">
                 {{ pincode.Pincode }} - {{ pincode.Area }}
@@ -135,7 +135,7 @@
           <div formArrayName="locations">
             <div *ngFor="let loc of pick_up_locs.controls; let i = index" [formGroupName]="i" [ngStyle]="{'margin': '1.5rem 0 1.5rem 0'}">
               <div fxLayout>
-                <input matInput type="text" fxFlex="80" formControlName="pincode_area" [value]="pincode_area_t[i]" style="color: black; font-size: 1rem">
+                <input matInput type="text" fxFlex="80" formControlName="pincode_area" [value]="pincode_area_t[i]" style="color: black; font-size: 1rem" readonly>
                 <button fxFlex="20" (click)="addPincodeBack(i); deleteLocation(i)" style="display: inline">
                   <i class="material-icons">delete</i>
                 </button>
@@ -157,10 +157,11 @@
           </div>
         </form>
         <div style="margin-top: 5rem; width: 100%; margin-left: -1rem; margin-left: -1rem" fxLayout [ngStyle.lt-md]="{'margin-top': '2.5rem', 'width': '100%', 'margin-left': '-1rem', 'margin-right':'-1rem'}">
-          <button id="home-btn" fxLayoutAlign="start" fxFlex="grow" matStepperPrevious>
+          <button id="home-btn" fxLayoutAlign="start" matStepperPrevious>
             <i class="material-icons next-btn" style="transform: rotate(180deg)">navigate_next</i>
           </button>
-          <button mat-raised-button (click)="preview_t()" color="primary" style="color: white; padding-right: 1.5rem">Preview</button>
+          <span fxFlex="grow"></span>
+          <button mat-raised-button (click)="preview_t()" color="primary" style="color: white; padding-right: 2rem" [ngStyle]="{'color': 'white', 'padding-right': '1.5rem'}">Preview</button>
         </div>
       </div>
     </mat-step>
@@ -169,10 +170,90 @@
 
     <mat-step>
       <ng-template matStepLabel>Preview</ng-template>
-      <div *ngIf="!previewData else preview"></div>
+      <div *ngIf="!display_preview else preview"></div>
 
       <ng-template #preview class="preview">
-        
+        <div class="preview_step1">
+          <div class="preview-header mat-title" fxLayout>
+            <span class="header-text" fxFlex="80" fxLayoutAlign="start">Home Address</span>
+            <span fxFlex="20">
+              <span fxFlex="grow"></span>
+              <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 0">edit</i>
+            </span>
+          </div>
+          <hr style="width: 90%">
+          <div class="preview-step-content mat-h3">
+            <div>
+              <span class="content-field-header" *ngIf="home_addr.fullName">Full Name: </span>
+              <span class="content-field-content" *ngIf="home_addr.fullName">{{ home_addr.fullName }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="home_addr.addr_line1 || home_addr.addr_line2">Address: </span>
+              <span class="content-field-content" *ngIf="home_addr.addr_line1">{{ home_addr.addr_line1 }}</span>
+              <span class="content-field-content" *ngIf="home_addr.addr_line2">{{ home_addr.addr_line2 }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="home_addr.pincode">Pincode: </span>
+              <span class="content-field-content" *ngIf="home_addr.pincode">{{ home_addr.pincode }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="home_addr.alt_num">Alternative Number: </span>
+              <span class="content-field-content" *ngIf="home_addr.alt_num">{{ home_addr.alt_num }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview_step2">
+          <div class="preview-header mat-title" fxLayout>
+            <span class="header-text" fxFlex="80" fxLayoutAlign="start">Work Address</span>
+            <span fxFlex="20">
+              <span fxFlex="grow"></span>
+              <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 1">edit</i>
+            </span>
+          </div>
+          <hr style="width: 90%">
+          <div class="preview-step-content mat-h4">
+            <div>
+              <span class="content-field-header" *ngIf="work_addr.office_name">Office Name: </span>
+              <span class="content-field-content" *ngIf="work_addr.office_name">{{ work_addr.office_name }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="work_addr.addr_line1 || work_addr.addr_line2">Address: </span>
+              <span class="content-field-content" *ngIf="work_addr.addr_line1">{{ work_addr.addr_line1 }}</span>
+              <span class="content-field-content" *ngIf="work_addr.addr_line2">{{ work_addr.addr_line2 }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="work_addr.pincode">Pincode: </span>
+              <span class="content-field-content" *ngIf="work_addr.pincode">{{ work_addr.pincode }}</span>
+            </div>
+            <div>
+              <span class="content-field-header" *ngIf="work_addr.nature_of_business">Nature of Business: </span>
+              <span class="content-field-content" *ngIf="work_addr.nature_of_business">{{ work_addr.nature_of_business }}</span><br>
+              <span class="content-field-header" *ngIf="work_addr.additional_work_info">Additonal Work Info: </span>
+              <span class="content-field-content" *ngIf="work_addr.additional_work_info">{{ work_addr.additional_work_info }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview_step3" *ngIf="pick_up_loc.locations.length">
+          <div class="preview-header mat-title" fxLayout>
+            <span class="header-text" fxFlex="80" fxLayoutAlign="start">Pick Up Locations</span>
+            <span fxFlex="20">
+              <span fxFlex="grow"></span>
+              <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 3">edit</i>
+            </span>
+          </div>
+          <hr style="width: 90%">
+          <div class="preview-step-content mat-h4">
+            <div class="content-field-header mat-h3" *ngIf="pick_up_loc.locations.length">Locations: </div>
+            <div class="content-field-content" *ngIf="pick_up_loc.locations" style="margin-left: 10px">
+              <div *ngFor="let loc of pick_up_loc.locations; let i = index">
+                <div class="pinocde-header">{{ i+1 }}. {{ loc.pincode_area.value }}</div>
+                <div class="timings-header" *ngIf="loc.start_time || loc.end_time">
+                  <div>Preferred Timings: {{ loc.start_time }} - {{ loc.end_time }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </ng-template>
 
       <div fxLayoutAlign="end">
@@ -201,20 +282,20 @@
 
   <div fxFlex="grow" fxLayoutAlign="end">
     <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
-      <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
+      <i class="material-icons" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
     </button>
   </div>
 
 </div>
 
-<div *ngIf="registration_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
+<div *ngIf="prfl_cmpl_success && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'transform': 'translateX(50%)', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
 
   <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">
     <img src="assets/images/home/registration/form-submitted.png" alt="Form_Submitted" [ngStyle]="{'max-width': '5rem'}">
   </div>
   <div fxFlex="grow" class="mat-h2" fxLayoutAlign="center">
     Thank you.<br>
-    Your form has been submitted.
+    Profile details saved successfully.
   </div>
 
   <div fxLayoutAlign="end">

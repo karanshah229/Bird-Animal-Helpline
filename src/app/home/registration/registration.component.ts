@@ -157,7 +157,7 @@ export class RegistrationComponent implements OnInit {
       dob: [[Validators.required]],
       countryCode: [{value: '+91', disabled:true}],
       mobileNumber: [null, [Validators.required, Validators.pattern]],
-      gender: [null, [Validators.required]],
+      gender: ['', [Validators.required]],
       emailID: ['', [Validators.required, Validators.email]],
       securityQuestion: [null, Validators.required],
       securityResponse: ['',[Validators.required] ]

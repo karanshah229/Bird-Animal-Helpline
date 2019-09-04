@@ -45,9 +45,9 @@
             </div>
           </div>
         </div>
-        <div fxLayoutAlign="end">
-          <button id="home-btn">
-            <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'padding-right':'1rem', 'margin-top':'-1rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'padding-right': '1rem'}">home</i>
+        <div>
+          <button>
+            <i class="material-icons home-btn" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active">home</i>
           </button>
         </div>
       </mat-step>
@@ -137,8 +137,12 @@
           </div>
 
           <div fxLayout [ngStyle.lt-md]="{'padding-top': '2rem', 'padding-bottom':'1rem'}" [ngStyle.gt-md]="{'padding-top':'2rem'}">
-            <button type="button" class="material-icons" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -0.5rem" matStepperPrevious>navigate_next</button>
-            <button type="button" class="material-icons" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -0.5rem" matStepperNext (click)="submitStep2()">navigate_next</button>
+            <button type="button" fxLayoutAlign="start" style="transform: rotate(180deg); margin-left: -0.5rem" matStepperPrevious>
+             <i class="material-icons next-btn">navigate_next</i>
+            </button>
+            <button type="button" fxLayoutAlign="end" fxFlex="100%" style="margin-right: -0.5rem" matStepperNext (click)="submitStep2()">
+              <i class="material-icons next-btn">navigate_next</i>
+            </button>
           </div>
 
         </form>
@@ -189,7 +193,7 @@
 
           <div fxLayout="row" [ngStyle]="{'width':'100%'}">
             <div fxFlex="50%">
-              <button type="button" class="material-icons prev_page" matStepperPrevious [ngStyle]="{'transform': 'rotate(180deg)', 'border-radius':'100%', 'padding':'10px'}">navigate_next</button>
+              <button type="button" class="material-icons next-btn" matStepperPrevious [ngStyle]="{'transform': 'rotate(180deg)'}">navigate_next</button>
             </div>
             <div fxFlex="50%" fxLayoutAlign="end" fxLayoutGap="10px">
               <button type="button" matStepperNext mat-raised-button (click)="submitStep3()" [ngStyle]="{'background-color':'#f4f4f4'}">Preview</button>
@@ -208,21 +212,25 @@
         <ng-template #preview class="preview">
 
           <div class="preview_step3">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Account Details</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 2">edit</span>
+            <div class="preview-header mat-title" fxLayout>
+              <span class="header-text" fxFlex="80" fxLayoutAlign="start">Account Details</span>
+              <span fxFlex="20">
+                <span fxFlex="grow"></span>
+                <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 2">edit</i>
+              </span>
             </div>
-            <div class="preview_step_content">
-              <button type="button" fxFlexAlign="space-around center" [ngStyle]="{'margin-bottom':'1rem'}">
+            <hr style="width: 90%">
+            <div class="preview-step-content mat-h3">
+              <button type="button" fxFlexAlign="space-around center" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
                 <img [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
               </button>
               <div fxLayoutGap="10px">
-                <span>Username: </span>
-                <span>{{ step3_data.username }}</span>
+                <span class="content-field-header">Username: </span>
+                <span class="content-field-content">{{ step3_data.username }}</span>
               </div>
               <div fxLayoutGap="10px">
-                <span>PIN: </span>
-                <span>
+                <span class="content-field-header">PIN: </span>
+                <span class="content-field-content">
                   <input [type]="pass_pin_hide ? 'password' : 'text'" [value]="step3_data.pin" class="toggle_visibility" disabled [ngStyle]="{'max-width': '3rem'}">
                   <button mat-icon-button matSuffix (click)="pass_pin_hide = !pass_pin_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="pass_pin_hide">
                     <mat-icon>{{pass_pin_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -233,49 +241,57 @@
           </div>
 
           <div class="preview_step1">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Role Selected</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 0">edit</span>
+            <div class="preview-header mat-title" fxLayout>
+              <span class="header-text" fxFlex="80" fxLayoutAlign="start">Your Role</span>
+              <span fxFlex="20">
+                <span fxFlex="grow"></span>
+                <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 0">edit</i>
+              </span>
             </div>
-            <div class="preview_step_content">
-              <span fxLayoutGap="10px">I am a: </span>
-              <span><i>{{ role }}</i></span>
+            <hr style="width: 90%">
+            <div class="preview-step-content mat-h3" fxLayoutAlign="center center">
+              <span class="content-field-header" fxLayoutGap="10px">I am a: </span>
+              <span class="content-field-content"><i>{{ role }}</i></span>
             </div>
           </div>
 
           <div class="preview_step2">
-            <div class="preview_step_title_bar mat-h1" fxLayout>
-              <span fxFlex="grow" fxLayoutAlign="start" class="preview_step3_title">Basic Details</span>
-              <span fxLayoutAlign="end" class="material-icons hover" (click)="this.stepper.selectedIndex = 1">edit</span>
+            <div class="preview-header mat-title" fxLayout>
+              <span class="header-text" fxFlex="80" fxLayoutAlign="start">Basic Details</span>
+              <span fxFlex="20">
+                <span fxFlex="grow"></span>
+                <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 1">edit</i>
+              </span>
             </div>
-            <div class="preview_step_content">
+            <hr style="width: 90%">
+            <div class="preview-step-content mat-h3">
               <div>
-                <span fxLayoutGap="10px">Name: </span>
-                <span>{{ step2_data.firstName + " " + step2_data.lastName }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Name: </span>
+                <span class="content-field-content">{{ step2_data.firstName + " " + step2_data.lastName }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Date of Birth: </span>
-                <span>{{ dateOfBirth }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Date of Birth: </span>
+                <span class="content-field-content">{{ dateOfBirth }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Mobile Number: </span>
-                <span>+91 - {{ step2_data.mobileNumber }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Mobile Number: </span>
+                <span class="content-field-content">+91 - {{ step2_data.mobileNumber }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Gender: </span>
-                <span>{{ step2_data.gender }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Gender: </span>
+                <span class="content-field-content">{{ step2_data.gender }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Email: </span>
-                <span>{{ step2_data.emailID }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Email: </span>
+                <span class="content-field-content">{{ step2_data.emailID }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Security Question: </span><br>
-                <span [ngStyle]="{'margin-left':'1rem'}">{{ securityQuestions[step2_data.securityQuestion] }}</span>
+                <span class="content-field-header" fxLayoutGap="10px">Security Question: </span><br>
+                <span class="content-field-content" [ngStyle]="{'margin-left':'1rem'}">{{ securityQuestions[step2_data.securityQuestion] }}</span>
               </div>
               <div>
-                <span fxLayoutGap="10px">Security Question Response: </span><br>
-                <span [ngStyle.lt-sm]="{'margin-left':'0.5rem'}" [ngStyle]="{'margin-left':'0.5rem'}">
+                <span class="content-field-header" fxLayoutGap="10px">Security Question Response: </span><br>
+                <span class="content-field-content" [ngStyle.lt-sm]="{'margin-left':'0.5rem'}" [ngStyle]="{'margin-left':'0.5rem'}">
                   <input [type]="sec_response_hide ? 'password' : 'text'" [value]="step2_data.securityResponse" class="toggle_visibility" disabled [ngStyle]="{'max-width': '6rem'}">
                   <button mat-icon-button matSuffix (click)="sec_response_hide = !sec_response_hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="sec_response_hide">
                     <mat-icon>{{sec_response_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -313,7 +329,7 @@
 
     <div fxFlex="grow" fxLayoutAlign="end">
       <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
-        <i class="material-icons" alt="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
+        <i class="material-icons home-button" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
       </button>
     </div>
 

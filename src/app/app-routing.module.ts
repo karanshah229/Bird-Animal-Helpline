@@ -12,9 +12,8 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
 const routes: Routes = [
   { path: 'profileCompletion', component: ProfileCompletionComponent, canActivate: [ProfileCompletionGuard] },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'home', component: IndexComponent },
   { path: 'signIn', component: SignInComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', component: IndexComponent },
   { path: '**', component: PageNotFoundComponent  }
 ];
 

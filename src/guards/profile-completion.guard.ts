@@ -6,6 +6,7 @@ import { CanActivate } from '@angular/router';
 })
 export class ProfileCompletionGuard implements CanActivate {
 
+  //TODO: Get Profile Completion Status and redirect accordingly
   canActivate(): boolean {
     return true;
   }

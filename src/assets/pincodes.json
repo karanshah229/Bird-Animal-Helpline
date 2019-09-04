@@ -1,1670 +1,954 @@
 [
-  {
-    "Area": "Antop Hill",
-    "Pincode": 400037
-  },
-  {
-    "Area": "B P T Colony",
-    "Pincode": 400037
-  },
-  {
-    "Area": "B.P.Lane",
-    "Pincode": 400003
-  },
-  {
-    "Area": "BEST STaff Quarters",
-    "Pincode": 400012
-  },
-  {
-    "Area": "C G S Colony",
-    "Pincode": 400037
-  },
-  {
-    "Area": "Chamarbaug",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Chinchbunder",
-    "Pincode": 400009
-  },
-  {
-    "Area": "Cotton Exchange",
-    "Pincode": 400033
-  },
-  {
-    "Area": "Dadar Colony",
-    "Pincode": 400014
-  },
-  {
-    "Area": "Dadar",
-    "Pincode": 400014
-  },
-  {
-    "Area": "Dockyard Road",
-    "Pincode": 400010
-  },
-  {
-    "Area": "Haffkin Institute",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Kalachowki",
-    "Pincode": 400033
-  },
-  {
-    "Area": "Kidwai Nagar",
-    "Pincode": 400031
-  },
-  {
-    "Area": "L B S N E collage",
-    "Pincode": 400033
-  },
-  {
-    "Area": "Lal Baug",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Mandvi",
-    "Pincode": 400003
-  },
-  {
-    "Area": "Masjid",
-    "Pincode": 400003
-  },
-  {
-    "Area": "Mazgaon Dock",
-    "Pincode": 400010
-  },
-  {
-    "Area": "Mazgaon Road",
-    "Pincode": 400010
-  },
-  {
-    "Area": "Mazgaon",
-    "Pincode": 400010
-  },
-  {
-    "Area": "Naigaon",
-    "Pincode": 400014
-  },
-  {
-    "Area": "Noor Baug",
-    "Pincode": 400009
-  },
-  {
-    "Area": "Null Bazar",
-    "Pincode": 400003
-  },
-  {
-    "Area": "Parel Naka",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Parel Rly Work Shop",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Parel",
-    "Pincode": 400012
-  },
-  {
-    "Area": "Princess Dock",
-    "Pincode": 400009
-  },
-  {
-    "Area": "Reay Road",
-    "Pincode": 400033
-  },
-  {
-    "Area": "Sewri",
-    "Pincode": 400015
-  },
-  {
-    "Area": "Tank Road",
-    "Pincode": 400033
-  },
-  {
-    "Area": "V J B Udyan",
-    "Pincode": 400027
-  },
-  {
-    "Area": "V K Bhavan",
-    "Pincode": 400010
-  },
-  {
-    "Area": "Wadala Rs",
-    "Pincode": 400031
-  },
-  {
-    "Area": "Wadala",
-    "Pincode": 400031
-  },
-  {
-    "Area": "Wadala Truck Terminal",
-    "Pincode": 400037
-  },
-  {
-    "Area": "A I Staff Colony",
-    "Pincode": 400029
-  },
-  {
-    "Area": "Airport",
-    "Pincode": 400099
-  },
-  {
-    "Area": "Andheri East",
-    "Pincode": 400069
-  },
-  {
-    "Area": "Andheri",
-    "Pincode": 400053
-  },
-  {
-    "Area": "Andheri Railway Station",
-    "Pincode": 400058
-  },
-  {
-    "Area": "Audit Bhavan",
-    "Pincode": 400051
-  },
-  {
-    "Area": "Azad Nagar",
-    "Pincode": 400053
-  },
-  {
-    "Area": "B.N. Bhavan",
-    "Pincode": 400051
-  },
-  {
-    "Area": "Bandra West",
-    "Pincode": 400050
-  },
-  {
-    "Area": "Bandra(East)",
-    "Pincode": 400051
-  },
-  {
-    "Area": "Chakala Midc",
-    "Pincode": 400093
-  },
-  {
-    "Area": "Danda",
-    "Pincode": 400052
-  },
-  {
-    "Area": "Government Colony",
-    "Pincode": 400051
-  },
-  {
-    "Area": "H.M.P. School",
-    "Pincode": 400058
-  },
-  {
-    "Area": "Hanuman Road",
-    "Pincode": 400057
-  },
-  {
-    "Area": "International Airport",
-    "Pincode": 400099
-  },
-  {
-    "Area": "IRLA",
-    "Pincode": 400056
-  },
-  {
-    "Area": "J.B. Nagar",
-    "Pincode": 400059
-  },
-  {
-    "Area": "Juhu",
-    "Pincode": 400049
-  },
-  {
-    "Area": "Khar Colony",
-    "Pincode": 400052
-  },
-  {
-    "Area": "Khar Delivery",
-    "Pincode": 400052
-  },
-  {
-    "Area": "Kherwadi",
-    "Pincode": 400051
-  },
-  {
-    "Area": "Madh",
-    "Pincode": 400061
-  },
-  {
-    "Area": "Marol Bazar",
-    "Pincode": 400059
-  },
-  {
-    "Area": "Marol Naka",
-    "Pincode": 400059
-  },
-  {
-    "Area": "Nagardas Road",
-    "Pincode": 400069
-  },
-  {
-    "Area": "Sahar P & T Colony",
-    "Pincode": 400099
-  },
-  {
-    "Area": "Sahargaon",
-    "Pincode": 400099
-  },
-  {
-    "Area": "Santacruz Central",
-    "Pincode": 400054
-  },
-  {
-    "Area": "Santacruz P&t Colony",
-    "Pincode": 400029
-  },
-  {
-    "Area": "Santacruz(East)",
-    "Pincode": 400055
-  },
-  {
-    "Area": "Santacruz(West)",
-    "Pincode": 400054
-  },
-  {
-    "Area": "Seepz",
-    "Pincode": 400096
-  },
-  {
-    "Area": "V.P. Road",
-    "Pincode": 400052
-  },
-  {
-    "Area": "Vakola",
-    "Pincode": 400055
-  },
-  {
-    "Area": "Vesava",
-    "Pincode": 400061
-  },
-  {
-    "Area": "Vidyanagari",
-    "Pincode": 400098
-  },
-  {
-    "Area": "Vileeparle (East)",
-    "Pincode": 400057
-  },
-  {
-    "Area": "Vileparle Railway Station",
-    "Pincode": 400057
-  },
-  {
-    "Area": "Vileparle(West)",
-    "Pincode": 400056
-  },
-  {
-    "Area": "Anushakti Nagar",
-    "Pincode": 400094
-  },
-  {
-    "Area": "BARC",
-    "Pincode": 400085
-  },
-  {
-    "Area": "Barve Nagar",
-    "Pincode": 400084
-  },
-  {
-    "Area": "Best Staff Colony",
-    "Pincode": 400075
-  },
-  {
-    "Area": "Bhandup Complex",
-    "Pincode": 400082
-  },
-  {
-    "Area": "Bhandup East",
-    "Pincode": 400042
-  },
-  {
-    "Area": "Bhandup Ind. Estate",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Bhandup West",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Chembur Extension",
-    "Pincode": 400074
-  },
-  {
-    "Area": "Chembur",
-    "Pincode": 400071
-  },
-  {
-    "Area": "Chembur Rs",
-    "Pincode": 400089
-  },
-  {
-    "Area": "Chunabhatti",
-    "Pincode": 400022
-  },
-  {
-    "Area": "D.M. Colony",
-    "Pincode": 400043
-  },
-  {
-    "Area": "FCI",
-    "Pincode": 400074
-  },
-  {
-    "Area": "Ghatkopar West",
-    "Pincode": 400086
-  },
-  {
-    "Area": "Govandi",
-    "Pincode": 400088
-  },
-  {
-    "Area": "J.M. Road",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Kannamwar Nagar",
-    "Pincode": 400083
-  },
-  {
-    "Area": "Kurla North",
-    "Pincode": 400070
-  },
-  {
-    "Area": "Kurla",
-    "Pincode": 400070
-  },
-  {
-    "Area": "Mahul Road",
-    "Pincode": 400074
-  },
-  {
-    "Area": "Matunga",
-    "Pincode": 400019
-  },
-  {
-    "Area": "Mhada Colony",
-    "Pincode": 400081
-  },
-  {
-    "Area": "Mulund Colony",
-    "Pincode": 400082
-  },
-  {
-    "Area": "Mulund Dd Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Mulund East",
-    "Pincode": 400081
-  },
-  {
-    "Area": "Mulund West",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Nahur",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Nehru Nagar",
-    "Pincode": 400024
-  },
-  {
-    "Area": "Nehru Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Netajinagar",
-    "Pincode": 400070
-  },
-  {
-    "Area": "NITIE",
-    "Pincode": 400087
-  },
-  {
-    "Area": "P.H. Colony",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Pant Nagar",
-    "Pincode": 400075
-  },
-  {
-    "Area": "Powai Iit",
-    "Pincode": 400076
-  },
-  {
-    "Area": "Psm Colony",
-    "Pincode": 400079
-  },
-  {
-    "Area": "R.A.Nagar",
-    "Pincode": 400075
-  },
-  {
-    "Area": "Rajawadi",
-    "Pincode": 400077
-  },
-  {
-    "Area": "Raoli Camp",
-    "Pincode": 400022
-  },
-  {
-    "Area": "Rifle Range",
-    "Pincode": 400086
-  },
-  {
-    "Area": "S.B. Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Sahakar Bhavan",
-    "Pincode": 400086
-  },
-  {
-    "Area": "Sakinaka",
-    "Pincode": 400072
-  },
-  {
-    "Area": "Shivaji Nagar",
-    "Pincode": 400043
-  },
-  {
-    "Area": "Sindhi Society",
-    "Pincode": 400071
-  },
-  {
-    "Area": "Sion",
-    "Pincode": 400022
-  },
-  {
-    "Area": "T.F.Donar",
-    "Pincode": 400088
-  },
-  {
-    "Area": "Tagore Nagar",
-    "Pincode": 400083
-  },
-  {
-    "Area": "Tilak Nagar",
-    "Pincode": 400089
-  },
-  {
-    "Area": "Transit Camp",
-    "Pincode": 400022
-  },
-  {
-    "Area": "Trombay",
-    "Pincode": 400088
-  },
-  {
-    "Area": "Usha Nagar",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Vihar Road",
-    "Pincode": 400072
-  },
-  {
-    "Area": "Vikhroli",
-    "Pincode": 400079
-  },
-  {
-    "Area": "Aareymilk Colony",
-    "Pincode": 400065
-  },
-  {
-    "Area": "Bangur Nagar",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Borivali East",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Borivali",
-    "Pincode": 400091
-  },
-  {
-    "Area": "Borivali West",
-    "Pincode": 400092
-  },
-  {
-    "Area": "Charkop",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Dahisar RS",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Dahisar",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Daulat Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Goregaon East",
-    "Pincode": 400063
-  },
-  {
-    "Area": "Goregaon RS",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Goregaon",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Ins Hamla",
-    "Pincode": 400095
-  },
-  {
-    "Area": "Jogeshwari East",
-    "Pincode": 400060
-  },
-  {
-    "Area": "Jogeshwari West",
-    "Pincode": 400102
-  },
-  {
-    "Area": "Kandivali East",
-    "Pincode": 400101
-  },
-  {
-    "Area": "Kandivali RS",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Kandivali West",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Ketkipada",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Kharodi",
-    "Pincode": 400095
-  },
-  {
-    "Area": "Mulund Dd Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Mulund East",
-    "Pincode": 400081
-  },
-  {
-    "Area": "Mulund West",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Nahur",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Nehru Nagar",
-    "Pincode": 400024
-  },
-  {
-    "Area": "Nehru Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Netajinagar",
-    "Pincode": 400070
-  },
-  {
-    "Area": "NITIE",
-    "Pincode": 400087
-  },
-  {
-    "Area": "P.H. Colony",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Pant Nagar",
-    "Pincode": 400075
-  },
-  {
-    "Area": "Powai Iit",
-    "Pincode": 400076
-  },
-  {
-    "Area": "Psm Colony",
-    "Pincode": 400079
-  },
-  {
-    "Area": "R.A.Nagar",
-    "Pincode": 400075
-  },
-  {
-    "Area": "Rajawadi",
-    "Pincode": 400077
-  },
-  {
-    "Area": "Raoli Camp",
-    "Pincode": 400022
-  },
-  {
-    "Area": "Rifle Range",
-    "Pincode": 400086
-  },
-  {
-    "Area": "S.B. Road",
-    "Pincode": 400080
-  },
-  {
-    "Area": "Sahakar Bhavan",
-    "Pincode": 400086
-  },
-  {
-    "Area": "Sakinaka",
-    "Pincode": 400072
-  },
-  {
-    "Area": "Shivaji Nagar",
-    "Pincode": 400043
-  },
-  {
-    "Area": "Sindhi Society",
-    "Pincode": 400071
-  },
-  {
-    "Area": "Sion",
-    "Pincode": 400022
-  },
-  {
-    "Area": "T.F.Donar",
-    "Pincode": 400088
-  },
-  {
-    "Area": "Tagore Nagar",
-    "Pincode": 400083
-  },
-  {
-    "Area": "Tilak Nagar",
-    "Pincode": 400089
-  },
-  {
-    "Area": "Transit Camp",
-    "Pincode": 400022
-  },
-  {
-    "Area": "Trombay",
-    "Pincode": 400088
-  },
-  {
-    "Area": "Usha Nagar",
-    "Pincode": 400078
-  },
-  {
-    "Area": "Vihar Road",
-    "Pincode": 400072
-  },
-  {
-    "Area": "Vikhroli",
-    "Pincode": 400079
-  },
-  {
-    "Area": "Aareymilk Colony",
-    "Pincode": 400065
-  },
-  {
-    "Area": "Bangur Nagar",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Borivali East",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Borivali",
-    "Pincode": 400091
-  },
-  {
-    "Area": "Borivali West",
-    "Pincode": 400092
-  },
-  {
-    "Area": "Charkop",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Dahisar RS",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Dahisar",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Daulat Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Goregaon East",
-    "Pincode": 400063
-  },
-  {
-    "Area": "Goregaon RS",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Goregaon",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Ins Hamla",
-    "Pincode": 400095
-  },
-  {
-    "Area": "Jogeshwari East",
-    "Pincode": 400060
-  },
-  {
-    "Area": "Jogeshwari West",
-    "Pincode": 400102
-  },
-  {
-    "Area": "Kandivali East",
-    "Pincode": 400101
-  },
-  {
-    "Area": "Kandivali RS",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Kandivali West",
-    "Pincode": 400067
-  },
-  {
-    "Area": "Ketkipada",
-    "Pincode": 400068
-  },
-  {
-    "Area": "Kharodi",
-    "Pincode": 400095
-  },
-  {
-    "Area": "Liberty Garden",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Magthane",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Malad East",
-    "Pincode": 400097
-  },
-  {
-    "Area": "Malad",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Malad West Dely",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Mandapeshwar",
-    "Pincode": 400103
-  },
-  {
-    "Area": "Motilal Nagar",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Nagari Niwara",
-    "Pincode": 400065
-  },
-  {
-    "Area": "Orlem",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Oshiwara",
-    "Pincode": 400102
-  },
-  {
-    "Area": "Rajendra Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Rani Sati Marg",
-    "Pincode": 400097
-  },
-  {
-    "Area": "S R P F Camp",
-    "Pincode": 400065
-  },
-  {
-    "Area": "S. K.Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Sharma Estate",
-    "Pincode": 400063
-  },
-  {
-    "Area": "Ambewadi",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Asvini",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Bazargate",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Central Building",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Charni Road",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Chaupati",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Churchgate",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Colaba Bazar",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Colaba",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Girgaon",
-    "Pincode": 400004
-  },
-  {
-    "Area": "High Court Building",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Holiday Camp",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Kalbadevi",
-    "Pincode": 400002
-  },
-  {
-    "Area": "M.P.T.",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Madhavbaug",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Mantralaya",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Marine Lines",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Nariman Point",
-    "Pincode": 400021
-  },
-  {
-    "Area": "New Yogakshema",
-    "Pincode": 400021
-  },
-  {
-    "Area": "Opera House",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Ramwadi",
-    "Pincode": 400002
-  },
-  {
-    "Area": "S. C. Court",
-    "Pincode": 400002
-  },
-  {
-    "Area": "Secretariate",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Stock Exchange",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Tajmahal",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Thakurdwar",
-    "Pincode": 400002
-  },
-  {
-    "Area": "Town Hall",
-    "Pincode": 400001
-  },
-  {
-    "Area": "V.W.T.C.",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Agripada",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Bharat Nagar",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Bhawani Shankar Rd",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Bhawani Shankar",
-    "Pincode": 400028
-  },
-  {
-    "Area": "BPC Jacob Circle",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Century Mill",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Chinchpokli",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Cumballa Hill",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Cumballa Sea Face",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Delisle Road",
-    "Pincode": 400013
-  },
-  {
-    "Area": "Dharavi Road",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dharavi",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dr Deshmukh Marg",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Falkland Road",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Gokhale Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Gowalia Tank",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Grant Road",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Haines Road",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Haji Ali",
-    "Pincode": 400034
-  },
-  {
-    "Area": "J.J.Hospital",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Jacob Circle",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Kamathipura",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Kapad Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "M A Marg",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Mahim Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim East",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Malabar Hill",
-    "Pincode": 400006
-  },
-  {
-    "Area": "Mori Road",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mumbai Central",
-    "Pincode": 400008
-  },
-  {
-    "Area": "N.S.Patkar Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "New Prabhadevi Road",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Prabhadevi",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Rajbhavan",
-    "Pincode": 400035
-  },
-  {
-    "Area": "Ranade Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "S V Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "S V S Marg",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Shivaji Park",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Tardeo",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Tulsiwadi",
-    "Pincode": 400034
-  },
-  {
-    "Area": "Worli Colony",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli Naka",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Police Camp",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Sea Face",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Mumbai G.P.O.",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Liberty Garden",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Magthane",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Malad East",
-    "Pincode": 400097
-  },
-  {
-    "Area": "Malad",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Malad West Dely",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Mandapeshwar",
-    "Pincode": 400103
-  },
-  {
-    "Area": "Motilal Nagar",
-    "Pincode": 400104
-  },
-  {
-    "Area": "Nagari Niwara",
-    "Pincode": 400065
-  },
-  {
-    "Area": "Orlem",
-    "Pincode": 400064
-  },
-  {
-    "Area": "Oshiwara",
-    "Pincode": 400102
-  },
-  {
-    "Area": "Rajendra Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Rani Sati Marg",
-    "Pincode": 400097
-  },
-  {
-    "Area": "S R P F Camp",
-    "Pincode": 400065
-  },
-  {
-    "Area": "S. K.Nagar",
-    "Pincode": 400066
-  },
-  {
-    "Area": "Sharma Estate",
-    "Pincode": 400063
-  },
-  {
-    "Area": "Ambewadi",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Asvini",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Bazargate",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Central Building",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Charni Road",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Chaupati",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Churchgate",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Colaba Bazar",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Colaba",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Girgaon",
-    "Pincode": 400004
-  },
-  {
-    "Area": "High Court Building",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Holiday Camp",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Kalbadevi",
-    "Pincode": 400002
-  },
-  {
-    "Area": "M.P.T.",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Madhavbaug",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Mantralaya",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Marine Lines",
-    "Pincode": 400020
-  },
-  {
-    "Area": "Nariman Point",
-    "Pincode": 400021
-  },
-  {
-    "Area": "New Yogakshema",
-    "Pincode": 400021
-  },
-  {
-    "Area": "Opera House",
-    "Pincode": 400004
-  },
-  {
-    "Area": "Ramwadi",
-    "Pincode": 400002
-  },
-  {
-    "Area": "S. C. Court",
-    "Pincode": 400002
-  },
-  {
-    "Area": "Secretariate",
-    "Pincode": 400032
-  },
-  {
-    "Area": "Stock Exchange",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Tajmahal",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Thakurdwar",
-    "Pincode": 400002
-  },
-  {
-    "Area": "Town Hall",
-    "Pincode": 400001
-  },
-  {
-    "Area": "V.W.T.C.",
-    "Pincode": 400005
-  },
-  {
-    "Area": "Agripada",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Bharat Nagar",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Bhawani Shankar Rd",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Bhawani Shankar",
-    "Pincode": 400028
-  },
-  {
-    "Area": "BPC Jacob Circle",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Century Mill",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Chinchpokli",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Cumballa Hill",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Cumballa Sea Face",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Delisle Road",
-    "Pincode": 400013
-  },
-  {
-    "Area": "Dharavi Road",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dharavi",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dr Deshmukh Marg",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Falkland Road",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Gokhale Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Gowalia Tank",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Grant Road",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Haines Road",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Haji Ali",
-    "Pincode": 400034
-  },
-  {
-    "Area": "J.J.Hospital",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Jacob Circle",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Kamathipura",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Kapad Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "M A Marg",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Mahim Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim East",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Malabar Hill",
-    "Pincode": 400006
-  },
-  {
-    "Area": "Mori Road",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mumbai Central",
-    "Pincode": 400008
-  },
-  {
-    "Area": "N.S.Patkar Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "New Prabhadevi Road",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Prabhadevi",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Rajbhavan",
-    "Pincode": 400035
-  },
-  {
-    "Area": "Ranade Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "S V Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "S V S Marg",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Shivaji Park",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Tardeo",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Tulsiwadi",
-    "Pincode": 400034
-  },
-  {
-    "Area": "Worli Colony",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli Naka",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Police Camp",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Sea Face",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Mumbai G.P.O.",
-    "Pincode": 400001
-  },
-  {
-    "Area": "Cumballa Hill",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Cumballa Sea Face",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Delisle Road",
-    "Pincode": 400013
-  },
-  {
-    "Area": "Dharavi Road",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dharavi",
-    "Pincode": 400017
-  },
-  {
-    "Area": "Dr Deshmukh Marg",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Falkland Road",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Gokhale Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Gowalia Tank",
-    "Pincode": 400026
-  },
-  {
-    "Area": "Grant Road",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Haines Road",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Haji Ali",
-    "Pincode": 400034
-  },
-  {
-    "Area": "J.J.Hospital",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Jacob Circle",
-    "Pincode": 400011
-  },
-  {
-    "Area": "Kamathipura",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Kapad Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "M A Marg",
-    "Pincode": 400008
-  },
-  {
-    "Area": "Mahim Bazar",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim East",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mahim",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Malabar Hill",
-    "Pincode": 400006
-  },
-  {
-    "Area": "Mori Road",
-    "Pincode": 400016
-  },
-  {
-    "Area": "Mumbai Central",
-    "Pincode": 400008
-  },
-  {
-    "Area": "N.S.Patkar Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "New Prabhadevi Road",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Prabhadevi",
-    "Pincode": 400025
-  },
-  {
-    "Area": "Rajbhavan",
-    "Pincode": 400035
-  },
-  {
-    "Area": "Ranade Road",
-    "Pincode": 400028
-  },
-  {
-    "Area": "S V Marg",
-    "Pincode": 400007
-  },
-  {
-    "Area": "S V S Marg",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Shivaji Park",
-    "Pincode": 400028
-  },
-  {
-    "Area": "Tardeo",
-    "Pincode": 400007
-  },
-  {
-    "Area": "Tulsiwadi",
-    "Pincode": 400034
-  },
-  {
-    "Area": "Worli Colony",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli Naka",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Police Camp",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Worli",
-    "Pincode": 400018
-  },
-  {
-    "Area": "Worli Sea Face",
-    "Pincode": 400030
-  },
-  {
-    "Area": "Mumbai G.P.O.",
-    "Pincode": 400001
-  }
+ {
+   "Area": "A I Staff Colony",
+   "Pincode": 400029
+ },
+ {
+   "Area": "Aareymilk Colony",
+   "Pincode": 400065
+ },
+ {
+   "Area": "Agripada",
+   "Pincode": 400011
+ },
+ {
+   "Area": "Airport",
+   "Pincode": 400099
+ },
+ {
+   "Area": "Ambewadi",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Andheri",
+   "Pincode": 400053
+ },
+ {
+   "Area": "Andheri East",
+   "Pincode": 400069
+ },
+ {
+   "Area": "Andheri Railway Station",
+   "Pincode": 400058
+ },
+ {
+   "Area": "Antop Hill",
+   "Pincode": 400037
+ },
+ {
+   "Area": "Anushakti Nagar",
+   "Pincode": 400094
+ },
+ {
+   "Area": "Asvini",
+   "Pincode": 400005
+ },
+ {
+   "Area": "Audit Bhavan",
+   "Pincode": 400051
+ },
+ {
+   "Area": "Azad Nagar",
+   "Pincode": 400053
+ },
+ {
+   "Area": "B P T Colony",
+   "Pincode": 400037
+ },
+ {
+   "Area": "B.N. Bhavan",
+   "Pincode": 400051
+ },
+ {
+   "Area": "B.P.Lane",
+   "Pincode": 400003
+ },
+ {
+   "Area": "Bandra West",
+   "Pincode": 400050
+ },
+ {
+   "Area": "Bandra(East)",
+   "Pincode": 400051
+ },
+ {
+   "Area": "Bangur Nagar",
+   "Pincode": 400104
+ },
+ {
+   "Area": "BARC",
+   "Pincode": 400085
+ },
+ {
+   "Area": "Barve Nagar",
+   "Pincode": 400084
+ },
+ {
+   "Area": "Bazargate",
+   "Pincode": 400001
+ },
+ {
+   "Area": "Best Staff Colony",
+   "Pincode": 400075
+ },
+ {
+   "Area": "BEST STaff Quarters",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Bhandup Complex",
+   "Pincode": 400082
+ },
+ {
+   "Area": "Bhandup East",
+   "Pincode": 400042
+ },
+ {
+   "Area": "Bhandup Ind. Estate",
+   "Pincode": 400078
+ },
+ {
+   "Area": "Bhandup West",
+   "Pincode": 400078
+ },
+ {
+   "Area": "Bharat Nagar",
+   "Pincode": 400007
+ },
+ {
+   "Area": "Bhawani Shankar",
+   "Pincode": 400028
+ },
+ {
+   "Area": "Bhawani Shankar Rd",
+   "Pincode": 400028
+ },
+ {
+   "Area": "Borivali",
+   "Pincode": 400091
+ },
+ {
+   "Area": "Borivali East",
+   "Pincode": 400066
+ },
+ {
+   "Area": "Borivali West",
+   "Pincode": 400092
+ },
+ {
+   "Area": "BPC Jacob Circle",
+   "Pincode": 400011
+ },
+ {
+   "Area": "C G S Colony",
+   "Pincode": 400037
+ },
+ {
+   "Area": "Central Building",
+   "Pincode": 400020
+ },
+ {
+   "Area": "Century Mill",
+   "Pincode": 400030
+ },
+ {
+   "Area": "Chakala Midc",
+   "Pincode": 400093
+ },
+ {
+   "Area": "Chamarbaug",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Charkop",
+   "Pincode": 400067
+ },
+ {
+   "Area": "Charni Road",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Chaupati",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Chembur",
+   "Pincode": 400071
+ },
+ {
+   "Area": "Chembur Extension",
+   "Pincode": 400074
+ },
+ {
+   "Area": "Chembur Rs",
+   "Pincode": 400089
+ },
+ {
+   "Area": "Chinchbunder",
+   "Pincode": 400009
+ },
+ {
+   "Area": "Chinchpokli",
+   "Pincode": 400011
+ },
+ {
+   "Area": "Chunabhatti",
+   "Pincode": 400022
+ },
+ {
+   "Area": "Churchgate",
+   "Pincode": 400020
+ },
+ {
+   "Area": "Colaba",
+   "Pincode": 400005
+ },
+ {
+   "Area": "Colaba Bazar",
+   "Pincode": 400005
+ },
+ {
+   "Area": "Cotton Exchange",
+   "Pincode": 400033
+ },
+ {
+   "Area": "Cumballa Hill",
+   "Pincode": 400026
+ },
+ {
+   "Area": "Cumballa Sea Face",
+   "Pincode": 400026
+ },
+ {
+   "Area": "D.M. Colony",
+   "Pincode": 400043
+ },
+ {
+   "Area": "Dadar",
+   "Pincode": 400014
+ },
+ {
+   "Area": "Dadar Colony",
+   "Pincode": 400014
+ },
+ {
+   "Area": "Dahisar",
+   "Pincode": 400068
+ },
+ {
+   "Area": "Dahisar RS",
+   "Pincode": 400068
+ },
+ {
+   "Area": "Danda",
+   "Pincode": 400052
+ },
+ {
+   "Area": "Daulat Nagar",
+   "Pincode": 400066
+ },
+ {
+   "Area": "Delisle Road",
+   "Pincode": 400013
+ },
+ {
+   "Area": "Dharavi",
+   "Pincode": 400017
+ },
+ {
+   "Area": "Dharavi Road",
+   "Pincode": 400017
+ },
+ {
+   "Area": "Dockyard Road",
+   "Pincode": 400010
+ },
+ {
+   "Area": "Dr Deshmukh Marg",
+   "Pincode": 400026
+ },
+ {
+   "Area": "FCI",
+   "Pincode": 400074
+ },
+ {
+   "Area": "Ghatkopar West",
+   "Pincode": 400086
+ },
+ {
+   "Area": "Girgaon",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Gokhale Road",
+   "Pincode": 400028
+ },
+ {
+   "Area": "Goregaon",
+   "Pincode": 400104
+ },
+ {
+   "Area": "Goregaon East",
+   "Pincode": 400063
+ },
+ {
+   "Area": "Goregaon RS",
+   "Pincode": 400104
+ },
+ {
+   "Area": "Govandi",
+   "Pincode": 400088
+ },
+ {
+   "Area": "Government Colony",
+   "Pincode": 400051
+ },
+ {
+   "Area": "Gowalia Tank",
+   "Pincode": 400026
+ },
+ {
+   "Area": "Grant Road",
+   "Pincode": 400007
+ },
+ {
+   "Area": "H.M.P. School",
+   "Pincode": 400058
+ },
+ {
+   "Area": "Haffkin Institute",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Haines Road",
+   "Pincode": 400011
+ },
+ {
+   "Area": "Haji Ali",
+   "Pincode": 400034
+ },
+ {
+   "Area": "Hanuman Road",
+   "Pincode": 400057
+ },
+ {
+   "Area": "High Court Building",
+   "Pincode": 400032
+ },
+ {
+   "Area": "Holiday Camp",
+   "Pincode": 400005
+ },
+ {
+   "Area": "Ins Hamla",
+   "Pincode": 400095
+ },
+ {
+   "Area": "International Airport",
+   "Pincode": 400099
+ },
+ {
+   "Area": "IRLA",
+   "Pincode": 400056
+ },
+ {
+   "Area": "J.B. Nagar",
+   "Pincode": 400059
+ },
+ {
+   "Area": "J.J.Hospital",
+   "Pincode": 400008
+ },
+ {
+   "Area": "J.M. Road",
+   "Pincode": 400078
+ },
+ {
+   "Area": "Jacob Circle",
+   "Pincode": 400011
+ },
+ {
+   "Area": "Jogeshwari East",
+   "Pincode": 400060
+ },
+ {
+   "Area": "Jogeshwari West",
+   "Pincode": 400102
+ },
+ {
+   "Area": "Juhu",
+   "Pincode": 400049
+ },
+ {
+   "Area": "Kalachowki",
+   "Pincode": 400033
+ },
+ {
+   "Area": "Kalbadevi",
+   "Pincode": 400002
+ },
+ {
+   "Area": "Kamathipura",
+   "Pincode": 400008
+ },
+ {
+   "Area": "Kandivali East",
+   "Pincode": 400101
+ },
+ {
+   "Area": "Kandivali RS",
+   "Pincode": 400067
+ },
+ {
+   "Area": "Kandivali West",
+   "Pincode": 400067
+ },
+ {
+   "Area": "Kannamwar Nagar",
+   "Pincode": 400083
+ },
+ {
+   "Area": "Kapad Bazar",
+   "Pincode": 400016
+ },
+ {
+   "Area": "Ketkipada",
+   "Pincode": 400068
+ },
+ {
+   "Area": "Khar Colony",
+   "Pincode": 400052
+ },
+ {
+   "Area": "Khar Delivery",
+   "Pincode": 400052
+ },
+ {
+   "Area": "Kharodi",
+   "Pincode": 400095
+ },
+ {
+   "Area": "Kherwadi",
+   "Pincode": 400051
+ },
+ {
+   "Area": "Kidwai Nagar",
+   "Pincode": 400031
+ },
+ {
+   "Area": "Kurla",
+   "Pincode": 400070
+ },
+ {
+   "Area": "Kurla North",
+   "Pincode": 400070
+ },
+ {
+   "Area": "L B S N E collage",
+   "Pincode": 400033
+ },
+ {
+   "Area": "Lal Baug",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Liberty Garden",
+   "Pincode": 400064
+ },
+ {
+   "Area": "M A Marg",
+   "Pincode": 400008
+ },
+ {
+   "Area": "M.P.T.",
+   "Pincode": 400001
+ },
+ {
+   "Area": "Madh",
+   "Pincode": 400061
+ },
+ {
+   "Area": "Madhavbaug",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Magthane",
+   "Pincode": 400066
+ },
+ {
+   "Area": "Mahim",
+   "Pincode": 400016
+ },
+ {
+   "Area": "Mahim Bazar",
+   "Pincode": 400016
+ },
+ {
+   "Area": "Mahim East",
+   "Pincode": 400016
+ },
+ {
+   "Area": "Mahul Road",
+   "Pincode": 400074
+ },
+ {
+   "Area": "Malabar Hill",
+   "Pincode": 400006
+ },
+ {
+   "Area": "Malad",
+   "Pincode": 400064
+ },
+ {
+   "Area": "Malad East",
+   "Pincode": 400097
+ },
+ {
+   "Area": "Malad West Dely",
+   "Pincode": 400064
+ },
+ {
+   "Area": "Mandapeshwar",
+   "Pincode": 400103
+ },
+ {
+   "Area": "Mandvi",
+   "Pincode": 400003
+ },
+ {
+   "Area": "Mantralaya",
+   "Pincode": 400032
+ },
+ {
+   "Area": "Marine Lines",
+   "Pincode": 400020
+ },
+ {
+   "Area": "Marol Bazar",
+   "Pincode": 400059
+ },
+ {
+   "Area": "Marol Naka",
+   "Pincode": 400059
+ },
+ {
+   "Area": "Masjid",
+   "Pincode": 400003
+ },
+ {
+   "Area": "Matunga",
+   "Pincode": 400019
+ },
+ {
+   "Area": "Mazgaon",
+   "Pincode": 400010
+ },
+ {
+   "Area": "Mazgaon Dock",
+   "Pincode": 400010
+ },
+ {
+   "Area": "Mazgaon Road",
+   "Pincode": 400010
+ },
+ {
+   "Area": "Mhada Colony",
+   "Pincode": 400081
+ },
+ {
+   "Area": "Mori Road",
+   "Pincode": 400016
+ },
+ {
+   "Area": "Motilal Nagar",
+   "Pincode": 400104
+ },
+ {
+   "Area": "Mulund Colony",
+   "Pincode": 400082
+ },
+ {
+   "Area": "Mulund Dd Road",
+   "Pincode": 400080
+ },
+ {
+   "Area": "Mulund East",
+   "Pincode": 400081
+ },
+ {
+   "Area": "Mulund West",
+   "Pincode": 400080
+ },
+ {
+   "Area": "Mumbai Central",
+   "Pincode": 400008
+ },
+ {
+   "Area": "Mumbai G.P.O.",
+   "Pincode": 400001
+ },
+ {
+   "Area": "N.S.Patkar Marg",
+   "Pincode": 400007
+ },
+ {
+   "Area": "Nagardas Road",
+   "Pincode": 400069
+ },
+ {
+   "Area": "Nagari Niwara",
+   "Pincode": 400065
+ },
+ {
+   "Area": "Nahur",
+   "Pincode": 400080
+ },
+ {
+   "Area": "Naigaon",
+   "Pincode": 400014
+ },
+ {
+   "Area": "Nariman Point",
+   "Pincode": 400021
+ },
+ {
+   "Area": "Nehru Nagar",
+   "Pincode": 400024
+ },
+ {
+   "Area": "Nehru Road",
+   "Pincode": 400080
+ },
+ {
+   "Area": "Netajinagar",
+   "Pincode": 400070
+ },
+ {
+   "Area": "New Prabhadevi Road",
+   "Pincode": 400025
+ },
+ {
+   "Area": "New Yogakshema",
+   "Pincode": 400021
+ },
+ {
+   "Area": "NITIE",
+   "Pincode": 400087
+ },
+ {
+   "Area": "Noor Baug",
+   "Pincode": 400009
+ },
+ {
+   "Area": "Null Bazar",
+   "Pincode": 400003
+ },
+ {
+   "Area": "Opera House",
+   "Pincode": 400004
+ },
+ {
+   "Area": "Orlem",
+   "Pincode": 400064
+ },
+ {
+   "Area": "Oshiwara",
+   "Pincode": 400102
+ },
+ {
+   "Area": "P.H. Colony",
+   "Pincode": 400078
+ },
+ {
+   "Area": "Pant Nagar",
+   "Pincode": 400075
+ },
+ {
+   "Area": "Parel",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Parel Naka",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Parel Rly Work Shop",
+   "Pincode": 400012
+ },
+ {
+   "Area": "Powai Iit",
+   "Pincode": 400076
+ },
+ {
+   "Area": "Prabhadevi",
+   "Pincode": 400025
+ },
+ {
+   "Area": "Princess Dock",
+   "Pincode": 400009
+ },
+ {
+   "Area": "Psm Colony",
+   "Pincode": 400079
+ },
+ {
+   "Area": "R.A.Nagar",
+   "Pincode": 400075
+ },
+ {
+   "Area": "Rajawadi",
+   "Pincode": 400077
+ },
+ {
+   "Area": "Rajbhavan",
+   "Pincode": 400035
+ },
+ {
+   "Area": "Rajendra Nagar",
+   "Pincode": 400066
+ },
+ {
+   "Area": "Ramwadi",
+   "Pincode": 400002
+ },
+ {
+   "Area": "Ranade Road",
+   "Pincode": 400028
+ },
+ {
+   "Area": "Rani Sati Marg",
+   "Pincode": 400097
+ },
+ {
+   "Area": "Raoli Camp",
+   "Pincode": 400022
+ },
+ {
+   "Area": "Reay Road",
+   "Pincode": 400033
+ },
+ {
+   "Area": "Rifle Range",
+   "Pincode": 400086
+ },
+ {
+   "Area": "S R P F Camp",
+   "Pincode": 400065
+ },
+ {
+   "Area": "S V Marg",
+   "Pincode": 400007
+ },
+ {
+   "Area": "S V S Marg",
+   "Pincode": 400028
+ },
+ {
+   "Area": "S. C. Court",
+   "Pincode": 400002
+ },
+ {
+   "Area": "S. K.Nagar",
+   "Pincode": 400066
+ },
+ {
+   "Area": "S.B. Road",
+   "Pincode": 400080
+ },
+ {
+   "Area": "Sahakar Bhavan",
+   "Pincode": 400086
+ },
+ {
+   "Area": "Sahar P & T Colony",
+   "Pincode": 400099
+ },
+ {
+   "Area": "Sahargaon",
+   "Pincode": 400099
+ },
+ {
+   "Area": "Sakinaka",
+   "Pincode": 400072
+ },
+ {
+   "Area": "Santacruz Central",
+   "Pincode": 400054
+ },
+ {
+   "Area": "Santacruz P&t Colony",
+   "Pincode": 400029
+ },
+ {
+   "Area": "Santacruz(East)",
+   "Pincode": 400055
+ },
+ {
+   "Area": "Santacruz(West)",
+   "Pincode": 400054
+ },
+ {
+   "Area": "Secretariate",
+   "Pincode": 400032
+ },
+ {
+   "Area": "Seepz",
+   "Pincode": 400096
+ },
+ {
+   "Area": "Sewri",
+   "Pincode": 400015
+ },
+ {
+   "Area": "Sharma Estate",
+   "Pincode": 400063
+ },
+ {
+   "Area": "Shivaji Nagar",
+   "Pincode": 400043
+ },
+ {
+   "Area": "Shivaji Park",
+   "Pincode": 400028
+ },
+ {
+   "Area": "Sindhi Society",
+   "Pincode": 400071
+ },
+ {
+   "Area": "Sion",
+   "Pincode": 400022
+ },
+ {
+   "Area": "Stock Exchange",
+   "Pincode": 400001
+ },
+ {
+   "Area": "T.F.Donar",
+   "Pincode": 400088
+ },
+ {
+   "Area": "Tagore Nagar",
+   "Pincode": 400083
+ },
+ {
+   "Area": "Tajmahal",
+   "Pincode": 400001
+ },
+ {
+   "Area": "Tank Road",
+   "Pincode": 400033
+ },
+ {
+   "Area": "Tardeo",
+   "Pincode": 400007
+ },
+ {
+   "Area": "Thakurdwar",
+   "Pincode": 400002
+ },
+ {
+   "Area": "Tilak Nagar",
+   "Pincode": 400089
+ },
+ {
+   "Area": "Town Hall",
+   "Pincode": 400001
+ },
+ {
+   "Area": "Transit Camp",
+   "Pincode": 400022
+ },
+ {
+   "Area": "Trombay",
+   "Pincode": 400088
+ },
+ {
+   "Area": "Tulsiwadi",
+   "Pincode": 400034
+ },
+ {
+   "Area": "Usha Nagar",
+   "Pincode": 400078
+ },
+ {
+   "Area": "V J B Udyan",
+   "Pincode": 400027
+ },
+ {
+   "Area": "V K Bhavan",
+   "Pincode": 400010
+ },
+ {
+   "Area": "V.P. Road",
+   "Pincode": 400052
+ },
+ {
+   "Area": "V.W.T.C.",
+   "Pincode": 400005
+ },
+ {
+   "Area": "Vakola",
+   "Pincode": 400055
+ },
+ {
+   "Area": "Vesava",
+   "Pincode": 400061
+ },
+ {
+   "Area": "Vidyanagari",
+   "Pincode": 400098
+ },
+ {
+   "Area": "Vihar Road",
+   "Pincode": 400072
+ },
+ {
+   "Area": "Vikhroli",
+   "Pincode": 400079
+ },
+ {
+   "Area": "Vileeparle (East)",
+   "Pincode": 400057
+ },
+ {
+   "Area": "Vileparle Railway Station",
+   "Pincode": 400057
+ },
+ {
+   "Area": "Vileparle(West)",
+   "Pincode": 400056
+ },
+ {
+   "Area": "Wadala",
+   "Pincode": 400031
+ },
+ {
+   "Area": "Wadala Rs",
+   "Pincode": 400031
+ },
+ {
+   "Area": "Wadala Truck Terminal",
+   "Pincode": 400037
+ },
+ {
+   "Area": "Worli",
+   "Pincode": 400018
+ },
+ {
+   "Area": "Worli Colony",
+   "Pincode": 400030
+ },
+ {
+   "Area": "Worli Naka",
+   "Pincode": 400018
+ },
+ {
+   "Area": "Worli Police Camp",
+   "Pincode": 400030
+ },
+ {
+   "Area": "Worli Sea Face",
+   "Pincode": 400030
+ }
 ]
