@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
-import { IndexComponent } from './home/index/index.component';
 import { RegistrationComponent } from './home/registration/registration.component';
 import { ProfileCompletionComponent, PreviewSnackbarComponent } from './home/profile-completion/profile-completion.component';
 import { SignInComponent } from './home/sign-in/sign-in.component';
@@ -36,7 +35,6 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
     RegistrationComponent,
     ProfileCompletionComponent,
     SignInComponent,
