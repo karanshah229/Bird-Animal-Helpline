@@ -1,0 +1,118 @@
+<div class="heading" ngClass="mat-headline">Forgot PIN</div>
+
+<div fxLayout="column" fxLayoutAlign.gt-sm="center center" [ngStyle]="{'margin-top': '1.5rem'}" @flyInOut>
+
+  <div *ngIf="!submit_status && !step1_status && !submit_failure">
+    <p style="text-align: center">Enter these details to Reset PIN</p>
+    <hr style="width: 90%">
+
+    <form [formGroup]="validate_details" style="padding-top: 1rem" [ngStyle.lt-md]="{'padding': '1rem'}">
+
+      <div class="mat-h4">Date of Birth</div>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="dob" class="date_of_birth" readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" disabled="false" touchUi = "true"></mat-datepicker>
+        <mat-error *ngIf="validate_details_formErrors.dob">{{ validate_details_formErrors.dob }}</mat-error>
+      </mat-form-field>
+
+      <div class="mat-h4">Mobile Number</div>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field appearance="outline" fxFlex="20" fxFlex.gt-sm="15">
+          <input matInput placeholder="+91" value="+91" formControlName="countryCode" style="color: black" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="80" fxFlex.gt-sm="85">
+          <input matInput placeholder="10 Digit Mobile Number w/o prefix" formControlName="mobileNumber" pattern="[6789][0-9]{9}" required>
+          <mat-error *ngIf="validate_details_formErrors.mobileNumber">{{validate_details_formErrors.mobileNumber}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mat-h4">Security Question</div>
+      <div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Select Question</mat-label>
+          <mat-select [value]="selectedQues" formControlName="securityQuestion" required>
+            <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="ques">
+              {{ ques }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="mat-h4">Security Question Response</div>
+      <mat-form-field color="accent" appearance="outline" style="width: 100%">
+        <input matInput placeholder="Your response" formControlName="securityResponse" [type]="hide_secQues ? 'password' : 'text'" required>
+        <mat-error *ngIf="validate_details_formErrors.securityResponse">{{validate_details_formErrors.securityResponse}}</mat-error>
+        <button mat-icon-button matSuffix (click)="hide_secQues = !hide_secQues" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_secQues">
+          <mat-icon>{{hide_secQues ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div style="margin-bottom: 1rem">
+        <div fxLayoutAlign="start">
+          <button mat-flat-button [routerLink]="['']" routerLinkActive="router-link-active" style="background-color: transparent">Home</button>
+        </div>
+        <div fxFlex="grow" fxLayoutAlign="end">
+          <button (click)="submit_details()">
+            <i class="material-icons next-btn">arrow_forward</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="submit_status" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem 2rem 2rem 2rem', 'max-width':'50vw', 'min-height':'50vh', 'min-width':'50vw', 'overflow': 'none', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem 2rem 2rem 2rem', 'transform': 'translateY(30%)'}" fxLayout="column" fxLayoutAlign="space-around center" ngClass.lt-md = "mat-body">
+    <mat-spinner></mat-spinner>
+    <h5 class="mat-h1" ngClass.gt-sm="mat-h2" ngClass.lt-sm="mat-subheading-1" style="margin-top: 2rem; text-align: center">Submitting Form.<br> Please do not close the application</h5>
+  </div>
+
+  <div *ngIf="submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'min-width':'50vw', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body" [fxHide]=submit_status>
+
+    <div fxLayoutAlign="center">
+      <button mat-button style="padding: 1rem; border-radius: 50%" (click)="retry()">
+        <span class="material-icons md-24">cached</span>
+      </button>
+    </div>
+    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">{{ Form_Submission_Error_Msg }}</div>
+
+    <div fxFlex="grow" fxLayoutAlign="end end">
+      <button>
+        <i class="material-icons home-button" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active">home</i>
+      </button>
+    </div>
+
+  </div>
+
+  <form *ngIf="step1_status" style="text-align: center; margin-top: 2rem" [formGroup]="new_PIN">
+    <div class="mat-h2" style="margin-bottom: 2rem">New PIN</div>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="4 Digit PIN" formControlName="pin" pattern="[0-9]{4}" [type]="hide_newPIN ? 'password' : 'text'" required>
+      <mat-error *ngIf="newPIN_formErrors.pin">{{newPIN_formErrors.pin}}</mat-error>
+      <button mat-icon-button matSuffix (click)="hide_newPIN = !hide_newPIN" [attr.aria-label]="'Hide PIN'" [attr.aria-pressed]="hide_newPIN">
+        <mat-icon>{{hide_newPIN ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div fxLayoutAlign="end" style="margin-top: 5rem; margin-right: -2rem" [ngStyle.lt-md]="{'margin-right': '1.5rem'}">
+      <button (click)="submit_newPIN()">
+        <i class="material-icons next-btn">arrow_forward</i>
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="PIN_change_status && !submit_failure" [ngStyle.gt-sm]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'min-height':'60vh', 'min-width':'50vw', 'background':'white'}" [ngStyle.lt-sm]="{'margin':'4rem'}" fxLayout="column" fxLayoutAlign="center" ngClass.lt-md = "mat-body">
+
+    <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">
+      <img src="assets/images/home/registration/form-submitted.png" alt="Form_Submitted" [ngStyle]="{'max-width': '5rem'}">
+    </div>
+    <div fxFlex="grow" class="mat-h2" fxLayoutAlign="center">
+      Thank you.<br>
+      Your form has been submitted.
+    </div>
+
+    <div fxLayoutAlign="end">
+      <button mat-raised-button color="primary" (click)="reg_complete();" [ngStyle]="{'color': 'floralwhite'}">Done</button>
+    </div>
+
+  </div>
+
+</div>

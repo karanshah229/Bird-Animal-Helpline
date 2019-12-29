@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { flyInOut } from 'src/animations/anim_registration';
 import { ProfileCompletionDataService } from 'src/services/Profile_Completion/profile-completion-data.service';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { PincodesService } from 'src/services/Profile_Completion/pincodes.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { home_addr } from 'src/data/profile_completion/profile_cmpl';
 import { work_addr } from 'src/data/profile_completion/profile_cmpl2';
@@ -45,6 +45,7 @@ export class ProfileCompletionComponent implements OnInit {
   specify_timings: [boolean] = [false];
   selected_pincodes: string[] = [];
   snackBar_count: boolean = false;
+  no_pincodes_selected_msg: string;
 
   //PREVIEW
   display_preview: boolean = false;
@@ -259,18 +260,33 @@ export class ProfileCompletionComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(PreviewSnackbarComponent, {duration: 2000});
+    this._snackBar.openFromComponent(PreviewSnackbarComponent);
   }
 
   preview_t(){
     if(!this.snackBar_count == true) {
-      this.openSnackBar();
       this.snackBar_count = true;
+      this.pick_up_loc = this.pick_up_locations.value;
+      this.prfl_cmpl.pick_up_loc = this.pick_up_locations.value;
+      this.display_preview = true;
+      this.openSnackBar();
     }else {
       this.pick_up_loc = this.pick_up_locations.value;
       this.prfl_cmpl.pick_up_loc = this.pick_up_locations.value;
       this.display_preview = true;
+      if(this.pick_up_loc.locations.length == 0) this.no_pincodes_selected_msg = "No pincodes selected.";
+    }
+  }
+
+  preview_t2(){
+    if(this.snackBar_count == true)
       this.stepper.next();
+  }
+
+  selectionChange($event){
+    if($event.selectedIndex == 3){
+      this.submitStep1();
+      this.submitStep2();
     }
   }
 
@@ -308,7 +324,14 @@ export class ProfileCompletionComponent implements OnInit {
 
 @Component({
   selector: 'preview_snackbar',
-  template: `<span style="letter-spacing: 1px">You have not selected any pincodes.</span><br><span>Do you wish to continue?</span> <button mat-raised-button>OK<button>`
+  template: `<span style="letter-spacing: 1px">You have not selected any pincodes.</span><br><span>Do you wish to continue?</span><br> <button mat-raised-button style="float: right" (click)="dismiss()">OK<button>`
 })
 
-export class PreviewSnackbarComponent {}
+export class PreviewSnackbarComponent {
+
+  constructor(private _snackRef: MatSnackBarRef<PreviewSnackbarComponent>) { }
+
+  dismiss(){
+    this._snackRef.dismiss();
+  }
+}

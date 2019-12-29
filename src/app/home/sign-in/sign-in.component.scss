@@ -38,3 +38,11 @@
   padding: 1rem 2rem;
   background-color: rgb(230, 230, 230);
 }
+
+.mat-flat-button {
+  background: transparent;
+}
+
+.mat-flat-button:hover {
+  color: #0069D9;
+}

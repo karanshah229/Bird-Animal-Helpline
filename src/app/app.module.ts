@@ -31,6 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
+import { ForgotPINComponent } from './home/forgot_pin/forgot-pin.component';
+import { OfflineComponent } from './offline-page/offline.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
     SignInComponent,
     PageNotFoundComponent,
     DpDialogComponent,
-    PreviewSnackbarComponent
+    PreviewSnackbarComponent,
+    ForgotPINComponent,
+    OfflineComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +78,7 @@ import { ProfileCompletionGuard } from 'src/guards/profile-completion.guard';
   ],
   providers: [
     MatDatepickerModule,
+    MatSnackBarModule,
     ProfileCompletionGuard
   ],
   bootstrap: [AppComponent]

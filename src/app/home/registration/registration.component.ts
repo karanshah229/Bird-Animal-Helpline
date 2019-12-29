@@ -246,7 +246,6 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-
   onDP_Change(event){
     this.image = event.target.files[0];
     if(this.image == undefined) return;
@@ -330,6 +329,7 @@ export class RegistrationComponent implements OnInit {
     fd.append("Role", this.role);
     fd.append("Basic Details", JSON.stringify(this.step2_data));
     fd.append("Account Details", JSON.stringify(this.step2_data));
+    //TODO: Check proper submission of Registration
     this.http.post('http://birdhelpline.com/registration', fd, {
       reportProgress: true,
       observe: 'events'

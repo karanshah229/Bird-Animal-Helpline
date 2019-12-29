@@ -1,0 +1,30 @@
+Session Managament: Auto Login and Logout
+
+2 ways:- LocalStorage || Token
+
+Angular:
+localStorage.setItem(key: value);
+localStorage.removeItem(key);
+Also, set the guard to check if key i.e. 'loggedIn' is 'false' or 'true'
+
+Cordova:
+function onDeviceReady() {
+    window.localStorage.setItem("key", "value");
+    var keyname = window.localStorage.key(i);
+    // keyname is now equal to "key"
+    var value = window.localStorage.getItem("key");
+    // value is now equal to "value"
+    window.localStorage.removeItem("key");
+    window.localStorage.setItem("key2", "value2");
+    window.localStorage.clear();
+    // localStorage is now empty
+}
+
+
+--------------------------------------------------------------------------------------------------
+
+Smart 404 Page
+
+--------------------------------------------------------------------------------------------------
+
+Registration form Submitted and Status Received from Admin

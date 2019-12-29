@@ -4,7 +4,7 @@
 
 <div *ngIf="!submit_status && !prfl_cmpl_success && !submit_failure" [ngStyle.gt-md]="{'box-sizing':'border-box', 'box-shadow': '0px 0px 20px #CCC', 'padding':'2rem', 'max-width':'50vw', 'transform': 'translateX(50%)', 'overflow': 'none', 'background':'white'}" ngClass.lt-xl = "mat-body">
 
-  <mat-horizontal-stepper linear labelPosition="bottom" [ngStyle.lt-md]="{'min-height': '89vh'}" #stepper @flyInOut>
+  <mat-horizontal-stepper linear labelPosition="bottom" (selectionChange)="selectionChange($event)" [ngStyle.lt-md]="{'min-height': '89vh'}" #stepper @flyInOut>
 
     <!---------------------- STEP 1 ---------------------->
 
@@ -161,7 +161,7 @@
             <i class="material-icons next-btn" style="transform: rotate(180deg)">navigate_next</i>
           </button>
           <span fxFlex="grow"></span>
-          <button mat-raised-button (click)="preview_t()" color="primary" style="color: white; padding-right: 2rem" [ngStyle]="{'color': 'white', 'padding-right': '1.5rem'}">Preview</button>
+          <button mat-raised-button (click)="preview_t(); preview_t2()" color="primary" style="color: white" [ngStyle]="{'color': 'white', 'padding-right': '2.5rem'}">Preview</button>
         </div>
       </div>
     </mat-step>
@@ -233,16 +233,17 @@
             </div>
           </div>
         </div>
-        <div class="preview_step3" *ngIf="pick_up_loc.locations.length">
+        <div class="preview_step3">
           <div class="preview-header mat-title" fxLayout>
             <span class="header-text" fxFlex="80" fxLayoutAlign="start">Pick Up Locations</span>
             <span fxFlex="20">
               <span fxFlex="grow"></span>
-              <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 3">edit</i>
+              <i class="material-icons edit" fxLayoutAlign="space-around center" (click)="this.stepper.selectedIndex = 2">edit</i>
             </span>
           </div>
           <hr style="width: 90%">
           <div class="preview-step-content mat-h4">
+            <div class="content-field-header mat-h3" *ngIf="!pick_up_loc.locations.length">{{ no_pincodes_selected_msg }}</div>
             <div class="content-field-header mat-h3" *ngIf="pick_up_loc.locations.length">Locations: </div>
             <div class="content-field-content" *ngIf="pick_up_loc.locations" style="margin-left: 10px">
               <div *ngFor="let loc of pick_up_loc.locations; let i = index">

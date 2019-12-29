@@ -120,7 +120,7 @@
             <mat-form-field fxFlex="100%" appearance="outline">
               <mat-label>Select Question</mat-label>
               <mat-select [value]="selectedQues" formControlName="securityQuestion" required>
-              <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="i+1">
+              <mat-option *ngFor="let ques of securityQuestions; let i = index" [value]="ques">
                   {{ ques }}
               </mat-option>
               </mat-select>
@@ -182,7 +182,7 @@
               <mat-error *ngIf="step3_formErrors.username">{{step3_formErrors.username}}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
+              <mat-label>PIN</mat-label>
               <input matInput placeholder="4 Digit PIN" formControlName="pin" pattern="[0-9]{4}" [type]="hide_pass ? 'password' : 'text'" required>
               <mat-error *ngIf="step3_formErrors.pin">{{step3_formErrors.pin}}</mat-error>
               <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">

@@ -1,8 +1,6 @@
 <main [fxShow]="home" @fadeIn>
-  <div style="text-align: center; padding-top: 5vh" [ngStyle.lt-xl]="{'padding-top': '10vh'}" fxLayout="column">
-    <div>
-      <img src="assets/images/home/index/logo.png" style="max-width: 18vw" alt="Logo" [ngStyle.lt-lg]="{'max-width': '30vh'}">
-    </div>
+  <div style="text-align: center; padding-top: 4vh" [ngStyle.lt-md]="{'padding-top': '10vh'}" fxLayout="column">
+    <div> <img src="assets/images/home/index/logo.png" style="max-width: 18vw" alt="Logo" [ngStyle.lt-md]="{'max-width': '30vh'}"> </div>
     <div [formGroup]="signIn" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="6px" style="margin-top: 10vh" [ngStyle]="{'margin-top': '5vh'}">
       <mat-form-field appearance="outline" style="width: 25%" [ngStyle.lt-md]="{'width': '60%'}">
         <mat-label>Username</mat-label>
@@ -19,17 +17,17 @@
       </mat-form-field>
       <div fxLayout fxLayoutGap="10px" [ngStyle.lt-md]="{'max-width': '60%'}">
         <button fxFlex="35" mat-raised-button style="padding: 0.5rem 1.5rem !important; font-size: 1rem" [ngStyle.lt-md]="{'padding':'', 'font-size': ''}" color="accent">Login</button>
-        <button fxFlex="65" mat-button [routerLink]="['/registration']" routerLinkActive="router-link-active">New here ? Register</button>
+        <button fxFlex="65" mat-button [routerLink]="['/registration']" routerLinkActive="router-link-active">New here? Register!</button>
       </div>
       <div fxLayout fxLayoutGap="10px" fxLayoutAlign="space-around" style="padding-top: 1rem" [ngStyle.lt-md]="{'max-width': '60%'}">
-        <button mat-button [routerLink]="['/forgotPin']" routerLinkActive="router-link-active">Forgot PIN</button>
-        <button mat-button [routerLink]="['/aboutUs']" routerLinkActive="router-link-active">About Us</button>
-        <button mat-button [routerLink]="['/contactUs']" routerLinkActive="router-link-active">Contact Us</button>
+        <button mat-flat-button class="mat-flat-button" [routerLink]="['/forgotPIN']" routerLinkActive="router-link-active">Forgot PIN</button>
+        <button mat-flat-button class="mat-flat-button" [routerLink]="['/aboutUs']" routerLinkActive="router-link-active">About Us</button>
+        <button mat-flat-button class="mat-flat-button" [routerLink]="['/contactUs']" routerLinkActive="router-link-active">Contact Us</button>
       </div>
     </div>
   </div>
   <div class="about-us-button" (click)="toggleAboutUs()">
-    <img src="assets/images/home/index/aboutus.png" alt="About Us" style="max-width: 3vw" [ngStyle.lt-lg]="{'max-width': '5vh'}">
+    <img src="assets/images/home/index/aboutus.png" alt="About Us" style="max-width: 3vw" [ngStyle.lt-md]="{'max-width': '5vh'}">
   </div>
 </main>
 
