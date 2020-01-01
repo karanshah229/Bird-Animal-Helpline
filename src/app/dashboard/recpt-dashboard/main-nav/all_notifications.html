@@ -1,0 +1,10 @@
+<h2 [ngStyle.lt-md]="{'font-size':'1rem'}">
+  <span>All notifications</span>
+  <button class="material-icons" [ngStyle]="{'float': 'right'}" (click)="clear_all_notifs(); $event.stopPropagation()">clear_all</button>
+</h2>
+<a mat-menu-item class="mat-menu-item" *ngFor="let mess of messages.notifications; let i = index" [@fadeOut]="fadeOut_notif[i]">
+  <span [id]="i">{{ mess }}</span>
+</a>
+<div [ngStyle]="{'text-align':'right'}">
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Ok</button>
+</div>

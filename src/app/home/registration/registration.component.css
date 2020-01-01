@@ -1,0 +1,255 @@
+#heading {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #374047;
+  color: white;
+  letter-spacing: 1px;
+  height: 11vh;
+  line-height: 11vh;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+/*------------------- STEP 1 ------------------------*/
+#iAmA {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.role-select-button {
+  -webkit-box-shadow: 0px 0px 10px #BBB;
+          box-shadow: 0px 0px 10px #BBB;
+  padding: 1rem;
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+}
+
+.role-select-button img {
+  width: 4.5rem;
+  max-width: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.role-select-button div {
+  font-size: 1rem;
+}
+
+/*----------FOSTERER--AND--RECEPTIONIST--ANIMATIONS---------*/
+@-webkit-keyframes Fosterer {
+  0% {
+    -webkit-transform: scale(0) translateX(1000px);
+            transform: scale(0) translateX(1000px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(0vw);
+            transform: scale(1) translateX(0vw);
+  }
+}
+@keyframes Fosterer {
+  0% {
+    -webkit-transform: scale(0) translateX(1000px);
+            transform: scale(0) translateX(1000px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(0vw);
+            transform: scale(1) translateX(0vw);
+  }
+}
+
+.fosterer {
+  -webkit-animation: Fosterer 0.8s forwards 0s ease-in-out;
+          animation: Fosterer 0.8s forwards 0s ease-in-out;
+}
+
+@-webkit-keyframes Receptionist {
+  0% {
+    -webkit-transform: scale(0) translateX(-1000px);
+            transform: scale(0) translateX(-1000px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(0vw);
+            transform: scale(1) translateX(0vw);
+  }
+}
+
+@keyframes Receptionist {
+  0% {
+    -webkit-transform: scale(0) translateX(-1000px);
+            transform: scale(0) translateX(-1000px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(0vw);
+            transform: scale(1) translateX(0vw);
+  }
+}
+
+.receptionist {
+  -webkit-animation: Receptionist 0.8s forwards 0s ease-in-out;
+          animation: Receptionist 0.8s forwards 0s ease-in-out;
+}
+
+@-webkit-keyframes Fosterer-end {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0);
+            transform: rotate(720deg) scale(0);
+  }
+}
+
+@keyframes Fosterer-end {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0);
+            transform: rotate(720deg) scale(0);
+  }
+}
+
+.fosterer-end {
+  -webkit-animation: Fosterer-end 0.7s forwards 0s ease-in-out;
+          animation: Fosterer-end 0.7s forwards 0s ease-in-out;
+}
+
+@-webkit-keyframes Receptionist-end {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0);
+            transform: rotate(720deg) scale(0);
+  }
+}
+
+@keyframes Receptionist-end {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0);
+            transform: rotate(720deg) scale(0);
+  }
+}
+
+.receptionist-end {
+  -webkit-animation: Receptionist-end 0.7s forwards 0s ease-in-out;
+          animation: Receptionist-end 0.7s forwards 0s ease-in-out;
+}
+
+/*------------------- STEP 2 ---------------------*/
+form {
+  margin-top: 1rem;
+}
+
+#step2 {
+  padding: 2rem;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 0.4rem;
+}
+
+mat-form-field {
+  padding: 0.5rem 0rem;
+}
+
+.material-icons {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.home-btn {
+  padding: 10px !important;
+  color: #374047;
+}
+
+.next-btn {
+  font-size: 36px;
+  padding: 10px !important;
+}
+
+.next-btn:hover, .home-btn:hover {
+  background-color: #EEE;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.35s ease-in-out;
+  transition: background-color 0.35s ease-in-out;
+}
+
+.disabled-dob, .date_of_birth {
+  color: black !important;
+}
+
+/*------------------- STEP 3 ---------------------*/
+.material-icons.md-24 {
+  font-weight: 100;
+  font-size: 6rem;
+}
+
+.material-icons.md-36 {
+  font-weight: 100;
+  font-size: 10rem;
+}
+
+.dp_counter_style {
+  border: 5px solid #a00000;
+}
+
+/*------------------- PREVIEW ---------------------*/
+.preview_step1, .preview_step2, .preview_step3 {
+  padding: 1rem;
+  border: 1px solid #374047;
+}
+
+.preview_step3, .preview_step1 {
+  border-bottom: none;
+}
+
+.preview_step3 {
+  text-align: center;
+}
+
+.preview-header {
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.preview-step-content {
+  padding: 1rem;
+}
+
+.preview-step-content input {
+  border: none;
+}
+
+.edit {
+  margin: -10px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.edit:hover {
+  background-color: #EEE;
+  border-radius: 50%;
+}
+
+.content-field-header {
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.toggle_visibility {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+/*# sourceMappingURL=registration.component.css.map */

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { RegistrationComponent } from './home/registration/registration.component';
 import { SignInComponent } from './home/sign-in/sign-in.component';
@@ -18,12 +18,17 @@ const routes: Routes = [
   },
   { path: 'registration', component: RegistrationComponent },
   { path: 'HdbHb6HGLIsBNQlt5MjHUr346y5R8B5g', component: OfflineComponent },
-  { path: '', component: SignInComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: SignInComponent
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

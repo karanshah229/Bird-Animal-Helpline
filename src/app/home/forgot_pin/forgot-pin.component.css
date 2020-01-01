@@ -1,0 +1,76 @@
+.heading {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #374047;
+  color: white;
+  letter-spacing: 1px;
+  height: 11vh;
+  line-height: 11vh;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.material-icons {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.home-btn {
+  padding: 10px !important;
+  color: #374047;
+}
+
+.next-btn {
+  font-size: 36px;
+  padding: 10px !important;
+}
+
+.next-btn:hover, .home-btn:hover {
+  background-color: #DDD;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.35s ease-in-out;
+  transition: background-color 0.35s ease-in-out;
+  -webkit-animation: next_btn_anim 350ms forwards 0s ease-in-out;
+          animation: next_btn_anim 350ms forwards 0s ease-in-out;
+}
+
+.material-icons.md-24 {
+  font-weight: 100;
+  font-size: 6rem;
+}
+
+.material-icons.md-36 {
+  font-weight: 100;
+  font-size: 10rem;
+}
+
+@-webkit-keyframes next_btn_anim {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  80% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes next_btn_anim {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  80% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=forgot-pin.component.css.map */
