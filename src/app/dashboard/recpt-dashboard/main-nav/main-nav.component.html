@@ -2,11 +2,11 @@
   <mat-sidenav
       #drawer
       class="sidenav"
-      [ngClass] = "{hidden: !(isHandset$ | async)}"
+      [ngClass] = "{hidden: !isMobile}"
       fixedInViewport = "false"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+      [attr.role]="'dialog'"
+      [mode]="'over'"
+      [opened]="false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']" routerLinkActive="active" >Profile</a>
@@ -22,7 +22,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isMobile">
         <mat-icon aria-label="Side nav toggle icon" class="material-icons nav-btn">menu</mat-icon>
       </button>
       <div class="home-btn-wrapper nav-btn" [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
@@ -33,15 +33,15 @@
 
       <div style="flex: 1 1 auto"></div>
 
-      <div class="nav-btn notif-btn" [matMenuTriggerFor]="notif">
-        <span class="material-icons" [matBadge]="notif_num" matBadgeOverlap matBadgeColor="warn">notification_important</span>
+      <div class="nav-btn notif-btn" [matMenuTriggerFor]="notif" (click)="clear_unread_notifs()">
+        <span class="material-icons" [matBadge]="notif_num || ''" matBadgeOverlap matBadgeColor="warn">notification_important</span>
       </div>
       <mat-menu #notif="matMenu" xPosition="before">
         <div class="notif-headline">
           <span>Notifications</span>
           <button *ngIf="notif_state.length !== 0" class="material-icons clear_all_notifs" style="float: right" (click)="clear_all_notifs(); $event.stopPropagation()">clear_all</button>
         </div>
-        <button mat-menu-item class="mat-menu-item" *ngFor="let notif of notif_state; let i = index" [@fadeOut]="notif_state[i].state" (@fadeOut.done)="clear_all_anim_end(i)" [id]="i">
+        <button mat-menu-item class="mat-menu-item" *ngFor="let notif of notif_state; let i = index" [@fadeOut]="notif_state[i].state" (@fadeOut.done)="clear_all_anim_end(notif)" [id]="i">
           <span>{{ notif.notif }}</span>
         </button>
         <button mat-menu-item class="mat-menu-item view-all" *ngIf="notif_state.length !== 0" (click)="openDialog()">

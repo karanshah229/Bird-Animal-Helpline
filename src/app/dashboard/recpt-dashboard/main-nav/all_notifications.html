@@ -1,10 +1,10 @@
 <h2 [ngStyle.lt-md]="{'font-size':'1rem'}">
   <span>All notifications</span>
-  <button class="material-icons" [ngStyle]="{'float': 'right'}" (click)="clear_all_notifs(); $event.stopPropagation()">clear_all</button>
+  <button class="material-icons clear_all_notifs" style="float: right" (click)="clear_all_notifs(); $event.stopPropagation()">clear_all</button>
 </h2>
-<a mat-menu-item class="mat-menu-item" *ngFor="let mess of messages.notifications; let i = index" [@fadeOut]="fadeOut_notif[i]">
-  <span [id]="i">{{ mess }}</span>
-</a>
+<button mat-menu-item class="mat-menu-item" *ngFor="let notif of notif_state; let i = index" [@fadeOut]="notif_state[i].state" (@fadeOut.done)="clear_all_anim_end(notif)" [id]="i">
+  <span>{{ notif.notif }}</span>
+</button>
 <div [ngStyle]="{'text-align':'right'}">
-  <button mat-button (click)="onNoClick()" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="this.notif_state" cdkFocusInitial>Ok</button>
 </div>
