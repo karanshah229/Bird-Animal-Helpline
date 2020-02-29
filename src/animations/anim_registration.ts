@@ -15,7 +15,7 @@ export function fadeIn(){
     state('*', style({ opacity: 1 })),
     transition(':enter', [
         style({ opacity: 0 }),
-        animate('0.5s ease-in')
+        animate('0.25s ease-in')
     ])
   ]);
 }

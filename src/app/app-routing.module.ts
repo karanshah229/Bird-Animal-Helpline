@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   { path: 'registration', component: RegistrationComponent },
   { path: 'HdbHb6HGLIsBNQlt5MjHUr346y5R8B5g', component: OfflineComponent },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' /*, canLoad: [AuthGuard]*/ },
   {
     path: '',
     pathMatch: 'full',

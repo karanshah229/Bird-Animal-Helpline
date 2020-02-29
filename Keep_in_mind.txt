@@ -1,3 +1,8 @@
+Angular:
+	Optimizations - Lazy Loading, 
+	Load complete page with data and not just <body></body>
+	Description tag
+
 Session Managament: Auto Login and Logout
 
 2 ways:- LocalStorage || Token

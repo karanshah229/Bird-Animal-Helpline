@@ -1,9 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, Subscription } from 'rxjs';
-import { map, share } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { fadeIn, fadeOut } from 'src/animations/anim_registration';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 interface notification {notif: string, state: string};
 
@@ -14,11 +17,13 @@ interface notification {notif: string, state: string};
   host: {
     'style': 'display: block;',
     '[class.mobile-theme]':'false',
-    '[class.dashboard-theme]':'true'
+    '[class.dashboard-theme]':'true',
+    '(document:keyup)': 'handleKeyboardEvent($event)'
   },
   animations: [ fadeIn(), fadeOut() ]
 })
 export class MainNavComponent implements OnInit {
+  //Data fields
   username:string;
 
   //TODO: Decide Message Format
@@ -27,11 +32,20 @@ export class MainNavComponent implements OnInit {
   clear_all_notifs_btn_click:boolean = false;
   notif_state:notification[] = [];
 
+  //Responsive Menu
   isHandset$: Subscription;
   isMobile:boolean = false;
 
+  //Side-Nav
+  @ViewChild('drawer', {static: false}) public sidenav: MatSidenav;
+
+  //Search
+  search_div:boolean = false;
+  search_field = new FormControl();
+
   constructor(private breakpointObserver: BreakpointObserver,
-    private dialog: MatDialog) {
+    private dialog: MatDialog, private router: Router) {
+    this.router.navigateByUrl('/dashboard/raise-case');
     this.isHandset$ = this.breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
       Breakpoints.HandsetPortrait
@@ -44,17 +58,17 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit(){
     //Get notifs from service and Update badge
+    //also use swing animation
     this.notif_num = this.notifs.length;
 
     //Create Notification State
     for(let i = 0; i < this.notifs.length; i++){
       const x = {notif: this.notifs[i], state: "enter"};
-      this.notif_state.push(x);
+      this.notif_state.unshift(x);
     }
   }
 
-  clear_unread_notifs(){ this.notif_num = 0; }
-
+  clear_unread_notifs(){ this.notif_num = 0 }
   clear_all_notifs(){
     let i = 0;
     this.clear_all_notifs_btn_click = true;
@@ -64,7 +78,6 @@ export class MainNavComponent implements OnInit {
       if(this.notif_state.length === i) clearInterval(clear_all_notifs);
     }, 100);
   }
-
   clear_all_anim_end(notif:{notif:string, state: string}){
     if(this.clear_all_notifs_btn_click){
       if(notif === this.notif_state[this.notif_state.length - 1])
@@ -85,9 +98,26 @@ export class MainNavComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.notif_state = result;
     });
+  }
+
+  //Close side nav on click - mobile
+  close_side_nav(){
+    if(this.isMobile) this.sidenav.close();
+  }
+
+  //Search - Overlay
+  open_search_overlay(){
+    this.search_div = true;
+  }
+
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if(this.search_div == true && event.key === "Escape"){ this.close_search_overlay() }
+  }
+
+  close_search_overlay(){
+    this.search_div = false;
   }
 
 }
@@ -120,8 +150,9 @@ export class All_notifications {
 
     clear_all_anim_end(notif:{notif:string, state: string}){
       if(this.clear_all_notifs_btn_click){
-        if(notif === this.notif_state[this.notif_state.length - 1])
+        if(notif === this.notif_state[this.notif_state.length - 1]){
           this.notif_state = [];
+        }
         else notif = {notif: "", state: ""};
       }
     }

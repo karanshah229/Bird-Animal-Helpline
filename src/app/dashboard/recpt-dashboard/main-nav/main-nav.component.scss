@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 250px;
 }
 
 .mat-drawer-container {
@@ -51,20 +51,16 @@
   align-items: center;
 }
 
-.mat-menu-item.view-all {
-  color: dodgerblue;
-}
+.mat-menu-item.view-all { color: dodgerblue }
 
 /* PROFILE BUTTON */
-.profile-btn {
-  padding-right: 0.5rem
-}
+.profile-btn { padding-right: 0.5rem }
 
 /* NOTIFICATION BUTTON */
 .notif-btn { padding: 20px 1.5rem; transition: color 200ms ease-in-out }
 .notif-btn.swing {
-  animation: swing 0.7s 2 0s ease-in-out;
   color: red;
+  animation: swing 0.7s 2 0s ease-in-out;
 }
 
 @keyframes swing {
@@ -82,3 +78,52 @@
 }
 .clear_all_notifs { padding: 8px; margin: -8px; display: flex; align-items: center }
 .clear_all_notifs:hover { background-color: #BBB; border-radius: 100% }
+
+/* Side Nav Content */
+.user-avatar {
+  margin: 1rem 10px;
+  overflow: auto !important;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 200ms ease-in-out;
+}
+.user-avatar div:hover { color: white }
+.user-avatar img{
+  float: left;
+  margin-right: 8px;;
+  max-width: 60px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  background-color: white;
+}
+
+mat-nav-list a {
+  width: 96%;
+  color: rgba(255, 255, 255, 0.65) !important;
+  transition: color 200ms ease-in-out;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 10px solid transparent;
+}
+mat-nav-list a:hover { color: white !important; }
+mat-nav-list a.side-nav-active {
+  background-color: #222;
+  color: floralwhite !important;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 10px solid green;
+}
+
+//Search
+.search-wrapper {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffffee;
+}
+.search-input {
+  font-size: 2rem;
+}
