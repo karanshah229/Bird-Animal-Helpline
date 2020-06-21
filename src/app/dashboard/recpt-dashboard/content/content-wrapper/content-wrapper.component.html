@@ -1,10 +1,9 @@
 <div [ngStyle] = "{'padding':'2rem'}" [ngStyle.lt-md]="{'padding':'1.5rem'}">
-  <mat-card style="padding: 0rem !important">
+  <mat-card style="padding: 0rem !important" [ngStyle]="{'min-height': 'calc(100vh - 64px - 4rem)'}">
     <mat-card-header style="background-color: #BCBDC0; padding: 1rem !important; padding-bottom: 0rem !important">
-      <mat-card-title>{{ card_header | async }}</mat-card-title>
-      <mat-card-subtitle>Case - 8697</mat-card-subtitle>
+      <mat-card-title>{{ card_title | async }}</mat-card-title>
     </mat-card-header>
-    <mat-card-content style="padding: 2rem !important">
+    <mat-card-content style="padding: 1rem 1.5rem !important">
       <router-outlet></router-outlet>
     </mat-card-content>
   </mat-card>

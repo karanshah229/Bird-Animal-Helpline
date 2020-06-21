@@ -1,1 +1,97 @@
-<div>raise-case works!</div>
+<div>
+
+  <div fxLayoutAlign.gt-md="column" fxLayoutGap.gt-md="20px">
+
+    <div fxFlex.gt-md="50">
+      <h2 style="padding-left: 1rem; font-weight: 500">{{ bird_or_animal }} Information</h2>
+      <hr style="background: rgb(109, 105, 105);">
+      <div style="padding: 1rem; width: 100%" fxLayout="column" fxLayoutGap="-5px">
+        <div style="padding-bottom: 10px" [ngStyle.lt-md]="{'width': '100%'}">
+          <mat-radio-group aria-label="Select Animal Type" fxLayoutGap="2rem">
+            <mat-radio-button value="Bird" (click)="bird_or_animal_fn(true)">
+              <img src="assets/images/dashboard/recpt-dashboard/raise-case/bird.png" alt="Bird" [ngStyle]="{'max-width': '3.25rem'}">
+            </mat-radio-button>
+            <mat-radio-button value="Animal" (click)="bird_or_animal_fn(false)">
+              <img src="assets/images/dashboard/recpt-dashboard/raise-case/animal.png" alt="Bird" [ngStyle]="{'max-width': '3.25rem'}">
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+            <mat-label>Choose {{ bird_or_animal }} Type</mat-label>
+            <mat-select>
+              <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option> -->
+              <mat-option (click)="add_bird_animal()" value="add_new">
+                Add new {{ bird_or_animal }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="add_new_bird_animal_type" appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+            <mat-label>Enter new {{ bird_or_animal }} name: </mat-label>
+            <input matInput [required]="add_new_bird_animal_type">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+            <mat-label>{{ bird_or_animal }} name: </mat-label>
+            <input matInput required>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+            <mat-label>Condition: </mat-label>
+            <input matInput required>
+          </mat-form-field>
+        </div>
+
+        <div (click)="case_photos_dialog()">
+          <div style="border: 1px solid #00000018; padding: 12px; width: 75.4%; border-radius: 5px; cursor: pointer" [ngStyle.lt-md]="{'width': '90%'}">Upload Case Photos</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div fxFlex.gt-md="50">
+      <h2 style="padding-left: 1rem; font-weight: 500">Contact Information</h2>
+      <hr style="background: rgb(109, 105, 105);">
+      <div style="padding: 1rem; width: 100%" fxLayout="column" fxLayoutGap="-5px">
+          <div>
+            <mat-form-field appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+              <mat-label>Name: </mat-label>
+              <input matInput required>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" style="width: 10%; margin-right: 10px" [ngStyle.lt-md]="{'width': '20%'}">
+              <input matInput value="+91" readonly>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: calc(70% - 10px)" [ngStyle.lt-md]="{'width': 'calc(100% - 20% - 10px)'}">
+              <mat-label>Contact Number</mat-label>
+              <input matInput required>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" style="width: 80%" [ngStyle.lt-md]="{'width': '100%'}">
+              <mat-label>Location: </mat-label>
+              <textarea matInput required rows="5" style="resize: none"></textarea>
+            </mat-form-field>
+          </div>
+      </div>
+
+      <div style="padding-left: 1rem" [ngStyle.gt-md]="{'margin-right': '22%'}" fxLayoutAlign="end end" fxLayoutAlign.lt-md="center end" fxLayoutGap="5px">
+        <button mat-raised-button style="padding: 0.3rem 1rem; background-color: #292929; color: white">Reset All</button>
+        <button type="button" (click)="reset_form()" mat-raised-button style="padding: 0.3rem 1rem; background-color: green; color: white">Submit</button>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

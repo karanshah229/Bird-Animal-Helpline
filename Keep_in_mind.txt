@@ -1,5 +1,4 @@
 Angular:
-	Optimizations - Lazy Loading, 
 	Load complete page with data and not just <body></body>
 	Description tag
 
@@ -33,3 +32,23 @@ Smart 404 Page
 --------------------------------------------------------------------------------------------------
 
 Registration form Submitted and Status Received from Admin
+
+--------------------------------------------------------------------------------------------------
+3/3/20
+Submit Button Styling - ProfileCompletion
+Specify Timings Checkbox
+Save Registration Form and ProfileCompletion Form - PDF, Screenshot
+Dashboard Pincode
+Pincode - At least one location
+Preview - 'To check our form status and for a copy of your reistration form login with these credentials'
+
+Update/History Case:
+Date-Time; user; Comments - CaseNarration, Doc's Advice: Doctor, Meds/Tests; Expense; Next FollowUp - Date, Procedure
+/*Push Notifs - Only One Notif in Notif bar, Click to Open App and View All */
+Notif Dropdown - Split - Upcoming(1 day ahead) - Today
+
+Transfer Case
+Same as before
+
+Close Case
+Same as before

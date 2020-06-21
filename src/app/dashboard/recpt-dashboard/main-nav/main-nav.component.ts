@@ -1,12 +1,11 @@
-import { Component, OnInit, Inject, ViewChild, HostListener } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { fadeIn, fadeOut } from 'src/animations/anim_registration';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { IsMobileService } from 'src/services/Common/is-mobile.service';
 
 interface notification {notif: string, state: string};
 
@@ -33,7 +32,6 @@ export class MainNavComponent implements OnInit {
   notif_state:notification[] = [];
 
   //Responsive Menu
-  isHandset$: Subscription;
   isMobile:boolean = false;
 
   //Side-Nav
@@ -43,20 +41,19 @@ export class MainNavComponent implements OnInit {
   search_div:boolean = false;
   search_field = new FormControl();
 
-  constructor(private breakpointObserver: BreakpointObserver,
-    private dialog: MatDialog, private router: Router) {
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private isMobile_t: IsMobileService) {
     this.router.navigateByUrl('/dashboard/raise-case');
-    this.isHandset$ = this.breakpointObserver.observe([
-      Breakpoints.HandsetLandscape,
-      Breakpoints.HandsetPortrait
-    ]).subscribe(result => {
+  }
+
+  ngOnInit(){
+    this.isMobile_t.isMobile().subscribe(result => {
       if (result.matches) {
         this.isMobile = true;
       } else this.isMobile = false;
     });
-  }
-
-  ngOnInit(){
     //Get notifs from service and Update badge
     //also use swing animation
     this.notif_num = this.notifs.length;
@@ -94,7 +91,8 @@ export class MainNavComponent implements OnInit {
     const dialogRef = this.dialog.open(All_notifications, {
       height: dialogSize.height,
       width: dialogSize.width,
-      data: this.notif_state
+      data: this.notif_state,
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

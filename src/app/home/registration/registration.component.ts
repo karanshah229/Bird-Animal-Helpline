@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { flyInOut } from 'src/animations/anim_registration';
 import { RegFormService } from 'src/services/registration/reg-form.service';

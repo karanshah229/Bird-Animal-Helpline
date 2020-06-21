@@ -1,3 +1,7 @@
+###### If you find a bug or want to suggest some improvements
+Take a pull request or email:
+> karanshah229@gmail.com
+
 # Bird and Animal Helpline
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.

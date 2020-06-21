@@ -46,8 +46,8 @@
           </div>
         </div>
         <div>
-          <button>
-            <i class="material-icons home-btn" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active">home</i>
+          <button [routerLink]="['']" routerLinkActive="router-link-active">
+            <i class="material-icons home-btn" alt="Home">home</i>
           </button>
         </div>
       </mat-step>
@@ -161,7 +161,7 @@
             <div fxLayout = "column" fxLayoutAlign = "space-around center" style = "width: 100%">
               <mat-spinner [fxShow]="show_loading_gif" style="margin-bottom: 1rem;"></mat-spinner>
 
-              <label [fxShow]="!loading_gif" for="dp"><img [src]="label_url" alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" [ngClass]="dp_counter ? 'dp_counter_style' : '' " [fxHide]="hide_dp_placeholder_img"></label>
+              <label [fxShow]="!show_loading_gif" for="dp"><img [src]="label_url" alt="Upload Display Picture" [ngStyle]="{'max-width':'30vw'}" [ngStyle.gt-sm]="{'max-width': '10vw', 'cursor':'pointer'}" [ngClass]="dp_counter ? 'dp_counter_style' : '' " [fxHide]="hide_dp_placeholder_img"></label>
 
               <button type="button" [fxHide]="hide_compressed_img" (click)="open_dp_dialog()" [ngStyle]="{'margin-bottom':'1rem'}">
                 <img [ngStyle]="{'max-width':'40vw'}" [ngStyle.gt-sm]="{'max-width': '12vw', 'cursor':'pointer'}" *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
@@ -328,8 +328,8 @@
     <div [ngStyle]="{'margin-top':'2rem','margin-bottom': '4rem'}" fxLayoutAlign="center">{{ Form_Submission_Error_Msg }}</div>
 
     <div fxFlex="grow" fxLayoutAlign="end">
-      <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}">
-        <i class="material-icons home-button" alt="Home" [routerLink]="['']" routerLinkActive="router-link-active" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
+      <button style="margin-right: -2rem" [ngStyle.gt-sm]="{'margin-right': '1rem'}" [routerLink]="['']" routerLinkActive="router-link-active">
+        <i class="material-icons home-button" alt="Home" [ngStyle.gt-sm]="{'margin-top':'5rem', 'padding-bottom':'1rem', 'color':'#374047'}" [ngStyle.lt-md]="{'margin-top':'6rem'}">home</i>
       </button>
     </div>
 

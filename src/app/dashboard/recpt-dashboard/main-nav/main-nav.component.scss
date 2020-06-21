@@ -104,7 +104,8 @@ mat-nav-list a {
   border-bottom: 5px solid transparent;
   border-right: 10px solid transparent;
 }
-mat-nav-list a:hover { color: white !important; }
+mat-nav-list a:focus { color: floralwhite !important; background-color: #222 !important}
+mat-nav-list a:hover { color: floralwhite !important; background-color: #333 !important}
 mat-nav-list a.side-nav-active {
   background-color: #222;
   color: floralwhite !important;

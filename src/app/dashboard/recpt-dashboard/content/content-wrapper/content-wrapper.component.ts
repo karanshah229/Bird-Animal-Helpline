@@ -12,7 +12,7 @@ export class ContentWrapperComponent implements OnInit {
   isHandset$: Subscription;
   isMobile:boolean = false;
 
-  card_header = new BehaviorSubject('Raise a Case');
+  card_title = new BehaviorSubject('Raise a Case')
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
     this.isHandset$ = this.breakpointObserver.observe([
@@ -31,9 +31,9 @@ export class ContentWrapperComponent implements OnInit {
       if (event instanceof NavigationEnd){
         url = event.url.split('/')[2];
       }
-      if (url == 'raise-case') this.card_header.next('Raise a Case')
-      else if (url == 'my-cases') this.card_header.next('My Cases')
-      else if (url == 'data-change-approvals') this.card_header.next('Data Change Approvals')
+      if (url == 'raise-case') this.card_title.next('Raise a Case')
+      else if (url == 'my-cases') this.card_title.next('My Cases')
+      else if (url == 'data-change-approvals') this.card_title.next('Data Change Approvals')
     });
 
 

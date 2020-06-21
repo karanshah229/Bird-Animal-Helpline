@@ -11,7 +11,7 @@
         <mat-label>Password</mat-label>
         <input matInput placeholder="4 Digit PIN" formControlName="pin" pattern="[0-9]{4}" [type]="hide_pass ? 'password' : 'text'" required>
         <mat-error *ngIf="signIn_formErrors.pin">{{signIn_formErrors.pin}}</mat-error>
-        <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
+        <button type="button" mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
           <mat-icon>{{hide_pass ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>

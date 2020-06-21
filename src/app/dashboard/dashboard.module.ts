@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { RecptDashboardComponent } from './recpt-dashboard/recpt-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { VolDashboardComponent } from './vol-dashboard/vol-dashboard.component';
-import { RaiseCaseComponent } from './recpt-dashboard/content/raise-case/raise-case.component';
+import { RaiseCaseComponent, CasePhotosDialog } from './recpt-dashboard/content/raise-case/raise-case.component';
 import { MyCasesComponent } from './recpt-dashboard/content/my-cases/my-cases.component';
 import { ContentWrapperComponent } from './recpt-dashboard/content/content-wrapper/content-wrapper.component';
 import { MainNavComponent, All_notifications } from './recpt-dashboard/main-nav/main-nav.component';
+import { DataChangeApprovalsComponent } from './recpt-dashboard/content/data-change-approvals/data-change-approvals.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -26,9 +28,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DataChangeApprovalsComponent } from './recpt-dashboard/content/data-change-approvals/data-change-approvals.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { DataChangeApprovalsComponent } from './recpt-dashboard/content/data-cha
     RaiseCaseComponent,
     MyCasesComponent,
     ContentWrapperComponent,
-    DataChangeApprovalsComponent
+    DataChangeApprovalsComponent,
+    CasePhotosDialog
   ],
   imports: [
     CommonModule,
@@ -63,9 +69,15 @@ import { DataChangeApprovalsComponent } from './recpt-dashboard/content/data-cha
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatTabsModule
   ],
   entryComponents: [
-    All_notifications
+    All_notifications,
+    CasePhotosDialog
   ],
 })
 export class DashboardModule { }
